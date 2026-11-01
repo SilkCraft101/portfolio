@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Προσωπικό Portfolio
 
-## Getting Started
+Αυτή είναι η πρώτη μου προσπάθεια δημιουργίας του Portfolio μου. Είναι ένα project μέσα από το οποίο μαθαίνω να κατασκευάζω web εφαρμογές.
 
-First, run the development server:
+Τα Projects μου ξεκινούν από ερωτήσεις, ανάγκες και πράγματα που θέλω να καταλάβω καλύτερα. Εδώ θέλω να παρουσιάζω όσα κατασκευάζω, την πραγματική τους
+κατάσταση, όσα μαθαίνω και να καταγράφω τα επόμενα βήματα μου.
+
+## Τρέχουσα κατάσταση
+
+Έχει δημιουργηθεί η αρχική δομή με:
+
+- Navigation και εναλλαγή φωτεινού/σκοτεινού θέματος.
+- Εισαγωγική ενότητα και σύντομη παρουσίαση της διαδρομής μου.
+- Component για την ενότητα Projects, το οποίο δεν έχει ακόμη συνδεθεί στην αρχική σελίδα.
+
+Τα routes `/works` και `/about` δεν έχουν υλοποιηθεί ακόμη. Το project βρίσκεται σε εξέλιξη.
+
+## Τεχνολογίες
+
+- Next.js με App Router.
+- React και TypeScript.
+- Chakra UI και Emotion.
+- next-themes.
+- React Icons.
+
+## Προέλευση και βοήθεια στην ανάπτυξη
+
+Αρχική έμπνευση και αναφορά για την κατεύθυνση του portfolio αποτέλεσε το [craftzdog-homepage](https://github.com/craftzdog/craftzdog-homepage) του 
+[Takuya Matsuyama - devaslife](https://www.craftz.dog/).
+
+Αυτή η δημιουργία δεν είχε ως στόχο να γίνει ένα ακόμη προσωπικό project. Ωστόσο, στην πορεία αυτό άλλαξε καθώς μελετώντας τις οδηγίες του Takuya 
+άρχισα να ενδιαφέρομαι για το **πως** δουλεύει. Επομένως, πλέον χρησιμοποιώ τις οδηγίες του ως βάση για να χτίσω κάτι αποκλειστικά δικό μου και προσωπικό. 
+
+Αυτό το project ξεκίνησε με το `create-next-app` και εξελίσσεται με διαφορετικό περιεχόμενο και προσαρμογές. Τα UI snippets για το Chakra προέρχονται από το 
+Chakra CLI.
+
+Στο αρχικό στάδιο, πριν γίνει project, χρησιμοποίησα AI για καθοδήγηση, εξήγηση και ανάλυση μέρους του κώδικα. Στη συνέχεια, τη στιγμή που πήρα την 
+απόφαση να το μετατρέψω σε project, η συγγραφή, η έρευνα, η μελέτη, η εκτέλεση και το debugging γίνονται αποκλειστικά από εμένα, με το AI να κρατά 
+αποκλειστικά εκπαιδευτικό, οργανωτικό και υποστηρικτικό χαρακτήρα. Επιπλέον, χρησιμοποιώ το AI για να κάνει εντοπισμό τεκμηριώσεων και πηγών για προσωπική 
+μελέτη σε προγραμματιστικά θέματα άγνωστα για εμένα.
+
+Η αναφορά στον Takuya Matsuyama αφορά την αρχική μου έμπνευση και το σημείο αναφοράς του project. Σε καμία περίπτωση δεν χρησιμοποιώ αυτούσια όλα 
+τα αρχεία από το repository του.
+
+## Τοπική εκτέλεση
+
+Από τον φάκελο του project:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Η εφαρμογή είναι διαθέσιμη στη διεύθυνση [localhost:3000](localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Για production build:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+Για έλεγχο με ESlint:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Έλεγχοι του αρχικού checkpoint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ολοκλήρωσα με αρκετή επιτυχία:
 
-## Deploy on Vercel
+- Production build και έλεγχο TypeScript.
+- Έλεγχο ESlint, μετά τη διόρθωση δύο δηλώσεων τύπων στο color-mode snippet.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Μαθησιακή πορεία και τεκμηρίωση
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ακολουθώ μικρά βήματα με μελέτη τεκμηρίωσης, εφαρμογή, έλεγχο και debugging.
+
+Η αντιστοίχιση του υπάρχοντος κώδικα με επίσημες τεχνικές πηγές βρίσκεται υπό έλεγχο. Οι πηγές αυτές θα καταγραφούν ως εκ των υστέρων επαλήθευση, χωρίς να παρουσιάζονται 
+ως πηγές που χρησιμοποιήθηκαν απαραίτητα κατά την αρχική συγγραφή.
