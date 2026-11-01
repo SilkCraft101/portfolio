@@ -1,49 +1,22 @@
-/*
- * GLOBAL RESET
- *
- * Αφαιρούμε τα default margins και paddings του browser,
- * ώστε να έχουμε προβλέψιμη βάση για το design.
- *
- * ΤΟ border-box κάνει τα with/height ενος στοιχείου να 
- * συμπεριλαμβάνουν padding και border.
- */
+/* Ξεκινάω χωρίς τα default περιθώρια. Στις διαστάσεις υπολογίζω και padding και border. */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-/*
- * PAGE HEIGHT
- *
- * Θέλουμε το αρχείο να μπορεί να καταλαμβάνει τουλάχιστον ολόκληρο το ύψος του viewport.
- */
+/* Το ποσοστό εξαρτάται από το ύψος του γονέα, δεν εγγυάται από μόνο του ύψος viewport. */
 html,
 body {
   min-height: 100%;
 }
 
-/*
- * GLOBAL TYPOGRAPHY
- *
- * Χρησιμοποιούμε τη CSS μεταβλητή που δημιουγήσαμε στο next / font [layout.tsx].
- *
- * Το sans-serif λειτουργεί ως fallback σε περίπτωση που για οποιονδήποτε λόγο 
- * δεν φορτωθεί το Geist.
- */
+/* Χρησιμοποιώ τη μεταβλητή από το layout. Η τελική εμφάνιση με το Chakra θέλει ακόμη έλεγχο. */
 body {
   font-family: var(--font-geist-sans), sans-serif;
 }
 
-/*
- * LINKS
- *
- * Τα links κληρονομούν το χρώμα του γονικού στοιχείου και ξεκινούν 
- * χωρίς underline.
- *
- * Αργότερα το Chakra UI και τα δικά μας components θα 
- * καθαορίζουν την τελική εμφάνιση τους.
- */
+/* Κρατάω μια απλή βάση για τα links. Τα components προσθέτουν τα δικά τους styles. */
 a {
   color: inherit;
   text-decoration: none;

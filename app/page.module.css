@@ -1,3 +1,4 @@
+/* Αρχικό CSS από το template. Δεν το χρησιμοποιώ στην τρέχουσα σελίδα. */
 .page {
   --background: #fafafa;
   --foreground: #fff;
@@ -94,7 +95,7 @@ a.secondary {
   border-color: var(--button-secondary-border);
 }
 
-/* Enable hover only on non-touch devices */
+/* Τα hover εφέ εφαρμόζονται μόνο όταν η συσκευή υποστηρίζει hover και ακριβή δείκτη. */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
     background: var(--button-primary-hover);

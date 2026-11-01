@@ -9,6 +9,7 @@ import {
   createToaster,
 } from "@chakra-ui/react"
 
+// Κρατάω το snippet του Chakra για ειδοποιήσεις, αλλά δεν το έχω συνδέσει ακόμη στην εφαρμογή.
 export const toaster = createToaster({
   placement: "bottom-end",
   pauseOnPageIdle: true,

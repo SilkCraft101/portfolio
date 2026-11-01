@@ -9,6 +9,7 @@ import { LuMoon, LuSun } from "react-icons/lu"
 
 export type ColorModeProviderProps = ThemeProviderProps;
 
+// Ξεκίνησα από το snippet του Chakra. Το next-themes διαχειρίζεται το θέμα μέσω κλάσης στο html.
 export function ColorModeProvider(props: ColorModeProviderProps) {
   return (
     <ThemeProvider attribute="class" disableTransitionOnChange {...props} />
@@ -30,6 +31,7 @@ export function useColorMode(): UseColorModeReturn {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }
   return {
+    // Το assertion αφορά τον τύπο, δεν ελέγχει αν το θέμα είναι ήδη διαθέσιμο στο runtime.
     colorMode: colorMode as ColorMode,
     setColorMode: setTheme,
     toggleColorMode,
@@ -54,6 +56,7 @@ export const ColorModeButton = React.forwardRef<
 >(function ColorModeButton(props, ref) {
   const { toggleColorMode } = useColorMode()
   return (
+    // Περιμένω να γίνει mount πριν δείξω το εικονίδιο που εξαρτάται από το θέμα.
     <ClientOnly fallback={<Skeleton boxSize="9" />}>
       <IconButton
         onClick={toggleColorMode}
