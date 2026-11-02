@@ -10,7 +10,7 @@ import {
 // Προς το παρόν έχω μόνο την εισαγωγή και δεν την έχω συνδέσει στην αρχική σελίδα.
 export function Projects() {
   return (
-    <Box
+    <Box lang="el"
       as="section"
       py={{ base: 12, md: 16 }}
     >
@@ -20,7 +20,7 @@ export function Projects() {
           align="flex-start"
         >
           
-          <Heading
+          <Heading lang="en"
             as="h2"
             fontSize={{ base: "2xl", md: "3xl" }}
             letterSpacing="tight"

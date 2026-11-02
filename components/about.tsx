@@ -9,7 +9,7 @@ import {
 // Κρατάω εδώ τη σύντομη εκδοχή της ιστορίας μου. Η αναλυτική θα πάει στο /about.
 export function About() {
   return (
-    <Box
+    <Box lang="el"
       as="section"
       py={{ base: 12, md: 16 }}
     >

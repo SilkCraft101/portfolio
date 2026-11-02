@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     // Το next-themes αλλάζει την κλάση του html στον browser.
     // Το suppressHydrationWarning καλύπτει αυτή την αναμενόμενη διαφορά.
-    // Εκκρεμεί και η αλλαγή του lang, αφού το περισσότερο περιεχόμενο είναι ελληνικό.
+    
     <html lang="en" suppressHydrationWarning>
       {/* Οι μεταβλητές των fonts είναι διαθέσιμες στο body και στα στοιχεία μέσα του. */}
       <body className={`${geistSans.variable} ${geistMono.variable}`}>

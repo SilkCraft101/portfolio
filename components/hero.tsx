@@ -9,7 +9,7 @@ import {
 // Εδώ παρουσιάζω σύντομα ποιος είμαι και τι με ενδιαφέρει.
 export function Hero() {
   return (
-    <Box
+    <Box lang="el"
       as="section"
       pt={{ base: 16, md: 24 }}
       pb={{ base: 12, md: 16 }}

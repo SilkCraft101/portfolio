@@ -263,3 +263,7 @@
 ## Έμπνευση και project αναφοράς
 
 [craftzdog-homepage — Takuya Matsuyama / devaslife](https://github.com/craftzdog/craftzdog-homepage): αρχική έμπνευση και project αναφοράς. Καταγράφεται χωριστά από την authoritative τεχνική τεκμηρίωση και δεν αποτελεί δήλωση αντιγραφής συγκεκριμένων αρχείων.
+
+## Δήλωση γλώσσας περιεχομένου — Hero, About και Projects
+
+[W3C — Declaring language in HTML](https://www.w3.org/International/questions/qa-html-language-declarations): **Quick answer**, έως και το παράδειγμα αλλαγής γλώσσας μέσα σε παράγραφο. Μελέτησα την κληρονομικότητα του `lang` και εφάρμοσα `lang="el"` στα ελληνικά sections και `lang="en"` στον τίτλο Projects, διατηρώντας το `<html lang="en">`.
