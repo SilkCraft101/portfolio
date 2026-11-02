@@ -267,3 +267,11 @@
 ## Δήλωση γλώσσας περιεχομένου — Hero, About και Projects
 
 [W3C — Declaring language in HTML](https://www.w3.org/International/questions/qa-html-language-declarations): **Quick answer**, έως και το παράδειγμα αλλαγής γλώσσας μέσα σε παράγραφο. Μελέτησα την κληρονομικότητα του `lang` και εφάρμοσα `lang="el"` στα ελληνικά sections και `lang="en"` στον τίτλο Projects, διατηρώντας το `<html lang="en">`.
+
+## Έλεγχος εμφάνισης και debugging του Container
+
+[WebKit — Elements Tab](https://webkit.org/web-inspector/elements-tab/#details-sidebar): **Details Sidebar**, οι παράγραφοι για **Styles**, **Computed** και **Font**. Χρησιμοποίησα τον Inspector για έλεγχο γραμματοσειρών, περιθωρίων και προσωρινή απενεργοποίηση CSS δηλώσεων.
+
+[Chakra UI — Cascade Layers](https://chakra-ui.com/docs/styling/cascade-layers): **Layer Types**, **Layer Order**.
+
+[W3C — CSS Cascade: Layer Ordering](https://www.w3.org/TR/css-cascade-5/#layer-order): προτεραιότητα δηλώσεων εκτός layer. Εφάρμοσα τη γνώση αφαιρώντας το καθολικό reset που μηδένιζε τα περιθώρια του Container.

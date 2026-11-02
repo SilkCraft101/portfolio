@@ -28,6 +28,7 @@
 
 Η δήλωση των μεταβλητών δεν εφαρμόζει από μόνη της τις γραμματοσειρές σε κάθε στοιχείο. Το `globals.css` χρησιμοποιεί τη μεταβλητή της Geist στο `font-family`. Η Geist Mono δεν χρησιμοποιείται ακόμη στην ενεργή σελίδα.
 
+Στον Safari Inspector, η παράγραφος του Hero είχε computed `font-family: Geist, Geist Fallback, sans-serif` και το Font panel ανέφερε Geist. Ο τίτλος είχε τη λίστα του Chakra heading token και το Font panel ανέφερε `.SF NS`. Δεν επιβεβαιώθηκε ξεχωριστά ποια γραμματοσειρά αποδίδει κάθε ελληνικό χαρακτήρα.
 ## Metadata
 
 Το `export const metadata: Metadata` δηλώνει και εξάγει ένα αντικείμενο με στατικές πληροφορίες για το portfolio.

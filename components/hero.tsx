@@ -35,8 +35,8 @@ export function Hero() {
           <Heading
             as="h1"
             fontSize={{
-              base: "4xl",
-              md: "6xl",
+              base: "3xl",
+              md: "4xl",
             }}
             lineHeight="1.05"
             letterSpacing="tight"
