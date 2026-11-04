@@ -29,7 +29,7 @@ export function Hero() {
             color="fg.muted"
             letterSpacing="wide"
           >
-            ΧΑΙΡΕΤΑΙ, ΜΕ ΛΕΝΕ ΑΛΕΞΑΝΔΡΟ
+            ΧΑΙΡΕΤΑΙ, ΟΝΟΜΑΖΟΜΑΙ ΑΛΕΞΑΝΔΡΟΣ
           </Text>
 
           <Heading
