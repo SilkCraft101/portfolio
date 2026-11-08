@@ -30,22 +30,24 @@ export function Projects() {
             και το επόμενο βήμα που προσπαθώ να κατανοήσω.
           </Text>
 
-          <Heading
-            as="h3"
-            fontSize={{ base: "2xl", md: "3xl" }}
-            letterSpacing="tight"
-          >
-            Προσωπικό Portfolio
-          </Heading>
+          <Stack gap={2} align="flex-start">
+            <Heading
+              as="h3"
+              fontSize={{ base: "xl", md: "2xl" }}
+              letterSpacing="tight"
+            >
+              Το προσωπικό μου Portfolio
+            </Heading>
 
-          <Text color="fg.muted" lineHeight="tall" maxW="2xl">
-            Σε εξέλιξη...
-          </Text>
+            <Text color="fg.muted" lineHeight="tall" maxW="2xl">
+              Σε εξέλιξη...
+            </Text>
 
-          <Text color="fg.muted" lineHeight={"tall"} maxW="2xl">
-            Ο προσωπικός μου χώρος για την παρουσίαση του βιογραφικού, της
-            εκπαιδευτικής μου διαδρομής και των τεχνικών projects μου.
-          </Text>
+            <Text color="fg.muted" lineHeight="tall" maxW="2xl">
+              Ο προσωπικός μου χώρος για την παρουσίαση του βιογραφικού, της
+              εκπαιδευτικής μου διαδρομής και των τεχνικών projects μου.
+            </Text>
+          </Stack>
         </Stack>
       </Container>
     </Box>
