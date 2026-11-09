@@ -6,7 +6,7 @@
 
 ## Εισαγωγές
 
-Το `ChakraProvider` και το `defaultSystem` εισάγονται από το Chakra UI. Το πρώτο παρέχει το design system στα components που περιβάλλει, ενώ το δεύτερο είναι το έτοιμο σύστημα ρυθμίσεων του Chakra.
+Το `ChakraProvider` παρέχει το design system στα components που περιβάλλει. Τα `defineConfig`, `defaultSystem` και `createSystem` χρησιμοποιούνται για να συνδυάσω τις προεπιλογές του Chakra με τις δικές μου ρυθμίσεις.
 
 Το `ColorModeProvider` εισάγεται από το τοπικό `color-mode.tsx`. Από το ίδιο αρχείο εισάγεται και ο τύπος `ColorModeProviderProps`.
 
@@ -16,9 +16,17 @@
 
 Ο Provider μπορεί να εισαχθεί από το Server Component του layout χωρίς να μετατρέπει όλο το layout σε Client Component.
 
+## Ρυθμίσεις θέματος
+
+Με το `defineConfig` ορίζω το `config`. Στο `tokens.colors`, το `lantern` αποθηκεύει την απόχρωση `#F2B66D`.
+
+Στο `semanticTokens.colors`, το `accent` ορίζει το χρώμα έμφασης: `#8A451C` ως βασική τιμή και αναφορά στο `{colors.lantern}` για το dark mode.
+
+Η `createSystem(defaultConfig, config)` δημιουργεί το `system`, συνδυάζοντας τις προεπιλογές του Chakra με αυτές τις ρυθμίσεις.
+
 ## Σύνθεση των providers
 
-Το `ChakraProvider` παίρνει το `defaultSystem` μέσω του prop `value`. Μέσα του αποδίδεται το `ColorModeProvider`.
+Το `ChakraProvider` παίρνει το `system` μέσω του prop `value`. Μέσα του αποδίδεται το `ColorModeProvider`.
 
 Η σειρά αυτή τοποθετεί τη διαχείριση θέματος μέσα στο περιβάλλον του Chakra.
 
@@ -32,7 +40,7 @@
 
 Ο Provider χρησιμοποιείται ήδη στο root layout και περιβάλλει το περιεχόμενο των σελίδων.
 
-Στο commit [603b82e — Καθαρισμός και οργάνωση σχολίων](https://github.com/l1ttle0reo/portfolio/commit/603b82e) ενημερώθηκαν μόνο τα σχόλια, χωρίς αλλαγή στη σύνθεση ή στη λειτουργία των providers.
+Το προσαρμοσμένο σύστημα έχει συνδεθεί στον Provider. Το `accent` έχει οριστεί για light και dark mode, αλλά δεν χρησιμοποιείται ακόμη σε component, επομένως δεν αλλάζει προς το παρόν η εμφάνιση του site. Ο έλεγχος ESLint ολοκληρώθηκε χωρίς σφάλματα και η εφαρμογή λειτουργεί στον browser.
 
 ## Πηγές
 

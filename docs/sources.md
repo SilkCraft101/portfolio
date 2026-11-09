@@ -24,6 +24,16 @@
 
 [Next.js — Server and Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components): **Using Client Components**, **Context providers**.
 
+### Προσαρμοσμένο σύστημα και χρώμα έμφασης
+
+Χρησιμοποίησα την ενότητα [Architecture — Chakra UI](https://chakra-ui.com/docs/theming/overview#architecture) για τα `defineConfig`, `defaultConfig`, `createSystem` και τη σύνδεση του `system` στον `ChakraProvider`.
+
+Από το [Tokens — Chakra UI](https://chakra-ui.com/docs/theming/tokens) χρησιμοποίησα τη δήλωση χρώματος με `value`, ορίζοντας το `lantern`.
+
+Από το [Semantic Tokens — Chakra UI](https://chakra-ui.com/docs/theming/semantic-tokens) χρησιμοποίησα τις αναφορές σε tokens και την ενότητα Conditional Token, ώστε το `accent` να έχει βασική τιμή και διαφορετική τιμή με `_dark`.
+
+Εφάρμοσα τις ρυθμίσεις στο `components/ui/provider.tsx`. Το `accent` δεν χρησιμοποιείται ακόμη σε component.
+
 ## Χρωματικό θέμα — `components/ui/color-mode.tsx`
 
 [Chakra UI — Color Mode](https://chakra-ui.com/docs/components/concepts/color-mode): **Setup**, **useColorMode**, **useColorModeValue**, **Hydration Mismatch**, **ColorModeButton**, **Forced Color Mode**.
