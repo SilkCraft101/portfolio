@@ -36,6 +36,8 @@
 
 Από την ενότητα [Semantic Token Nesting](https://chakra-ui.com/docs/theming/semantic-tokens#semantic-token-nesting) χρησιμοποίησα το `DEFAULT` για τα βασικά `bg` και `fg`.
 
+Με την ίδια δομή προσάρμοσα τα `fg.muted` και `border.subtle`, τα οποία χρησιμοποιούνται ήδη στις παραγράφους και στο navbar. Έλεγξα την εμφάνισή τους σε light και dark mode.
+
 Κατά το debugging, έλεγξα στον Inspector τις CSS μεταβλητές και τους κανόνες που υπερίσχυαν. Ο [επίσημος ορισμός χρωμάτων του Chakra](https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/theme/semantic-tokens/colors.ts), στα `bg.DEFAULT` και `fg.DEFAULT`, επιβεβαίωσε ότι οι προεπιλογές χρησιμοποιούν `_light` και `_dark`. Προσάρμοσα αυτές τις τιμές στο `components/ui/provider.tsx`.
 
 ## Χρωματικό θέμα — `components/ui/color-mode.tsx`

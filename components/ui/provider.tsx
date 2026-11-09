@@ -25,6 +25,24 @@ const config = defineConfig({
               _dark: "#F4E8D6",
             },
           },
+
+          // Πιο ήπιο χρώμα για τις παραγράφους: ζεστό καφέ στο light, μπεζ στο dark.
+          muted: {
+            value: {
+              _light: "#70584F",
+              _dark: "#C6B0A3",
+            },
+          },
+        },
+
+        // Διακριτικό περίγραμμα σε ζεστές αποχρώσεις, όπως η γραμμή κάτω από το navbar.
+        border: {
+          subtle: {
+            value: {
+              _light: "#D8C1AD",
+              _dark: "#493039",
+            },
+          },
         },
 
         // Το φόντο είναι cream στο light και βαθύ καφέ στο dark.
