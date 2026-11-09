@@ -42,6 +42,8 @@
 
 Πρόσθεσα το 'linkHover' με διαφορετικές ροζ αποχρώσεις για light και dark mode. Το χρησιμοποίησα στα κοινά hover styles των Works, About και GitHub. Το όνομα και το κουμπί θέματος χρησιμοποιούν το `accent`.
 
+[Chakra UI — Transitions](https://chakra-ui.com/docs/styling/style-props/transitions#transition): ενότητα **Transition**, για το `transition="color 0.2s ease"` που κάνει ομαλή την αλλαγή χρώματος στο navbar.
+
 ## Χρωματικό θέμα — `components/ui/color-mode.tsx`
 
 [Chakra UI — Color Mode](https://chakra-ui.com/docs/components/concepts/color-mode): **Setup**, **useColorMode**, **useColorModeValue**, **Hydration Mismatch**, **ColorModeButton**, **Forced Color Mode**.
@@ -51,6 +53,8 @@
 ## React components και JSX — `app/`, `components/`
 
 [React — Describing the UI](https://react.dev/learn/describing-the-ui): **Your first component**, **Importing and exporting components**, **Writing markup with JSX**, **JavaScript in JSX with curly braces**, **Passing props to a component**, **Conditional rendering**.
+
+[React — Forwarding props with the JSX spread syntax](https://react.dev/learn/passing-props-to-a-component#forwarding-props-with-the-jsx-spread-syntax): αντιστοίχιση του `{...navLinkStyles}` με τη μεταφορά των κοινών hover styles στα links του navbar.
 
 [React — Using TypeScript](https://react.dev/learn/typescript): **TypeScript with React Components**, **Typing children**.
 
