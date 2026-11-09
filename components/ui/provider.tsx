@@ -12,13 +12,33 @@ import {
   type ColorModeProviderProps,
 } from "@/components/ui/color-mode";
 
-// Ορίζω τα χρώματα του θέματος.
+// Ορίζω την παλέτα και τα χρώματα για κάθε θέμα.
 const config = defineConfig({
   theme: {
     semanticTokens: {
       colors: {
+        // Το βασικό κείμενο είναι σκούρο στο light και cream στο dark.
+        fg: {
+          DEFAULT: {
+            value: {
+              _light: "#2B1B23",
+              _dark: "#F4E8D6",
+            },
+          },
+        },
+
+        // Το φόντο είναι cream στο light και βαθύ καφέ στο dark.
+        bg: {
+          DEFAULT: {
+            value: {
+              _light: "#F4E8D8",
+              _dark: "#1B1214",
+            },
+          },
+        },
+
+        // Για την έμφαση χρησιμοποιώ σκούρο κεχριμπαρένιο στο light και lantern στο dark.
         accent: {
-          // Χρώμα έμφασης: πιο σκούρο στο light mode, πιο φωτεινό στο dark.
           value: {
             base: "#8A451C",
             _dark: "{colors.lantern}",
@@ -28,13 +48,14 @@ const config = defineConfig({
     },
     tokens: {
       colors: {
-        lantern: { value: "#F2B66D" }, // Το lantern ορίζει την απόχρωση.
+        // Η κεχριμπαρένια απόχρωση που θυμίζει τα χρώματα που έχω στο μυαλό μου.
+        lantern: { value: "#F2B66D" },
       },
     },
   },
 });
 
-// Συνδυάζω τις προεπιλογές του Chakra με τις δικές μου ρυθμίσεις.
+// Συνδυάζω τις δικές μου ρυθμίσεις με τις προεπιλεογές του Chakra.
 const system = createSystem(defaultConfig, config);
 
 // Συνδυάζω εδώ το Chakra και το χρωματικό θέμα, ώστε το layout να χρειάζεται έναν Provider.

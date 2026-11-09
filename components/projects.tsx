@@ -35,6 +35,7 @@ export function Projects() {
               as="h3"
               fontSize={{ base: "xl", md: "2xl" }}
               letterSpacing="tight"
+              color="accent"
             >
               Το προσωπικό μου Portfolio
             </Heading>
