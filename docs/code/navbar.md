@@ -42,7 +42,9 @@
 
 Το `Text` με `asChild` εφαρμόζει τα styles στο child `Link`, αντί να δημιουργεί επιπλέον στοιχείο γύρω του.
 
-Τα `_hover` styles αλλάζουν την αδιαφάνεια όταν ο δείκτης βρίσκεται πάνω στο link. Το `transition` κάνει αυτή την αλλαγή ομαλή.
+Τα Works, About και GitHub χρησιμοποιούν το κοινό αντικείμενο `navLinkStyles`, το οποίο περνάω στα props με spread. Στο hover παίρνουν το χρώμα `linkHover`.
+
+ΤΟ όνομα και το κουμπί αλλαγής θέματος χρησιμοποιούν το `accent` στο hover. Το `transition="color 0.2s ease"` κάνει την αλλαγή χρώματος ομαλή.
 
 ## GitHub link
 

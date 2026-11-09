@@ -45,6 +45,14 @@ const config = defineConfig({
           },
         },
 
+        // Σκούρο ροζ στο light και απαλό ροζ στο dark για το hover των links.
+        linkHover: {
+          value: {
+            _light: "#8C405E",
+            _dark: "#D79AA8",
+          },
+        },
+
         // Το φόντο είναι cream στο light και βαθύ καφέ στο dark.
         bg: {
           DEFAULT: {

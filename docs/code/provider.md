@@ -32,6 +32,8 @@ To `fg.muted` ορίζει πιο ήπιο χρώμα για τις παραγρ
 
 Τα components που χρησιμοποιούν ήδη αυτά τα tokens ενημερώνονται από τις κεντρικές ρυθμίσεις, χωρίς αλλαγές στα δικά τους props.
 
+To `linkHover` ορίζει το χρώμα των links στο hover: σκούρο ροζ στο light mode και απαλό ροζ στο dark.
+
 ## Σύνθεση των providers
 
 Το `ChakraProvider` παίρνει το `system` μέσω του prop `value`. Μέσα του αποδίδεται το `ColorModeProvider`.
