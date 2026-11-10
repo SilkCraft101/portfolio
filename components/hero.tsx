@@ -1,4 +1,9 @@
-import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Container, Heading, Stack, Text, Flex } from "@chakra-ui/react";
+import Image from "next/image";
+
+const imageStyle = {
+  borderRadius: "50%",
+};
 
 // Εδώ παρουσιάζω σύντομα ποιος είμαι και τι με ενδιαφέρει.
 export function Hero() {
@@ -12,20 +17,55 @@ export function Hero() {
       {/* Κρατάω το ίδιο πλάτος με το navbar και τα υπόλοιπα sections. */}
       <Container maxW="3xl">
         <Stack gap={5} align="flex-start">
-          <Text
-            fontSize="sm"
-            fontWeight="medium"
-            color="fg.muted"
-            letterSpacing="wide"
+          <Box
+            pt={3}
+            pb={3}
+            px={4}
+            bg="accent/10"
+            w="full"
+            borderWidth="1px"
+            borderColor="border.subtle"
+            borderRadius="10px"
+            textAlign="center"
           >
-            ΧΑΙΡΕΤΑΙ, ΟΝΟΜΑΖΟΜΑΙ ΑΛΕΞΑΝΔΡΟΣ
-          </Text>
+            <Text
+              fontSize="sm"
+              fontWeight="medium"
+              color="fg.muted"
+              letterSpacing="wide"
+            >
+              Χαίρετε! Είμαι indie developer και ασχολούμαι κυρίως με την
+              ανάπτυξη Terminal-based λογισμικού.
+            </Text>
+          </Box>
+          <Flex w="full" align="center" justify="space-between" gap={6}>
+            <Stack gap={5} align="flex-start">
+              <Heading
+                as="h1"
+                fontSize={{ base: "3xl", md: "4xl" }}
+                letterSpacing="tight"
+              >
+                Αλέξανδρος Κοτσολάκης
+              </Heading>
+
+              <Text color="fg.muted" lineHeight="tall">
+                Indie Developer / Artist / Networking and Telecommunications.
+              </Text>
+            </Stack>
+            <Image
+              src="https://res.cloudinary.com/vvu8rq88/image/upload/v1794304237/jumping-spider-minimal-signed.png"
+              width={120}
+              height={120}
+              alt="My Profile Picture"
+              style={imageStyle}
+            />
+          </Flex>
 
           <Heading
-            as="h1"
+            as="h2"
             fontSize={{
-              base: "3xl",
-              md: "4xl",
+              base: "xl",
+              md: "2xl",
             }}
             lineHeight="1.05"
             letterSpacing="tight"

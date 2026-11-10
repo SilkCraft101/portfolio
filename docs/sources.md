@@ -311,3 +311,13 @@
 [Chakra UI — Cascade Layers](https://chakra-ui.com/docs/styling/cascade-layers): **Layer Types**, **Layer Order**.
 
 [W3C — CSS Cascade: Layer Ordering](https://www.w3.org/TR/css-cascade-5/#layer-order): προτεραιότητα δηλώσεων εκτός layer. Εφάρμοσα τη γνώση αφαιρώντας το καθολικό reset που μηδένιζε τα περιθώρια του Container.
+
+## Εικόνα προφίλ και δοκιμή από κινητό
+
+Από το [Cloudinary — Upload and Store Assets](https://cloudinary.com/documentation/dam_upload_store_assets), στην ενότητα **Upload from the file system**, χρησιμοποίησα τη μεταφόρτωση μέσω Media Library. Ανέβασα την εικόνα προφίλ και αντέγραψα το URL για την εμφάνισή της στο site.
+
+Από το [Next.js — Image](https://nextjs.org/docs/app/api-reference/components/image) χρησιμοποίησα τις ενότητες **src**, **alt**, **width and height**, **style** και **remotePatterns**. Πρόσθεσα την εικόνα στο `components/hero.tsx`, την έκανα κυκλική με `borderRadius` και επέτρεψα τη συγκεκριμένη διεύθυνση στο `next.config.ts`.
+
+Από το [Next.js — allowedDevOrigins](https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins) χρησιμοποίησα την εισαγωγή και το παράδειγμα ρύθμισης. Πρόσθεσα την τοπική IP στο `nextConfig`, μετά τον εντοπισμό μπλοκαρισμένου αιτήματος στα logs κατά τη δοκιμή από κινητό.
+
+Για τη διάταξη και το πλαίσιο χαιρετισμού επαναχρησιμοποίησα τα Chakra components, τα semantic tokens και τις ιδιότητες styling που καταγράφονται στις αντίστοιχες ενότητες αυτού του αρχείου.
