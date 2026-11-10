@@ -20,6 +20,8 @@
 
 [MDN — id](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/id): εισαγωγή και **Syntax**, για μοναδικά αναγνωριστικά χωρίς κενά.
 
+Επαναχρησιμοποίησα τη σύνδεση `href` και `id` για το Works του Navbar. Το `href="/#works"` οδηγεί από οποιαδήποτε σελίδα στην ενότητα Projects της αρχικής, όπου πρόσθεσα `id="works"`. Έλεγξα τη λειτουργία από την αρχική και από το About.
+
 [MDN — Nesting a list](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/ul#nesting_a_list): εμφωλευμένες λίστες για κεφάλαια και υποκεφάλαια.
 
 [Chakra UI — Scroll Margin](https://chakra-ui.com/docs/styling/style-props/interactivity#scroll-margin): το `scrollMarginTop` προστέθηκε κατά την ολοκλήρωση της υλοποίησης με βοήθεια του AI και ελέγχθηκε ως προς την τεκμηρίωση. Αφήνει χώρο πάνω από τους τίτλους κατά την πλοήγηση, λόγω του sticky navbar.

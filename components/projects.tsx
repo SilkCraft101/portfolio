@@ -6,7 +6,7 @@ import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
 export function Projects() {
   return (
     // Το section κληροδοτεί τη γλώσσα el στο περιεχόμενο. Το py δίνει πάνω και κάτω padding.
-    <Box lang="el" as="section" py={{ base: 12, md: 16 }}>
+    <Box id="works" lang="el" as="section" py={{ base: 12, md: 16 }}>
       {/* Το ίδιο maxW με τα υπόλοιπα sections κρατά κοινά όρια στο περιεχόμενο. */}
       <Container maxW="3xl">
         <Stack gap={5} align="flex-start">
