@@ -14,6 +14,16 @@
 
 Μετέφερα το Navbar στο `app/layout.tsx`, μέσα στον Provider και πριν από το `children`. Το αφαίρεσα από το `app/page.tsx`, ώστε να εμφανίζεται μία φορά σε κάθε σελίδα.
 
+## Πίνακας περιεχομένων — `app/about/page.tsx`
+
+[MDN — Linking to an element on the same page](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#linking_to_an_element_on_the_same_page): σύνδεση του `href="#..."` με το `id` του αντίστοιχου τίτλου.
+
+[MDN — id](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/id): εισαγωγή και **Syntax**, για μοναδικά αναγνωριστικά χωρίς κενά.
+
+[MDN — Nesting a list](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/ul#nesting_a_list): εμφωλευμένες λίστες για κεφάλαια και υποκεφάλαια.
+
+[Chakra UI — Scroll Margin](https://chakra-ui.com/docs/styling/style-props/interactivity#scroll-margin): το `scrollMarginTop` προστέθηκε κατά την ολοκλήρωση της υλοποίησης με βοήθεια του AI και ελέγχθηκε ως προς την τεκμηρίωση. Αφήνει χώρο πάνω από τους τίτλους κατά την πλοήγηση, λόγω του sticky navbar.
+
 ## Γραμματοσειρές — `app/layout.tsx`, `app/globals.css`
 
 [Next.js — Font Module](https://nextjs.org/docs/app/api-reference/components/font): **Google Fonts**, **subsets**, **variable**, **Using Multiple Fonts**, **Applying Styles → CSS Variables**.
