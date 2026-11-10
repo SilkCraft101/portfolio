@@ -1,6 +1,9 @@
+// Τα Chakra components δίνουν τη δομή και τα style props. Το Image εισάγεται ξεχωριστά από το Next.js.
 import { Box, Container, Heading, Stack, Text, Flex } from "@chakra-ui/react";
 import Image from "next/image";
 
+// Συγκεντρώνω εδώ τα styles της εικόνας και τα περνάω στο Image με style={imageStyle}.
+// Το borderRadius: "50%" κάνει την τετράγωνη εικόνα κυκλική.
 const imageStyle = {
   borderRadius: "50%",
 };
@@ -8,6 +11,8 @@ const imageStyle = {
 // Εδώ παρουσιάζω σύντομα ποιος είμαι και τι με ενδιαφέρει.
 export function Hero() {
   return (
+    // Το as="section" ορίζει το HTML στοιχείο. Το lang κληρονομείται από τα στοιχεία μέσα του.
+    // Τα base και md αλλάζουν το padding από το αντίστοιχο breakpoint και πάνω.
     <Box
       lang="el"
       as="section"
@@ -16,7 +21,10 @@ export function Hero() {
     >
       {/* Κρατάω το ίδιο πλάτος με το navbar και τα υπόλοιπα sections. */}
       <Container maxW="3xl">
+        {/* Το gap ορίζει αποστάσεις μόνο ανάμεσα στα άμεσα παιδιά αυτού του Stack. */}
         <Stack gap={5} align="flex-start">
+          {/* Το accent/10 δίνει 10% αδιαφάνεια μόνο στο χρώμα φόντου, όχι στο κείμενο. */}
+          {/* Τα pt, pb και px προσθέτουν εσωτερικό χώρο πάνω, κάτω και στα πλάγια. */}
           <Box
             pt={3}
             pb={3}
@@ -38,8 +46,12 @@ export function Hero() {
               ανάπτυξη Terminal-based λογισμικού.
             </Text>
           </Box>
+          {/* Το Flex βάζει δίπλα την ομάδα κειμένων και την εικόνα. */}
+          {/* Το justify μοιράζει τον οριζόντιο χώρο και το align τα ευθυγραμμίζει κατακόρυφα. */}
           <Flex w="full" align="center" justify="space-between" gap={6}>
+            {/* Το εσωτερικό Stack κρατά το όνομα και την ιδιότητα το ένα κάτω από το άλλο. */}
             <Stack gap={5} align="flex-start">
+              {/* Το h1 ονομάζει τη σελίδα. Το fontSize ρυθμίζει την εμφάνιση, όχι τη σημασιολογική βαθμίδα. */}
               <Heading
                 as="h1"
                 fontSize={{ base: "3xl", md: "4xl" }}
@@ -52,6 +64,9 @@ export function Hero() {
                 Indie Developer / Artist / Networking and Telecommunications.
               </Text>
             </Stack>
+            {/* Το src είναι URL από το Cloudinary, επιτρεπόμενο μέσω remotePatterns στο next.config.ts. */}
+            {/* Τα width/height δίνουν αναλογία και αρχικές διαστάσεις· το CSS επηρεάζει το τελικό μέγεθος. */}
+            {/* Το alt περιγράφει την εικόνα όταν δεν προβάλλεται ή διαβάζεται με screen reader. */}
             <Image
               src="https://res.cloudinary.com/vvu8rq88/image/upload/v1794304237/jumping-spider-minimal-signed.png"
               width={120}
@@ -61,6 +76,7 @@ export function Hero() {
             />
           </Flex>
 
+          {/* Το h2 ξεκινά την επόμενη ενότητα, με μικρότερο fontSize από το όνομα. */}
           <Heading
             as="h2"
             fontSize={{
@@ -74,6 +90,7 @@ export function Hero() {
             Μαθαίνω βρίσκοντας απαντήσεις στα ερωτήματα μου.
           </Heading>
 
+          {/* Το maxW περιορίζει το μήκος της γραμμής και το lineHeight αφήνει χώρο ανάμεσα στις γραμμές. */}
           <Text
             fontSize={{
               base: "md",

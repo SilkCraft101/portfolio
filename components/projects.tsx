@@ -2,11 +2,15 @@ import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
 
 // Τα projects είναι μέρος της μαθησιακής μου πορείας, όχι απαραίτητα τελειωμένα προϊόντα.
 // Παρουσιάζω το portfolio ως το πρώτο μου project σε εξέλιξη.
+// Το named export επιτρέπει στην αρχική σελίδα να εισάγει και να εμφανίσει το component.
 export function Projects() {
   return (
+    // Το section κληροδοτεί τη γλώσσα el στο περιεχόμενο. Το py δίνει πάνω και κάτω padding.
     <Box lang="el" as="section" py={{ base: 12, md: 16 }}>
+      {/* Το ίδιο maxW με τα υπόλοιπα sections κρατά κοινά όρια στο περιεχόμενο. */}
       <Container maxW="3xl">
         <Stack gap={5} align="flex-start">
+          {/* Το lang="en" ισχύει για τον αγγλικό τίτλο, αντικαθιστώντας εδώ το el του section. */}
           <Heading
             lang="en"
             as="h2"
@@ -16,6 +20,7 @@ export function Projects() {
             Projects
           </Heading>
 
+          {/* Το fg.muted είναι semantic token: ο ρόλος μένει ίδιος, αλλά η απόχρωση αλλάζει με το θέμα. */}
           <Text color="fg.muted" lineHeight="tall" maxW="2xl">
             Τα projects μου ξεκινούν συνήθως από μια, εν δυνάμει, υπαρξιακή
             ερώτηση, μια ανάγκη ή κάτι που θέλω να καταλάβω καλύτερα. Τα
@@ -30,7 +35,10 @@ export function Projects() {
             και το επόμενο βήμα που προσπαθώ να κατανοήσω.
           </Text>
 
+          {/* Ομαδοποιώ την καταχώρηση σε δικό της Stack με μικρότερο κενό. */}
+          {/* Το εξωτερικό gap χωρίζει ομάδες· το εσωτερικό gap χωρίζει τα στοιχεία της καταχώρησης. */}
           <Stack gap={2} align="flex-start">
+            {/* Το h3 βρίσκεται κάτω από το h2 Projects. Το accent ορίζει το χρώμα από το κοινό θέμα. */}
             <Heading
               as="h3"
               fontSize={{ base: "xl", md: "2xl" }}

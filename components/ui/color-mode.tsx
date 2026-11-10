@@ -1,3 +1,4 @@
+// Τα hooks του θέματος και το onClick χρειάζονται λειτουργία στον browser, μέσα σε client boundary.
 "use client"
 
 import type { IconButtonProps, SpanProps } from "@chakra-ui/react"
@@ -7,26 +8,33 @@ import type { ThemeProviderProps } from "next-themes"
 import * as React from "react"
 import { LuMoon, LuSun } from "react-icons/lu"
 
+// Το type alias δίνει τοπικό όνομα στα props του ThemeProvider, χωρίς να δημιουργεί νέο αντικείμενο στο runtime.
 export type ColorModeProviderProps = ThemeProviderProps;
 
-// Ξεκίνησα από το snippet του Chakra. Το next-themes διαχειρίζεται το θέμα μέσω κλάσης στο html.
+// Το snippet προέρχεται από το Chakra. Το attribute="class" συνδέει το θέμα με κλάση στο html.
+// Το disableTransitionOnChange αποφεύγει transitions κατά την αλλαγή και το {...props} περιλαμβάνει τα children.
 export function ColorModeProvider(props: ColorModeProviderProps) {
   return (
     <ThemeProvider attribute="class" disableTransitionOnChange {...props} />
   )
 }
 
+// Το union επιτρέπει στον έλεγχο τύπων μόνο τις δύο συγκεκριμένες τιμές.
 export type ColorMode = "light" | "dark"
 
+// Η interface περιγράφει τι επιστρέφει το hook: τρέχον θέμα και δύο συναρτήσεις χειρισμού του.
 export interface UseColorModeReturn {
   colorMode: ColorMode
   setColorMode: (colorMode: ColorMode) => void
   toggleColorMode: () => void
 }
 
+// Το useTheme διαβάζει το context του next-themes. Το resolvedTheme είναι το εφαρμοζόμενο light ή dark.
+// Αν υπάρχει forcedTheme, αυτό προηγείται στην τιμή που επιστρέφω ως colorMode.
 export function useColorMode(): UseColorModeReturn {
   const { resolvedTheme, setTheme, forcedTheme } = useTheme()
   const colorMode = forcedTheme || resolvedTheme
+  // Το ternary επιλέγει το αντίθετο θέμα και το setTheme ζητά την αλλαγή του.
   const toggleColorMode = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }
@@ -38,26 +46,33 @@ export function useColorMode(): UseColorModeReturn {
   }
 }
 
+// Το generic T συνδέει τους τύπους των δύο τιμών. Το hook επιλέγει μία ανάλογα με το θέμα.
 export function useColorModeValue<T>(light: T, dark: T) {
   const { colorMode } = useColorMode()
   return colorMode === "dark" ? dark : light
 }
 
+// Η συνθήκη επιλέγει ποιο από τα δύο SVG icons θα αποδοθεί.
 export function ColorModeIcon() {
   const { colorMode } = useColorMode()
   return colorMode === "dark" ? <LuMoon /> : <LuSun />
 }
 
+// Το Omit αφαιρεί το aria-label από τα δημόσια props, επειδή το κουμπί το ορίζει ήδη εσωτερικά.
 type ColorModeButtonProps = Omit<IconButtonProps, "aria-label">;
 
+// Το forwardRef περνά το ref του γονέα στο πραγματικό button. Τα props καθορίζουν την εμφάνισή του.
 export const ColorModeButton = React.forwardRef<
   HTMLButtonElement,
   ColorModeButtonProps
 >(function ColorModeButton(props, ref) {
   const { toggleColorMode } = useColorMode()
   return (
-    // Περιμένω να γίνει mount πριν δείξω το εικονίδιο που εξαρτάται από το θέμα.
+    // Το ClientOnly δείχνει αρχικά το Skeleton και περιμένει το mount πριν αποδώσει το κουμπί.
+    // Έτσι δεν υπολογίζω το εικονίδιο του θέματος πριν είναι διαθέσιμη η πληροφορία στον browser.
     <ClientOnly fallback={<Skeleton boxSize="9" />}>
+      {/* Το onClick καλεί τη συνάρτηση αλλαγής· δεν την εκτελώ κατά το render. */}
+      {/* Το aria-label ονομάζει το κουμπί για screen readers, επειδή έχει μόνο εικονίδιο. */}
       <IconButton
         onClick={toggleColorMode}
         variant="ghost"
@@ -78,6 +93,8 @@ export const ColorModeButton = React.forwardRef<
   )
 })
 
+// Τα LightMode και DarkMode επιβάλλουν την τοπική εμφάνιση του Chakra μέσω κλάσεων.
+// Το display="contents" κρατά το στοιχείο στο DOM χωρίς δικό του κουτί διάταξης· δεν αλλάζει το global θέμα.
 export const LightMode = React.forwardRef<HTMLSpanElement, SpanProps>(
   function LightMode(props, ref) {
     return (
@@ -94,6 +111,7 @@ export const LightMode = React.forwardRef<HTMLSpanElement, SpanProps>(
   },
 )
 
+// Ίδια δομή με το LightMode, με την κλάση dark για το περιεχόμενο που περιβάλλει.
 export const DarkMode = React.forwardRef<HTMLSpanElement, SpanProps>(
   function DarkMode(props, ref) {
     return (

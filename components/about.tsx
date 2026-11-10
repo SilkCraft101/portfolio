@@ -1,11 +1,16 @@
 import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
 
-// Κρατάω εδώ τη σύντομη εκδοχή της ιστορίας μου. Η αναλυτική θα πάει στο /about.
+// Το About είναι η συνοπτική παρουσίαση της αρχικής. Η πλήρης ιστορία βρίσκεται στο /about.
+// Το named export εισάγεται με { About } στο app/page.tsx.
 export function About() {
   return (
+    // Το section δηλώνει θεματική ενότητα. Το lang="el" ορίζει τη γλώσσα του περιεχομένου της.
+    // Το py αλλάζει το πάνω και κάτω padding με responsive τιμές base και md.
     <Box lang="el" as="section" py={{ base: 12, md: 16 }}>
+      {/* Το Container περιορίζει το πλάτος και το Stack οργανώνει κάθετα τίτλο και παραγράφους. */}
       <Container maxW="3xl">
         <Stack gap={5} align="flex-start">
+          {/* Το h2 είναι τίτλος ενότητας κάτω από το h1 της αρχικής, ανεξάρτητα από το fontSize. */}
           <Heading
             as="h2"
             fontSize={{ base: "2xl", md: "3xl" }}
@@ -14,6 +19,8 @@ export function About() {
             Συνοπτικά...
           </Heading>
 
+          {/* Κάθε Text δημιουργεί ξεχωριστή παράγραφο. Το fg.muted αλλάζει με το θέμα. */}
+          {/* Το lineHeight και το maxW βοηθούν να διαβάζονται άνετα οι γραμμές. */}
           <Text color="fg.muted" lineHeight="tall" maxW="2xl">
             Είμαι ο Αλέξανδρος, 28 ετών με αυτισμό και ΔΕΠΥ. Η εκπαιδευτική μου
             πορεία δεν ήταν γραμμική και για αρκετά χρόνια η εμπειρία μου μέσα

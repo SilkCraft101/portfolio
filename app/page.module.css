@@ -1,5 +1,7 @@
-/* Αρχικό CSS από το template. Δεν το χρησιμοποιώ στην τρέχουσα σελίδα. */
+/* Αρχικό CSS από το template, χωρίς import στην τρέχουσα σελίδα. Δεν επηρεάζει την εμφάνισή της. */
+/* Ως CSS Module θα έδινε τοπικά ονόματα κλάσεων μέσω import· οι κανόνες εδώ δεν εφαρμόζονται αυτόματα. */
 .page {
+  /* Οι CSS μεταβλητές κληρονομούνται από τα παιδιά της .page και χρησιμοποιούνται με var(...). */
   --background: #fafafa;
   --foreground: #fff;
 
@@ -19,6 +21,7 @@
   background-color: var(--background);
 }
 
+/* Το flex-direction: column τοποθετεί τα παιδιά κάθετα. Το max-width περιορίζει το πλάτος. */
 .main {
   display: flex;
   flex: 1;
@@ -39,6 +42,7 @@
   gap: 24px;
 }
 
+/* Ο selector αφορά μόνο h1 μέσα σε .intro. Το text-wrap: balance εξισορροπεί τις γραμμές. */
 .intro h1 {
   max-width: 320px;
   font-size: 40px;
@@ -62,6 +66,7 @@
   color: var(--text-primary);
 }
 
+/* Οι σύνδεσμοι ενεργειών μπαίνουν σε οριζόντια σειρά με gap. */
 .ctas {
   display: flex;
   flex-direction: row;
@@ -108,6 +113,7 @@ a.secondary {
   }
 }
 
+/* Αυτοί οι κανόνες ενεργοποιούνται μόνο όταν το viewport έχει πλάτος έως 600px. */
 @media (max-width: 600px) {
   .main {
     padding: 48px 24px;
@@ -124,6 +130,7 @@ a.secondary {
   }
 }
 
+/* Αυτό ελέγχει την προτίμηση του συστήματος. Δεν είναι το ίδιο με την κλάση dark του next-themes. */
 @media (prefers-color-scheme: dark) {
   .logo {
     filter: invert();
@@ -142,6 +149,7 @@ a.secondary {
   }
 }
 
+/* Το em μετρά σε σχέση με το μέγεθος γραμμάτων του στοιχείου και το currentColor χρησιμοποιεί το χρώμα κειμένου. */
 .code {
   font-family: var(--font-geist-mono);
   font-size: 0.9em;

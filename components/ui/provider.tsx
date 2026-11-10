@@ -1,3 +1,5 @@
+// Οι providers χρησιμοποιούν React context, γι’ αυτό αυτό το αρχείο ορίζει client boundary.
+// Το layout μπορεί να εισάγει τον Provider χωρίς να γίνει ολόκληρο Client Component.
 "use client";
 
 import {
@@ -12,12 +14,15 @@ import {
   type ColorModeProviderProps,
 } from "@/components/ui/color-mode";
 
-// Ορίζω την παλέτα και τα χρώματα για κάθε θέμα.
+// Το defineConfig περιγράφει τις δικές μου ρυθμίσεις. Το σύστημα δημιουργείται παρακάτω με createSystem.
+// Τα tokens ορίζουν τιμές και τα semanticTokens ορίζουν ρόλους, όπως φόντο, κείμενο και έμφαση.
 const config = defineConfig({
   theme: {
     semanticTokens: {
       colors: {
         // Το βασικό κείμενο είναι σκούρο στο light και cream στο dark.
+        // Το DEFAULT αντιστοιχεί στο σκέτο fg, ενώ το muted χρησιμοποιείται ως fg.muted.
+        // Τα _light και _dark αντικαθιστούν τις αντίστοιχες συνθήκες των προεπιλογών του Chakra.
         fg: {
           DEFAULT: {
             value: {
@@ -64,6 +69,7 @@ const config = defineConfig({
         },
 
         // Για την έμφαση χρησιμοποιώ σκούρο κεχριμπαρένιο στο light και lantern στο dark.
+        // Το base δίνει τη βασική τιμή. Στο dark γίνεται αναφορά στο token lantern με {colors.lantern}.
         accent: {
           value: {
             base: "#8A451C",
@@ -81,10 +87,12 @@ const config = defineConfig({
   },
 });
 
-// Συνδυάζω τις δικές μου ρυθμίσεις με τις προεπιλεογές του Chakra.
+// Το createSystem συνδυάζει το defaultConfig με τις δικές μου ρυθμίσεις και επιστρέφει το system.
+// Έτσι διατηρώ τις προεπιλογές του Chakra και προσαρμόζω συγκεκριμένα σημεία.
 const system = createSystem(defaultConfig, config);
 
-// Συνδυάζω εδώ το Chakra και το χρωματικό θέμα, ώστε το layout να χρειάζεται έναν Provider.
+// Ο ChakraProvider παίρνει το system ως value και περιβάλλει τον ColorModeProvider.
+// Με {...props} μεταφέρω τις επιλογές του θέματος και το children που περιέχει Navbar και σελίδες.
 export function Provider(props: ColorModeProviderProps) {
   return (
     <ChakraProvider value={system}>

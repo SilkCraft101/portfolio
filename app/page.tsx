@@ -1,11 +1,14 @@
+// Εισάγω named exports με τα ίδια ονόματα που δηλώνονται στα αρχεία των components.
 import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
 import { Projects } from "@/components/projects";
 import { Hobbies } from "@/components/hobbies";
 
-// Εδώ συνθέτω την αρχική σελίδα από τα ξεχωριστά components.
+// Το app/page.tsx αντιστοιχεί στη διαδρομή /. Το default export είναι το component αυτής της σελίδας.
+// Η σειρά των JSX elements ορίζει τη σειρά των ενοτήτων. Το Navbar παρέχεται ήδη από το root layout.
 export default function Home() {
   return (
+    // Το main περιέχει το κύριο περιεχόμενο της αρχικής. Δεν προσθέτω εδώ ξανά html, body ή Provider.
     <main>
       <Hero />
 
