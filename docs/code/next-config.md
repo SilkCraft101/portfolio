@@ -18,7 +18,7 @@
 
 Η επιλογή Webpack γίνεται στα scripts του package.json μέσω του `--webpack`, όχι μέσα σε αυτό το αρχείο.
 
-Στο commit [603b82e — Καθαρισμός και οργάνωση σχολίων](https://github.com/l1ttle0reo/portfolio/commit/603b82e) άλλαξε μόνο το σχόλιο, χωρίς αλλαγή ρυθμίσεων.
+Στο commit [603b82e — Καθαρισμός και οργάνωση σχολίων](https://github.com/SilkCraft101/portfolio/commit/603b82e) άλλαξε μόνο το σχόλιο, χωρίς αλλαγή ρυθμίσεων.
 
 ## Πηγές
 

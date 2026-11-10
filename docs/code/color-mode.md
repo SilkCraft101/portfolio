@@ -76,9 +76,9 @@
 
 Το `forwardRef` λειτουργεί στον υπάρχοντα κώδικα, παρότι η τεκμηρίωση του React 19 αναφέρει ότι δεν είναι πλέον απαραίτητο για τη λήψη ref ως prop.
 
-Στο commit [d695b56 — Καταγραφή πηγών και διόρθωση ονόματος τύπου στο color-mode provider](https://github.com/l1ttle0reo/portfolio/commit/d695b56) διορθώθηκε το όνομα του `ColorModeProviderProps`.
+Στο commit [d695b56 — Καταγραφή πηγών και διόρθωση ονόματος τύπου στο color-mode provider](https://github.com/SilkCraft101/portfolio/commit/d695b56) διορθώθηκε το όνομα του `ColorModeProviderProps`.
 
-Στο commit [603b82e — Καθαρισμός και οργάνωση σχολίων](https://github.com/l1ttle0reo/portfolio/commit/603b82e) προστέθηκαν σχόλια χωρίς αλλαγή λειτουργίας.
+Στο commit [603b82e — Καθαρισμός και οργάνωση σχολίων](https://github.com/SilkCraft101/portfolio/commit/603b82e) προστέθηκαν σχόλια χωρίς αλλαγή λειτουργίας.
 
 ## Πηγές
 

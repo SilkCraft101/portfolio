@@ -63,7 +63,7 @@ export function Navbar() {
             </Text>
 
             <ChakraLink
-              href="https://github.com/l1ttle0reo"
+              href="https://github.com/SilkCraft101"
               target="_blank"
               rel="noopener noreferrer"
               fontWeight="medium"

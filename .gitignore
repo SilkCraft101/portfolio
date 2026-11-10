@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Τοπικές εικόνες προφίλ — δεν ανεβαίνουν στο repository
+/local-assets/avatars/

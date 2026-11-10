@@ -32,7 +32,7 @@
 
 Ο κανόνας `no-empty-object-type`, που προκάλεσε τα δύο αρχικά σφάλματα στο color-mode snippet, προέρχεται από το ενεργό σύνολο κανόνων TypeScript. Δεν χρειάστηκε να απενεργοποιηθεί για τη διόρθωση.
 
-Στο commit [603b82e — Καθαρισμός και οργάνωση σχολίων](https://github.com/l1ttle0reo/portfolio/commit/603b82e) άλλαξαν μόνο σχόλια, χωρίς αλλαγή κανόνων ή patterns.
+Στο commit [603b82e — Καθαρισμός και οργάνωση σχολίων](https://github.com/SilkCraft101/portfolio/commit/603b82e) άλλαξαν μόνο σχόλια, χωρίς αλλαγή κανόνων ή patterns.
 
 ## Πηγές
 
