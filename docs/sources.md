@@ -6,9 +6,13 @@
 
 Στη συνέχεια θα καταγράφω τις πηγές που χρησιμοποιώ κατά τη μελέτη, την εφαρμογή και το debugging.
 
-## Αρχική σελίδα και root layout — `app/page.tsx`, `app/layout.tsx`
+## Σελίδες και κοινό layout
 
-[Next.js — Layouts and Pages](https://nextjs.org/docs/app/getting-started/layouts-and-pages): **Creating a page**, **Creating a layout**.
+[Next.js — Layouts and Pages](https://nextjs.org/docs/app/getting-started/layouts-and-pages): **Creating a page**, **Creating a layout**, **Creating a nested route**.
+
+Δημιούργησα τη σελίδα `/about` στο `app/about/page.tsx` με default export.
+
+Μετέφερα το Navbar στο `app/layout.tsx`, μέσα στον Provider και πριν από το `children`. Το αφαίρεσα από το `app/page.tsx`, ώστε να εμφανίζεται μία φορά σε κάθε σελίδα.
 
 ## Γραμματοσειρές — `app/layout.tsx`, `app/globals.css`
 

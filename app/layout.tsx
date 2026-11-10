@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Provider } from "@/components/ui/provider";
 import "./globals.css";
+import { Navbar } from "@/components/navbar";
 
 // Κρατάω τις γραμματοσειρές σε CSS μεταβλητές για να τις χρησιμοποιώ από το CSS.
 const geistSans = Geist({
@@ -30,12 +31,15 @@ export default function RootLayout({
   return (
     // Το next-themes αλλάζει την κλάση του html στον browser.
     // Το suppressHydrationWarning καλύπτει αυτή την αναμενόμενη διαφορά.
-    
+
     <html lang="en" suppressHydrationWarning>
       {/* Οι μεταβλητές των fonts είναι διαθέσιμες στο body και στα στοιχεία μέσα του. */}
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {/* Ο Provider δίνει στις σελίδες το Chakra και την εναλλαγή θέματος. */}
-        <Provider>{children}</Provider>
+        <Provider>
+          <Navbar />
+          {children}
+        </Provider>
       </body>
     </html>
   );
