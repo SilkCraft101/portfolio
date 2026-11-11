@@ -7,15 +7,10 @@ const nextConfig: NextConfig = {
   // Γράφω hostname/IP χωρίς πρωτόκολλο ή θύρα. Αν αλλάξει η IP, ενημερώνω τη λίστα.
   allowedDevOrigins: ["your-local-ip"],
   images: {
-    // Το Next Image επιτρέπεται να βελτιστοποιεί την παρακάτω εξωτερική διεύθυνση.
-    // Η new URL αναλύει το string στα μέρη του. Εδώ επιτρέπω μία συγκεκριμένη εικόνα, όχι όλο το Cloudinary.
+    // Επιτρέπω τις εικόνες του δικού μου λογαριασμού Cloudinary,
+    // ώστε οι νέες ζωγραφιές να φορτώνουν χωρίς νέα αλλαγή ρυθμίσεων.
     remotePatterns: [
-      new URL(
-        "https://res.cloudinary.com/vvu8rq88/image/upload/v1794304237/jumping-spider-minimal-signed.png",
-      ),
-      new URL(
-        "https://res.cloudinary.com/vvu8rq88/image/upload/v1794319965/billie.png",
-      ),
+      new URL("https://res.cloudinary.com/vvu8rq88/image/upload/**"),
     ],
   },
 };

@@ -337,3 +337,13 @@ Image: `src`, `alt`, `width and height`, `style` και `remotePatterns`.
 Διόρθωσα μόνος μου την εμφώλευση των εγγραφών `new URL(...)`.
 
 [Chakra UI — Simple Grid](https://chakra-ui.com/docs/components/simple-grid): **Usage**, **Columns**. Το χρησιμοποίησα για το πλέγμα στο `app/paintings/page.tsx`, με responsive αριθμό στηλών, ξεχωριστό Box ανά εικόνα και κενό 20px.
+
+### Αυτόματη ανάκτηση και εμφάνιση ζωγραφιών
+
+[Cloudinary — Search API](https://cloudinary.com/documentation/search_method): αναζήτηση με `expression`, φίλτρα `resource_type` και `asset_folder`, ταξινόμηση με `sort_by` και σελιδοποίηση με `max_results` και `next_cursor`.
+
+[React — Rendering Lists](https://react.dev/learn/rendering-lists): ενότητες **Rendering data from arrays** και **Keeping list items in order with key**, για τη δημιουργία των καταχωρήσεων με `map()` και τη χρήση του `asset_id` ως `key`.
+
+[Next.js — Incremental Static Regeneration](https://nextjs.org/docs/app/guides/incremental-static-regeneration): το παράδειγμα με `revalidate = 60` και η εξήγηση της ανανέωσης στο παρασκήνιο.
+
+Οι παραπομπές αντιστοιχούν στην υλοποίηση του `app/paintings/page.tsx`. Η σελιδοποίηση, η map() και η ανανέωση της σελίδας παραμένουν προς περαιτέρω μελέτη.
