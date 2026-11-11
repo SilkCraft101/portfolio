@@ -335,3 +335,5 @@ Image: `src`, `alt`, `width and height`, `style` και `remotePatterns`.
 
 Η δοκιμαστική υλοποίηση ολοκληρώθηκε με βοήθεια του AI.
 Διόρθωσα μόνος μου την εμφώλευση των εγγραφών `new URL(...)`.
+
+[Chakra UI — Simple Grid](https://chakra-ui.com/docs/components/simple-grid): **Usage**, **Columns**. Το χρησιμοποίησα για το πλέγμα στο `app/paintings/page.tsx`, με responsive αριθμό στηλών, ξεχωριστό Box ανά εικόνα και κενό 20px.
