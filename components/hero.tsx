@@ -1,6 +1,7 @@
 // Τα Chakra components δίνουν τη δομή και τα style props. Το Image εισάγεται ξεχωριστά από το Next.js.
 import { Box, Container, Heading, Stack, Text, Flex } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 
 // Συγκεντρώνω εδώ τα styles της εικόνας και τα περνάω στο Image με style={imageStyle}.
 // Το borderRadius: "50%" κάνει την τετράγωνη εικόνα κυκλική.
@@ -103,6 +104,11 @@ export function Hero() {
             Έχω υπόβαθρο στα Δίκτυα και τις
             Τηλεπικοινωνίες και κύριο ενδιαφέρον τα δίκτυα, την ασφάλεια και την
             κατανόηση του τρόπου με τον οποίο λειτουργούν τα συστήματα.
+          </Text>
+
+          {/* Το Link ανοίγει τη σελίδα ζωγραφικής μέσα στο site. */}
+          <Text asChild color="accent" fontWeight="medium" textDecoration="underline">
+            <Link href="/paintings">Ζωγραφική</Link>
           </Text>
         </Stack>
       </Container>

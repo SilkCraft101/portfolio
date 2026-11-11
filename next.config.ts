@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
       new URL(
         "https://res.cloudinary.com/vvu8rq88/image/upload/v1794304237/jumping-spider-minimal-signed.png",
       ),
+      new URL(
+        "https://res.cloudinary.com/vvu8rq88/image/upload/v1794319965/billie.png",
+      ),
     ],
   },
 };

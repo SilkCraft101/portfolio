@@ -32,6 +32,10 @@
 
 Η εικόνα φιλοξενείται στο Cloudinary. Τα τοπικά αρχεία των avatars παραμένουν εκτός Git μέσω του `.gitignore`.
 
+## Σύνδεσμος ζωγραφικής
+
+Πρόσθεσα σύνδεσμο προς το `/paintings` μετά την τελευταία παράγραφο. Χρησιμοποιώ το Next.js Link και το `Text` με `asChild`, ώστε τα styles να εφαρμόζονται στον ίδιο τον σύνδεσμο.
+
 ## Πηγές
 
 Οι σχετικές παραπομπές βρίσκονται στο [sources.md](../sources.md), για το Next.js Image, τα Chakra layout components, το styling και τα semantic tokens.

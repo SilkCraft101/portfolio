@@ -323,3 +323,15 @@
 Από το [Next.js — allowedDevOrigins](https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins) χρησιμοποίησα την εισαγωγή και το παράδειγμα ρύθμισης. Πρόσθεσα την τοπική IP στο `nextConfig`, μετά τον εντοπισμό μπλοκαρισμένου αιτήματος στα logs κατά τη δοκιμή από κινητό.
 
 Για τη διάταξη και το πλαίσιο χαιρετισμού επαναχρησιμοποίησα τα Chakra components, τα semantic tokens και τις ιδιότητες styling που καταγράφονται στις αντίστοιχες ενότητες αυτού του αρχείου.
+
+## Δοκιμαστική σελίδα ζωγραφικής
+
+Για το `app/paintings/page.tsx` επαναχρησιμοποίησα τις ήδη
+καταγεγραμμένες πηγές για Next.js pages, Chakra layout και Next.js
+Image: `src`, `alt`, `width and height`, `style` και `remotePatterns`.
+
+Για τον σύνδεσμο του Hero επαναχρησιμοποίησα το Next.js Link και
+το Chakra `asChild`, που χρησιμοποιούνται ήδη στο navbar.
+
+Η δοκιμαστική υλοποίηση ολοκληρώθηκε με βοήθεια του AI.
+Διόρθωσα μόνος μου την εμφώλευση των εγγραφών `new URL(...)`.

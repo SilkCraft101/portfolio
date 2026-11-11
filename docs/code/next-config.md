@@ -14,7 +14,7 @@
 
 ## Τρέχον checkpoint
 
-Στο `images.remotePatterns` επέτρεψα τη συγκεκριμένη διεύθυνση της εικόνας προφίλ στο Cloudinary, χρησιμοποιώντας `new URL(...)`.
+Στο `images.remotePatterns` επέτρεψα δύο συγκεκριμένες διευθύνσεις Cloudinary: και τη δοκιμαστική ζωγραφιά `billie`. Κάθε διεύθυνση είναι ξεχωριστή εγγραφή `new URL(...)` στον πίνακα.
 
 Πρόσθεσα το `allowedDevOrigins` με τη διεύθυνση `your-local-ip`, για τη δοκιμή του development server από το κινητό. Η ρύθμιση βρίσκεται στο ίδιο επίπεδο με το `images` και αφορά μόνο το development.
 
