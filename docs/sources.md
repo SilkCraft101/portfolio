@@ -330,8 +330,15 @@
 καταγεγραμμένες πηγές για Next.js pages, Chakra layout και Next.js
 Image: `src`, `alt`, `width and height`, `style` και `remotePatterns`.
 
-Για τον σύνδεσμο του Hero επαναχρησιμοποίησα το Next.js Link και
-το Chakra `asChild`, που χρησιμοποιούνται ήδη στο navbar.
+Για τον σύνδεσμο «Ζωγραφική» επαναχρησιμοποίησα το Next.js `Link`
+και το Chakra UI `Text` με `asChild`.
+
+Ο σύνδεσμος βρισκόταν αρχικά στο `components/hero.tsx`, αλλά
+μεταφέρθηκε στο `components/hobbies.tsx`, το οποίο ενσωματώνεται
+στο `Hero`.
+
+Οι σχετικές πηγές υπάρχουν ήδη στις ενότητες «Navigation»,
+«Κείμενα και τίτλοι» και «Σύνθεση και semantic elements».
 
 Η δοκιμαστική υλοποίηση ολοκληρώθηκε με βοήθεια του AI.
 Διόρθωσα μόνος μου την εμφώλευση των εγγραφών `new URL(...)`.
@@ -347,6 +354,36 @@ Image: `src`, `alt`, `width and height`, `style` και `remotePatterns`.
 [Next.js — Incremental Static Regeneration](https://nextjs.org/docs/app/guides/incremental-static-regeneration): το παράδειγμα με `revalidate = 60` και η εξήγηση της ανανέωσης στο παρασκήνιο.
 
 Οι παραπομπές αντιστοιχούν στην υλοποίηση του `app/paintings/page.tsx`. Η σελιδοποίηση, η map() και η ανανέωση της σελίδας παραμένουν προς περαιτέρω μελέτη.
+
+## Ενδιαφέροντα — `components/hobbies.tsx`, `components/hero.tsx`, `app/page.tsx`
+
+Για την υλοποίηση επαναχρησιμοποίησα τις ήδη καταγεγραμμένες πηγές:
+
+- **Chakra UI — Stack**, ενότητες **Usage** και **Examples → HStack**:
+  χρησιμοποίησα το `Stack` για την κατακόρυφη τοποθέτηση του τίτλου
+  και το `HStack` για την οριζόντια διάταξη των συνδέσμων.
+
+- **Chakra UI — Heading και Text**, ενότητα **Usage**:
+  χρησιμοποίησα το `Heading` για τον τίτλο «Ενδιαφέροντα»
+  και το `Text` για την εμφάνιση του συνδέσμου.
+
+- **Chakra UI — Composition**, ενότητα **The asChild Prop**:
+  χρησιμοποίησα το `asChild` για την εφαρμογή των styles
+  στο Next.js `Link`.
+
+- **Next.js — Link**, ενότητα **Reference → href (required)**:
+  διατήρησα την εσωτερική πλοήγηση προς το `/paintings`.
+
+- **React — Describing the UI**, ενότητα
+  **Importing and exporting components**:
+  εισήγαγα το `Hobbies` στο `Hero` και αφαίρεσα
+  την προηγούμενη απευθείας χρήση του από το `Home`.
+
+Οι παραπάνω πηγές υπάρχουν ήδη στις αντίστοιχες ενότητες
+του παρόντος αρχείου. Δεν προστέθηκαν νέες πηγές.
+
+Η νέα διάταξη ελέγχθηκε στον τοπικό browser και πραγματοποιήθηκε
+production build με διατήρηση του Dynamic Rendering της αρχικής.
 
 ## Αυτόματος υπολογισμός ηλικίας — `components/about.tsx`, `app/page.tsx`
 
