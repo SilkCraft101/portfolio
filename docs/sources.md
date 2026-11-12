@@ -347,3 +347,57 @@ Image: `src`, `alt`, `width and height`, `style` και `remotePatterns`.
 [Next.js — Incremental Static Regeneration](https://nextjs.org/docs/app/guides/incremental-static-regeneration): το παράδειγμα με `revalidate = 60` και η εξήγηση της ανανέωσης στο παρασκήνιο.
 
 Οι παραπομπές αντιστοιχούν στην υλοποίηση του `app/paintings/page.tsx`. Η σελιδοποίηση, η map() και η ανανέωση της σελίδας παραμένουν προς περαιτέρω μελέτη.
+
+## Αυτόματος υπολογισμός ηλικίας — `components/about.tsx`, `app/page.tsx`
+
+### Μεταβλητές και βασική λογική
+
+[MDN — Grammar and types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declarations): **Declaring variables**, **Evaluating variables**. Μελέτησα τη δήλωση μεταβλητών και τη χρήση των τιμών τους.
+
+[MDN — const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) και [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let): **Syntax**. Χρησιμοποίησα `const` για τις μεταβλητές που δεν χρειάζονται επαναανάθεση και `let` για την ηλικία, η οποία μπορεί να μειωθεί κατά ένα έτος.
+
+[MDN — Comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_operators#comparison_operators): σύγκριση αριθμών με `<` και αυστηρή ισότητα με `===`.
+
+[MDN — if...else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else): **Syntax**, **Description**. Εφάρμοσα `if / else if` για να ελέγχω αν έχουν περάσει τα γενέθλιά μου.
+
+### Ημερομηνίες και ζώνη ώρας
+
+[MDN — Date() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date): **No parameters**. Χρησιμοποίησα τη `new Date()` για τη δημιουργία αντικειμένου με την τρέχουσα ημερομηνία.
+
+[MDN — Date components and time zones](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_components_and_time_zones): μελέτησα τη σχέση της ημερομηνίας με τη ζώνη ώρας του περιβάλλοντος εκτέλεσης.
+
+[MDN — Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat): **Syntax**, **Parameters**, ιδιαίτερα τα `timeZone`, `year`, `month` και `day`. Χρησιμοποίησα τη ζώνη ώρας `Europe/Athens` για τον υπολογισμό της ηλικίας σύμφωνα με την ημερομηνία Ελλάδας.
+
+[MDN — Intl.DateTimeFormat.prototype.format()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format): **Syntax**, **Return value**, **Examples**. Χρησιμοποίησα τη `format()` για την ανάκτηση του έτους, του μήνα και της ημέρας ως strings.
+
+[MDN — Number()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/Number): **Syntax**, **Return value**. Χρησιμοποίησα τη `Number()` για τη μετατροπή των strings σε αριθμούς.
+
+### Εμφάνιση της ηλικίας στο JSX
+
+[React — JavaScript in JSX with Curly Braces](https://react.dev/learn/javascript-in-jsx-with-curly-braces): **Using curly braces: A window into the JavaScript world**. Αντικατέστησα τη στατική ηλικία με την έκφραση `{age}` μέσα στο Chakra UI `Text`.
+
+### Dynamic Rendering της αρχικής σελίδας
+
+[Next.js — Caching and Revalidating (Previous Model)](https://nextjs.org/docs/app/guides/caching-without-cache-components): **Route segment config → dynamic**. Χρησιμοποίησα το `export const dynamic = "force-dynamic"` στο `app/page.tsx`, ώστε η αρχική σελίδα να αποδίδεται σε κάθε νέο request και η ηλικία να μην παραμένει αποθηκευμένη από προηγούμενο build.
+
+Η ρύθμιση εφαρμόζεται στο υπάρχον Next.js 16.4.3 χωρίς ενεργοποιημένο `cacheComponents`.
+
+### Πρόσθετη μελέτη — Δεν χρησιμοποιήθηκε στην τελική υλοποίηση
+
+Στο αρχικό στάδιο μελέτησα τις μεθόδους [getFullYear()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear), [getMonth()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth) και [getDate()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getDate), κυρίως τις ενότητες **Return value** και **Examples**.
+
+Εξέτασα επίσης τις ακόλουθες πηγές:
+
+- [MDN — formatToParts()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatToParts): **Syntax**, **Return value**, **Examples**.
+- [MDN — Array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find): **Syntax**, **Return value**, **Description**.
+- [MDN — Callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function): βασικός ορισμός.
+
+Οι παραπάνω έννοιες μελετήθηκαν και χρησιμοποιήθηκαν σε εκπαιδευτικές ασκήσεις, αλλά δεν ενσωματώθηκαν στην τελική υλοποίηση. Δεν θεωρούνται ακόμη πλήρως κατακτημένες.
+
+### Επαλήθευση
+
+Στο σωστό repository πραγματοποιήθηκε επιτυχές production build με Next.js 16.4.3.
+
+Η διαδρομή `/` εμφανίστηκε ως Dynamic (`ƒ`) και η production έκδοση στο localhost εμφάνισε σωστά ηλικία 28 ετών στις 12 Νοεμβρίου 2026.
+
+Δεν έχει πραγματοποιηθεί ακόμη δοκιμή με προσομοιωμένες ημερομηνίες γύρω από τα γενέθλια.

@@ -4,6 +4,8 @@ import { About } from "@/components/about";
 import { Projects } from "@/components/projects";
 import { Hobbies } from "@/components/hobbies";
 
+export const dynamic = "force-dynamic";
+
 // Το app/page.tsx αντιστοιχεί στη διαδρομή /. Το default export είναι το component αυτής της σελίδας.
 // Η σειρά των JSX elements ορίζει τη σειρά των ενοτήτων. Το Navbar παρέχεται ήδη από το root layout.
 export default function Home() {
