@@ -5,7 +5,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Επιτρέπω αυτή την τοπική διεύθυνση για development πόρους όταν δοκιμάζω από κινητό.
   // Γράφω hostname/IP χωρίς πρωτόκολλο ή θύρα. Αν αλλάξει η IP, ενημερώνω τη λίστα.
-  allowedDevOrigins: ["your-local-ip"],
+  allowedDevOrigins: ["LOCAL_DEV_ORIGIN"],
   images: {
     // Επιτρέπω τις εικόνες του δικού μου λογαριασμού Cloudinary,
     // ώστε οι νέες ζωγραφιές να φορτώνουν χωρίς νέα αλλαγή ρυθμίσεων.

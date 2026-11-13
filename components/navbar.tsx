@@ -59,10 +59,10 @@ export function Navbar() {
             <Link href="/">Alex Kotsolakis</Link>
           </Text>
 
-          {/* Το HStack βάζει τα links και το κουμπί σε σειρά. Το Works οδηγεί στο /#works και το About στο /about. */}
+          {/* Το HStack βάζει τα links και το κουμπί σε σειρά. Το Works οδηγεί στο /work και το About στο /about. */}
           <HStack gap={5}>
             <Text asChild fontWeight="medium" fontSize="sm" {...navLinkStyles}>
-              <Link href="/#works">Works</Link>
+              <Link href="/works">Works</Link>
             </Text>
 
             <Text asChild fontWeight="medium" fontSize="sm" {...navLinkStyles}>

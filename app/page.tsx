@@ -1,7 +1,6 @@
 // Εισάγω named exports με τα ίδια ονόματα που δηλώνονται στα αρχεία των components.
 import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
-import { Projects } from "@/components/projects";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +14,6 @@ export default function Home() {
 
       {/* Κρατάω εδώ μια σύντομη παρουσίαση. Η αναλυτική ιστορία βρίσκεται στο /about. */}
       <About />
-      <Projects />
     </main>
   );
 }
