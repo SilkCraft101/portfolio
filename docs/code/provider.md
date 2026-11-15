@@ -6,7 +6,7 @@
 
 ## Εισαγωγές
 
-Το `ChakraProvider` παρέχει το design system στα components που περιβάλλει. Τα `defineConfig`, `defaultSystem` και `createSystem` χρησιμοποιούνται για να συνδυάσω τις προεπιλογές του Chakra με τις δικές μου ρυθμίσεις.
+Το `ChakraProvider` παρέχει το design system στα components που περιβάλλει. Τα `defineConfig`, `defaultConfig` και `createSystem` χρησιμοποιούνται για να συνδυάσω τις προεπιλογές του Chakra με τις δικές μου ρυθμίσεις.
 
 Το `ColorModeProvider` εισάγεται από το τοπικό `color-mode.tsx`. Από το ίδιο αρχείο εισάγεται και ο τύπος `ColorModeProviderProps`.
 
@@ -33,6 +33,26 @@ To `fg.muted` ορίζει πιο ήπιο χρώμα για τις παραγρ
 Τα components που χρησιμοποιούν ήδη αυτά τα tokens ενημερώνονται από τις κεντρικές ρυθμίσεις, χωρίς αλλαγές στα δικά τους props.
 
 To `linkHover` ορίζει το χρώμα των links στο hover: σκούρο ροζ στο light mode και απαλό ροζ στο dark.
+
+### Semantic tokens για τις καρτέλες Essays
+
+Δημιούργησα δύο επιπλέον semantic tokens στο `semanticTokens.colors`, ώστε οι καρτέλες της σελίδας `/essays` να έχουν διαφορετικά backgrounds.
+
+- `learningCard`: Χρώμα φόντου της καρτέλας How We Learn.
+  - Light Mode: `#F0D8B9` (απαλό κεχριμπαρένιο).
+  - Dark Mode: `#35251F` (βαθύ καφέ).
+
+- `philosophyCard`: Χρώμα φόντου της καρτέλας Philosophy.
+  - Light Mode: `#EBD3D5` (απαλό dusty rose).
+  - Dark Mode: `#38232D` (βαθύ μπορντό).
+
+Τα δύο tokens βρίσκονται απευθείας μέσα στο `semanticTokens.colors`, στο ίδιο επίπεδο με τα `fg`, `bg` και `accent`.
+
+Στο `app/essays/page.tsx` χρησιμοποιούνται μέσω των `bg="learningCard"` και `bg="philosophyCard"`.
+
+Με τα `_light` και `_dark`, τα backgrounds προσαρμόζονται αυτόματα στο ενεργό χρωματικό θέμα.
+
+Έλεγξα τη λειτουργία τους στον browser, σε Light και Dark Mode.
 
 ## Σύνθεση των providers
 

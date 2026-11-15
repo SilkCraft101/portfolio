@@ -40,6 +40,20 @@ const config = defineConfig({
           },
         },
 
+        learningCard: {
+          value: {
+            _light: "#F0D8B9",
+            _dark: "#35251F",
+          },
+        },
+
+        philosophyCard: {
+          value: {
+            _light: "#EBD3D5",
+            _dark: "#38232D",
+          },
+        },
+
         // Διακριτικό περίγραμμα σε ζεστές αποχρώσεις, όπως η γραμμή κάτω από το navbar.
         border: {
           subtle: {
