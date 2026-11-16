@@ -1,4 +1,5 @@
 import {
+  Separator,
   Box,
   Container,
   Flex,
@@ -43,6 +44,8 @@ export default function WorksPage() {
             Στόχος μου είναι να καταγράφω με διαφάνεια και ειλικρίνεια όσα έχω
             κατασκευάσει, όσα έχω μάθει και όσα βρίσκονται ακόμη σε εξέλιξη.
           </Text>
+
+          <Separator borderColor="border.subtle" my={6} w="full" />
 
           {/* Πρώτο project: Προσωπικό Portfolio */}
           <Flex

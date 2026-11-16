@@ -1,6 +1,7 @@
 // Εισάγω named exports με τα ίδια ονόματα που δηλώνονται στα αρχεία των components.
 import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
+import { Separator, Container } from "@chakra-ui/react";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +12,10 @@ export default function Home() {
     // Το main περιέχει το κύριο περιεχόμενο της αρχικής. Δεν προσθέτω εδώ ξανά html, body ή Provider.
     <main>
       <Hero />
+
+      <Container maxW="3xl">
+        <Separator borderColor="border.subtle" />
+      </Container>
 
       {/* Κρατάω εδώ μια σύντομη παρουσίαση. Η αναλυτική ιστορία βρίσκεται στο /about. */}
       <About />

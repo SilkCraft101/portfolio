@@ -1,4 +1,5 @@
 import {
+  Separator,
   Text,
   Box,
   Container,
@@ -62,6 +63,7 @@ export default async function PaintingsPage() {
               Το παλιό μου username ήταν `l1ttle0reo`.
             </Text>
           </Stack>
+          <Separator borderColor="border.subtle" my={6} w="full" />
           <SimpleGrid w="full" columns={{ base: 1, md: 2, lg: 3 }} gap="20px">
             {/* Η map δημιουργεί ένα ξεχωριστό Dialog για κάθε ζωγραφιά.
                 Το key αναγνωρίζει σταθερά κάθε καταχώρηση στη λίστα. */}

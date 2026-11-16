@@ -1,4 +1,11 @@
-import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Heading,
+  Stack,
+  Text,
+  Separator,
+} from "@chakra-ui/react";
 
 // Ο φάκελος app/about και το page.tsx δημιουργούν τη διαδρομή /about.
 // Το default export είναι η σελίδα· το συνοπτικό About της αρχικής παραμένει ξεχωριστό component.
@@ -194,6 +201,7 @@ export default function AboutPage() {
             αυτονομία.
           </Text>
 
+          <Separator borderColor="border.subtle" my={6} w="full" />
           <Heading
             as="h2"
             fontSize={{ base: "2xl", md: "3xl" }}

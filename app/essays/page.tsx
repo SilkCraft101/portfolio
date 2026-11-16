@@ -1,4 +1,11 @@
-import { Container, Heading, Box, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Separator,
+  Container,
+  Heading,
+  Box,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import Link from "next/link";
 
 export default function EssaysPage() {
@@ -26,7 +33,9 @@ export default function EssaysPage() {
         αναζήτησης, αμφισβήτησης και αναθεώρησης.
       </Text>
 
-      <SimpleGrid columns={{ base: 1, md: 2 }} mt={8} gap={6}>
+      <Separator borderColor="border.subtle" my={8} />
+
+      <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
         <Link href="/essays/learning">
           <Box
             borderWidth="1px"
