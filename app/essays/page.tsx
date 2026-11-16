@@ -19,7 +19,13 @@ export default function EssaysPage() {
       >
         Essays
       </Heading>
-      <Text color="fg.muted" lineHeight="tall" mt={4}>
+      <Text
+        color="fg.muted"
+        lineHeight="tall"
+        mt={4}
+        fontFamily="Georgia, serif"
+        fontSize={{ base: "md", md: "lg" }}
+      >
         Η γραφή για εμένα είναι ένας τρόπος να εξερευνώ ερωτήματα που δεν έχουν
         πάντοτε εύκολες ή οριστικές απαντήσεις. Μέσα από τη μελέτη, την
         παρατήρηση και την προσωπική εμπειρία, προσπαθώ να κατανοήσω καλύτερα τη
@@ -27,7 +33,13 @@ export default function EssaysPage() {
         αντιμλαμβανόμαστε τον κόσμο.
       </Text>
 
-      <Text color="fg.muted" lineHeight="tall" mt={4}>
+      <Text
+        color="fg.muted"
+        lineHeight="tall"
+        mt={4}
+        fontFamily="Georgia, serif"
+        fontSize={{ base: "md", md: "lg" }}
+      >
         Αυτός ο χώρος συγκεντρώνει τις σκέψεις και τους προβληματισμούς μου, όχι
         ως ολοκληρωμένες αλήθειες, αλλά ως μέρος μιας συνεχούς διαδικασίας
         αναζήτησης, αμφισβήτησης και αναθεώρησης.
