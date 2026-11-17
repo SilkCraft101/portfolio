@@ -26,6 +26,47 @@
 
 Μια μικρή αλλαγή στο package.json μπορεί να προκαλέσει πολλές αλλαγές στο lockfile, επειδή επηρεάζει και έμμεσες dependencies. Το μεγάλο diff δεν σημαίνει ότι γράφτηκε αντίστοιχος όγκος κώδικα εφαρμογής.
 
+## Ενημέρωση dependencies — 17/11/2026
+
+Το `package-lock.json` ενημερώθηκε αυτόματα από το npm κατά τη διάρκεια των εργασιών για την υποστήριξη Markdown και τη διόρθωση ευπαθειών ασφαλείας.
+
+### Αλλαγές
+
+- Εγκατάσταση της βιβλιοθήκης `react-markdown`.
+- Αναβάθμιση του Next.js από `16.4.3` σε `16.4.6`.
+- Εκτέλεση `npm audit fix` για την αντιμετώπιση των ευπαθειών που ανέφερε το npm.
+
+Το `npm audit fix` πρόσθεσε 1 package και ενημέρωσε 15 packages, συμπεριλαμβανομένων εξαρτήσεων του `typescript-eslint` και του `minimatch`.
+
+Δεν τροποποίησα χειροκίνητα το `package-lock.json`.
+
+### Αποτελέσματα
+
+Μετά τις ενημερώσεις:
+
+- Το `npm audit` ανέφερε 0 vulnerabilities.
+- Το ESLint ολοκληρώθηκε χωρίς σφάλματα.
+- Ο έλεγχος TypeScript ολοκληρώθηκε χωρίς σφάλματα.
+- Το production build ολοκληρώθηκε επιτυχώς με Next.js `16.4.6`.
+
+Οι αλλαγές στο lockfile θα συμπεριληφθούν στο ίδιο Git commit με τις αντίστοιχες αλλαγές του `package.json`.
+
 ## Πηγές
 
-Η πηγή βρίσκεται στο [sources.md](../sources.md), στην καταχώριση «Dependencies και scripts»: npm package-lock.json, Description και File Format.
+### npm — package-lock.json
+
+https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json
+
+Σχετικές ενότητες:
+
+- Description
+- File Format
+
+### npm — npm audit
+
+https://docs.npmjs.com/cli/v11/commands/npm-audit
+
+Σχετικές λειτουργίες:
+
+- `npm audit`
+- `npm audit fix`

@@ -26,16 +26,104 @@
 
 Τα `framer-motion` και `three` είναι δηλωμένα, αλλά δεν χρησιμοποιούνται ακόμη από τον υπάρχοντα κώδικα. Η εγκατάσταση μιας βιβλιοθήκης δεν σημαίνει ότι έχει υλοποιηθεί σχετική λειτουργία.
 
+Το `react-markdown` προστέθηκε στις dependencies στις 17 Νοεμβρίου 2026.
+
+Η βιβλιοθήκη χρησιμοποιείται για την απόδοση Markdown περιεχομένου ως React elements.
+
+Η πρώτη εφαρμογή της βρίσκεται στο `app/essays/test/page.tsx`, όπου εμφανίζεται το περιεχόμενο του `content/essays/test-essay.md`.
+
 ## Dev dependencies και εκδόσεις
 
 Στα `devDependencies` βρίσκονται το TypeScript, το ESLint, το configuration του Next.js για ESLint και τα πακέτα `@types` με δηλώσεις τύπων. Τα `@types` δεν αποτελούν runtime υλοποιήσεις των αντίστοιχων βιβλιοθηκών.
 
-Τιμές όπως `16.4.3` ορίζουν συγκεκριμένη έκδοση. Τιμές όπως `^3.37.0` επιτρέπουν εύρος εκδόσεων σύμφωνα με τους κανόνες του npm. Το lockfile καταγράφει τις συγκεκριμένες εκδόσεις που επιλύθηκαν.
+Οι εκδόσεις των dependencies ορίζονται στο `package.json`.
 
-## Τρέχον checkpoint
+Μια συγκεκριμένη έκδοση, όπως `16.4.6`, προσδιορίζει ένα συγκεκριμένο release. Το σύμβολο `^` επιτρέπει ένα συμβατό εύρος εκδόσεων σύμφωνα με τους κανόνες του npm.
 
-Τα scripts ανάπτυξης και build χρησιμοποιούν πλέον τη σωστή επιλογή `--webpack`. Η ανάλυση περιγράφει τις υπάρχουσες dependencies, χωρίς να προσθέτει ή να αφαιρεί πακέτα.
+Το `package-lock.json` καταγράφει τις συγκεκριμένες εκδόσεις των dependencies και των transitive dependencies που επιλύθηκαν κατά την εγκατάσταση.
+
+## Τρέχον checkpoint — 17/11/2026
+
+### Αναβάθμιση Next.js
+
+Αναβάθμισα το Next.js από την έκδοση `16.4.3` στην `16.4.6`, έπειτα από προειδοποίηση ασφαλείας στο development environment.
+
+Η εγκατάσταση πραγματοποιήθηκε μέσω του npm.
+
+Η εγκατεστημένη έκδοση επιβεβαιώθηκε με `npm ls next`.
+
+### Εγκατάσταση react-markdown
+
+Εγκατέστησα τη βιβλιοθήκη `react-markdown` για την υποστήριξη Markdown rendering.
+
+Η βιβλιοθήκη χρησιμοποιήθηκε επιτυχώς στη δοκιμαστική σελίδα `/essays/test`.
+
+### Έλεγχος ευπαθειών
+
+Το αρχικό `npm audit` ανέφερε 7 moderate vulnerabilities, οι οποίες σχετίζονταν με το `minimatch` και εξαρτήσεις του `typescript-eslint`.
+
+Πριν από την εφαρμογή διορθώσεων χρησιμοποίησα το `npm audit fix --dry-run`, ώστε να εξετάσω τις προτεινόμενες αλλαγές.
+
+Στη συνέχεια εκτέλεσα `npm audit fix`.
+
+Το npm ενημέρωσε 15 packages και πρόσθεσε 1 package.
+
+Ο τελικός έλεγχος `npm audit` ανέφερε:
+
+**0 vulnerabilities.**
+
+### Έλεγχοι συμβατότητας
+
+Μετά τις ενημερώσεις ολοκληρώθηκαν επιτυχώς:
+
+- `npm run lint`
+- `npx tsc --noEmit`
+- `npm run build`
+
+Το production build ολοκληρώθηκε με Next.js `16.4.6`.
+
+Κατά την εγκατάσταση εμφανίστηκε προειδοποίηση για μη εγκεκριμένο install script του `unrs-resolver`.
+
+Δεν εγκρίθηκε η εκτέλεση του συγκεκριμένου script.
 
 ## Πηγές
 
-Οι πηγές βρίσκονται στο [sources.md](../sources.md), στην καταχώριση «Dependencies και scripts»: npm package.json, npm run και Next.js CLI.
+### npm — package.json
+
+https://docs.npmjs.com/cli/v11/configuring-npm/package-json
+
+Σχετικές ενότητες:
+
+- dependencies
+- devDependencies
+
+### npm — package-lock.json
+
+https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json
+
+### npm — npm audit
+
+https://docs.npmjs.com/cli/v11/commands/npm-audit
+
+Σχετικά:
+
+- Έλεγχος ευπαθειών
+- `npm audit fix`
+
+### npm — npm install
+
+https://docs.npmjs.com/cli/v11/commands/npm-install
+
+Σχετικά:
+
+- Εγκατάσταση και ενημέρωση dependencies
+
+### react-markdown
+
+https://github.com/remarkjs/react-markdown#readme
+
+Σχετικές ενότητες:
+
+- What is this?
+- When should I use this?
+- Use
