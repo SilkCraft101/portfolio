@@ -51,13 +51,19 @@
 
 Κατά το build εμφανίστηκαν μη κρίσιμα Webpack serialization warnings.
 
+## Πρόοδος — 18/11/2026
+
+Ολοκληρώθηκαν:
+
+- Υποστήριξη και δοκιμαστική ανάγνωση Markdown αρχείων.
+- Υλοποίηση Dynamic Routes `/essays/[category]/[slug]`.
+- Επιτυχής εμφάνιση Markdown δοκιμίου στον browser.
+
+Η δυναμική διαδρομή τεκμηριώνεται στο [essay-dynamic-route.md](./essay-dynamic-route.md).
+
 ## Επόμενα βήματα
 
-Οι δύο σελίδες `/essays/learning` και `/essays/philosophy` έχουν δημιουργηθεί.
-
-Εκκρεμούν:
-
-- Υποστήριξη Markdown δοκιμίων.
-- Ανάγνωση Markdown αρχείων.
-- Υλοποίηση dynamic routes για μεμονωμένα δοκίμια.
-- Σχεδιασμός μηχανισμού δημοσίευσης χωρίς Git push.
+- Σύνδεση των σελίδων κατηγοριών με τα πραγματικά δοκίμια.
+- Styling του Markdown περιεχομένου.
+- Περαιτέρω έλεγχοι Validation και Error Handling.
+- Σχεδιασμός δημοσίευσης δοκιμίων χωρίς Git push.
