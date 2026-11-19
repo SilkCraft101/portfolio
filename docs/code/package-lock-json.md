@@ -51,6 +51,34 @@
 
 Οι αλλαγές στο lockfile θα συμπεριληφθούν στο ίδιο Git commit με τις αντίστοιχες αλλαγές του `package.json`.
 
+## Ενημέρωση dependencies — 18/11/2026
+
+Το `package-lock.json` ενημερώθηκε αυτόματα μέσω του npm για την υποστήριξη μαθηματικών τύπων στα Markdown δοκίμια.
+
+### Αλλαγές
+
+- Εγκατάσταση των `remark-math`, `rehype-katex` και `katex`.
+- Προσθήκη npm override για το KaTeX στο `package.json`.
+- Εκτέλεση `npm install` για την εφαρμογή του override.
+- Ενημέρωση του dependency tree και αφαίρεση περιττών εγκαταστάσεων.
+
+Το override επιτρέπει στις έμμεσες εξαρτήσεις να χρησιμοποιούν το version specification της άμεσης dependency `katex`.
+
+### Έλεγχοι
+
+- `npm ls katex`: Επιβεβαιώθηκε η χρήση του `katex@0.19.1` από όλες τις σχετικές dependencies.
+- `npm audit --omit=dev`: 0 vulnerabilities.
+- `npm audit`: 14 high vulnerabilities παραμένουν στον συνολικό έλεγχο.
+- `npm run build`: Επιτυχές production build μετά την ενημέρωση.
+
+Δεν χρησιμοποίησα `npm audit fox --force`.
+
+### Git
+
+Το `package-lock.json` δεν τροποποιήθηκε χειροκίνητα.
+
+Οι αλλαγές του θα συμπεριληφθούν στο ίδιο commit με το ενημερωμένο `package.json`.
+
 ## Πηγές
 
 ### npm — package-lock.json

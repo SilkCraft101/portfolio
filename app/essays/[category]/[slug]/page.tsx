@@ -2,6 +2,10 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import Markdown from "react-markdown";
 import { notFound } from "next/navigation";
+import { Container } from "@chakra-ui/react";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css";
 
 export default async function EssayPage({
   params,
@@ -38,5 +42,11 @@ export default async function EssayPage({
     throw error;
   }
 
-  return <Markdown>{content}</Markdown>;
+  return (
+    <Container maxW="3xl" py={8} className="essay-markdown">
+      <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+        {content}
+      </Markdown>
+    </Container>
+  );
 }

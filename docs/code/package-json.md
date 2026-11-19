@@ -30,7 +30,47 @@
 
 Η βιβλιοθήκη χρησιμοποιείται για την απόδοση Markdown περιεχομένου ως React elements.
 
-Η πρώτη εφαρμογή της βρίσκεται στο `app/essays/test/page.tsx`, όπου εμφανίζεται το περιεχόμενο του `content/essays/test-essay.md`.
+Η αρχική δοκιμαστική υλοποίηση πραγματοποιήθηκε στο `app/essays/test/page.tsx`, το οποίο έχει πλέον διαγραφεί.
+
+Το `react-markdown` χρησιμοποιείται στη δυναμική διαδρομή `app/essays/[category]/[slug]/page.tsx` για την εμφάνιση των πραγματικών δοκιμίων.
+
+### Υποστήριξη μαθηματικών τύπων — 18/11/2026
+
+Προστέθηκαν τρεις νέες dependencies:
+
+- `remark-math`: Αναγνωρίζει μαθηματικές εκφράσεις μέσα στο Markdown.
+- `rehype-katex`: Μετατρέπει τις μαθηματικές εκφράσεις σε μορφοποιημένο περιεχόμενο μέσω KaTeX.
+- `katex`: Παρέχει τη μηχανή απόδοσης μαθηματικών τύπων και το απαραίτητο CSS.
+
+Οι βιβλιοθήκες χρησιμοποιούνται στη δυναμική διαδρομή `app/essays/[category]/[slug]/page.tsx`.
+
+Η εγκατάσταση πραγματοποιήθηκε με:
+
+`npm install remark-math rehype-katex katex`
+
+## npm Override - KaTeX (18/11/2026)
+
+Κατά την εγκατάσταση των μαθηματικών βιβλιοθηκών εντόπισα παλαιότερες, ευάλωτες εκδο΄σεις του KaTeX στις έμμεσες εξαρτήσεις.
+
+Για την αντιμετώπιση του προβλήματος πρόσθεσα στο `package.json`:
+
+```json
+"overrides": {
+  "katex": "$katex"
+}
+```
+
+Το `$katex` αναφέρεται στο version specification της άμεσης dependency `katex` του project.
+
+Πρόσθεσα τη ρύθμιση με την εντολή:
+
+`npm pkg set 'overrides.katex=$katex'`
+
+Εν συνεχεία εκτέλεσα `npm install` για την εφαρμογή της αλλαγής.
+
+Ο έλεγχος `npm ls katex` επιβεβαίωσε ότι οι σχετικές εξαρτήσεις χρησιμοποιούν πλέον `katex@0.19.1`.
+
+Το override εφαρμόστηκε χωρίς χρήση της επιλογής `npm audit fix --force`.
 
 ## Dev dependencies και εκδόσεις
 
@@ -86,6 +126,27 @@
 
 Δεν εγκρίθηκε η εκτέλεση του συγκεκριμένου script.
 
+## Security Audit - 18/12/2026
+
+Μετά την εγκατάσταση των `remark-math`, `rehype-katex` και `katex`, έκανα νέο έλεγχο ασφαλείας.
+
+### Αρχικά αποτελέσματα
+
+- `npm audit`: 18 vulnerabilities (4 low, 14 high).
+- `npm audit --omit=dev`: 4 low vulnerabilities σχετικές με το KaTeX.
+
+### Μετά την εφαρμογή του npm override
+
+- `npm ls katex`: Όλες οι σχετικές dependencies χρησιμοποιούν `katex@0.19.1`.
+- `npm audit --omit=dev`: 0 vulnerabilities.
+- `npm audit`: 14 high vulnerabilities παραμένουν στον συνολικό έλεγχο.
+- `npm run build`: Επιτυχές production build.
+- Οπτικός έλεγχος μαθηματικών τύπων: Επιτυχής.
+
+Οι 14 high vulnerabilities παραμένουν προς αξιολόγηση.
+
+Δεν χρησιμοποίησα `npm audit fix --force`.
+
 ## Πηγές
 
 ### npm — package.json
@@ -127,3 +188,21 @@ https://github.com/remarkjs/react-markdown#readme
 - What is this?
 - When should I use this?
 - Use
+
+### npm — Overrides
+
+https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides
+
+**Ενότητα:** Overrides — Χρήση του `$` για αναφορά σε direct dependency.
+
+### npm — npm ls
+
+https://docs.npmjs.com/cli/v11/commands/npm-ls
+
+**Ενότητα:** Description — Έλεγχος του dependency tree.
+
+### GitHub Security Advisory — KaTeX
+
+https://github.com/advisories/GHSA-238p-pmpm-9mq7
+
+**Ενότητες:** Description, Affected versions, Patched versions.

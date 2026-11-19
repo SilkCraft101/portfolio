@@ -67,6 +67,17 @@
 
 Η νέα διάταξη ελέγχθηκε οπτικά στον τοπικό browser. Στο production build η αρχική διατηρεί το Dynamic Rendering.
 
+### Καθαρισμός παρωχημένου CSS - 19/11/2026
+
+Το `app/page.module.css` αποτελούσε υπόλοιπο του αρχικού Next.js template και δεν χρησιμοποιείται πλέον. Πραγματοποίησα έλεγχο με `rg`, χωρίς να εντοπίσω αναφορές στο αρχέιο στον ενεργό κώδικα του repo.
+
+Αποφάσισα να αφαιρέσω τα:
+
+- `app/page.module.css`
+- `docs/code/page-module-css.md`
+
+Η μορφοποίηση της αρχικής σελίδας πραγματοποιείται μέσω Chakra UI και των ενεργών CSS κανόνων του Portfolio.
+
 ## Πηγές
 
 Οι σχετικές παραπομπές βρίσκονται στο [sources.md](../sources.md), στις ενότητες για Next.js pages και layouts, React components και JSX.

@@ -49,23 +49,11 @@ export default function PhilosophyPage() {
 
       <Separator borderColor="border.subtle" my={8} />
 
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6} mt={4}>
-        <Box
-          borderWidth="1px"
-          borderColor="border.subtle"
-          borderRadius="lg"
-          p={{ base: 5, md: 7 }}
-          transition="transform 0.2s ease"
-          _hover={{ transform: "translateY(-4px)" }}
-        >
-          <Heading as="h3" fontSize={{ base: "lg", md: "xl" }}>
-            Φιλσοοφία τεστ
-          </Heading>
-          <Text color="fg.muted" lineHeight="tall" mt={4}>
-            Ενα δοκιμαστικό κείμενο!!!!
-          </Text>
-        </Box>
-      </SimpleGrid>
+      <SimpleGrid
+        columns={{ base: 1, md: 2, lg: 3 }}
+        gap={6}
+        mt={4}
+      ></SimpleGrid>
     </Container>
   );
 }

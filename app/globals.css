@@ -2,7 +2,6 @@
 /* Δεν μηδενίζω εδώ margin/padding, ώστε να μην υπερισχύω των styles διάταξης του Chakra. */
 * {
   box-sizing: border-box;
-
 }
 
 /* Το ποσοστό εξαρτάται από το ύψος του γονέα, δεν εγγυάται από μόνο του ύψος viewport. */
@@ -22,4 +21,94 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Markdown Essays — Typography */
+
+.essay-markdown {
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  line-height: 1.85;
+}
+
+.essay-markdown h1,
+.essay-markdown h2,
+.essay-markdown h3 {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.essay-markdown h1 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.essay-markdown h2 {
+  font-size: 1.5rem;
+  margin: 2.5rem 0 1rem;
+}
+
+.essay-markdown h3 {
+  font-size: 1.25rem;
+  margin: 2rem 0 0.75rem;
+}
+
+.essay-markdown p {
+  margin-bottom: 1.25rem;
+}
+
+.essay-markdown ul,
+.essay-markdown ol {
+  padding-left: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.essay-markdown li {
+  margin-bottom: 0.5rem;
+}
+
+.essay-markdown a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.essay-markdown hr {
+  border-color: currentColor;
+  opacity: 0.2;
+  margin: 2.5rem 0;
+}
+
+/* Markdown Essays — macOS Code Blocks */
+
+.essay-markdown pre {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 3.5rem 1.25rem 1.25rem;
+  background: #18181b;
+  color: #f4f4f5;
+  border: 1px solid #3f3f46;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.essay-markdown pre::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5rem;
+  border-bottom: 1px solid #3f3f46;
+  background:
+    radial-gradient(circle at 20px 50%, #ff5f57 6px, transparent 7px),
+    radial-gradient(circle at 40px 50%, #febc2e 6px, transparent 7px),
+    radial-gradient(circle at 60px 50%, #28c840 6px, transparent 7px);
+}
+
+.essay-markdown pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  white-space: pre;
 }
