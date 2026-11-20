@@ -38,6 +38,7 @@
 - **remark-math:** Αναγνώριση μαθηματικών εκφράσεων μέσα στο Markdown.
 - **rehype-katex και KaTeX:** Απόδοση μαθηματικών τύπων LaTeX στα δοκίμια.
 - **Node.js File System API:** Ανάγνωση Markdown αρχείων στον server.
+- **Vercel Blob (`@vercel/blob`):** Υπηρεσία αποθήκευσης αρχείων στο cloud. Έχει δημιουργηθεί και συνδεθεί Blob Store με το Portfolio μέσω Vercel OIDC. Η σύνδεση έχει επαληθευτεί επιτυχώς. Η δημοσίευση Markdown δοκιμίων μέσω της εφαρμογής παραμένει υπό ανάπτυξη.
 
 Για την ανάπτυξη και τη διαχείριση του project χρησιμοποιώ επίσης **Git**, **GitHub** και **Neovim**, ενώ το deployment πραγματοποιείται μέσω **Vercel**.
 

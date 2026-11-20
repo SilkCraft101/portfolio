@@ -79,6 +79,40 @@
 
 Οι αλλαγές του θα συμπεριληφθούν στο ίδιο commit με το ενημερωμένο `package.json`.
 
+## Ενημέρωση dependencies — 20/11/2026
+
+### Εγκατάσταση Vercel Blob
+
+Το `package-lock.json` ενημερώθηκε αυτόματα κατά την εγκατάσταση της βιβλιοθήκης `@vercel/blob@2.9.0`.
+
+Η εγκατάσταση πρόσθεσε τις απαραίτητες dependencies για την επικοινωνία με το Vercel Blob Store.
+
+### Επίλυση ευπαθειών
+
+Μετά την εγκατάσταση του `@vercel/blob`, το `npm audit` ανέφερε 4 high vulnerabilities.
+
+Το πρόβλημα σχετιζόταν με την έκδοση `zod@4.1.11`, η οποία χρησιμοποιούνταν ως έμμεση dependency μέσω του `@vercel/cli-config@0.3.1`.
+
+Πρόσθεσα στο `package.json` ένα npm override για τη χρήση της έκδοσης `zod@4.6.7`.
+
+Στη συνέχεια εκτέλεσα:
+
+```bash
+npm install
+```
+
+Το npm ενημέρωσε αυτόματα το dependency tree και το `package-lock.json`.
+
+### Έλεγχοι
+
+- `npm ls @vercel/blob @vercel/cli-config zod`: Επιβεβαίωση των εγκατεστημένων εκδόσεων.
+- `npm audit`: 0 vulnerabilities.
+- `npm run build`: Επιτυχές production build.
+
+Δεν τροποποίησα χειροκίνητα το `package-lock.json`.
+
+Οι αλλαγές του θα συμπεριληφθούν στο ίδιο Git commit με το `package.json`.
+
 ## Πηγές
 
 ### npm — package-lock.json

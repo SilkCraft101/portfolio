@@ -147,6 +147,61 @@
 
 Δεν χρησιμοποίησα `npm audit fix --force`.
 
+## Vercel Blob και Security Audit - 20/11/2026
+
+### Εγκατάσταση Vercel Blob
+
+Εγκατέστησα τη βιβλιοθήκη `@vercel/blob` για τη μελλοντική αποθήκευση Markdown δοκιμίων στο cloud.
+
+Η εγκατάσταση πραγματοποιήθηκε με:
+
+`npm install @vercel/blob`
+
+Επιβεβαιώθηκε η εγκατάσταση της έκδοσης `@vercel/blob@2.9.0`.
+
+Δημιούργησα ένα Public Blob Store στο Vercel, στην περιοχή Frankfurt (FRA1), και το συνέδεσα με το Portfolio.
+
+Η σύνδεση χρησιμοποιεί Vercel OIDC authentication.
+
+Ο έλεγχος με τη μέθοδο `list()` του `@vercel/blob` ολοκληρώθηκε επιτυχώς και επέστρεψε 0 αποθηκευμένα αντικείμενα.
+
+Η λειτουργία δημοσίευσης δοκιμίων δεν έχει υλοποιηθεί ακόμη.
+
+### Επίλυση dependency vulnerabilities
+
+Μετά την εγκατάσταση του `@vercel/blob`, το `npm audit` ανέφερε 4 high vulnerabilities.
+
+Το πρόβλημα σχετιζόταν με την έμμεση dependency `zod@4.1.11`, μέσω του `@vercel/cli-config@0.3.1`.
+
+Πρόσθεσα στο υπάρχον `overrides` του `package.json`:
+
+```json
+"@vercel/cli-config": {
+  "zod": "4.6.7"
+}
+```
+
+Διατήρησα το προηγούμενο override του KaTeX.
+
+Στη συνέχεια εκτέλεσα `npm install`.
+
+Ο έλεγχος `npm ls` επιβεβαίωσε τη χρήση της έκδοσης `zod@4.6.7`.
+
+### Αποτελέσματα
+
+- `npm audit`: 0 vulnerabilities.
+- `npm run build`: Επιτυχές production build.
+- Έλεγχος TypeScript κατά το build: Επιτυχής.
+
+Δεν χρησιμοποιήθηκε `npm audit fix --force`.
+
+### Πηγές
+
+- Vercel Blob: https://vercel.com/docs/vercel-blob
+- Vercel OIDC: https://vercel.com/docs/oidc
+- npm Overrides: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides
+- npm Audit: https://docs.npmjs.com/cli/v11/commands/npm-audit
+
 ## Πηγές
 
 ### npm — package.json
