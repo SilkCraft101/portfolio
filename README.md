@@ -13,7 +13,7 @@
 
 ## Τρέχουσα κατάσταση
 
-Το Portfolio βρίσκεται σε ενεργή ανάπτυξη και είναι διαθέσιμο στη διεύθυνση [silkcraft101 Portfolio](https://silkcraft101-kappa.vercel.app/).
+Το Portfolio βρίσκεται σε ενεργή ανάπτυξη και είναι διαθέσιμο στη διεύθυνση [silkcraft101 Portfolio](https://silkcraft101.is-a.dev/).
 
 Μέχρι στιγμής έχω υλοποιήσει:
 
