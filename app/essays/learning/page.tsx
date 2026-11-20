@@ -7,8 +7,12 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { getPublishedEssays } from "@/lib/essays";
 
-export default function LearningPage() {
+export const dynamic = "force-dynamic";
+
+export default async function LearningPage() {
+  const essays = await getPublishedEssays("learning");
   return (
     <Container maxW="6xl">
       <Box maxW="3xl">
@@ -75,6 +79,33 @@ export default function LearningPage() {
             </Text>
           </Box>
         </Link>
+
+        {/* Δυναμικά δοκίμια αποθηκευμένα στο Vercel Blob. */}
+        {essays.map((essay) => {
+          const slug = essay.pathname.split("/").pop()?.replace(/\.md$/, "");
+
+          if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+            return null;
+          }
+
+          return (
+            <Link key={essay.pathname} href={`/essays/learning/${slug}`}>
+              <Box
+                borderWidth="1px"
+                borderColor="border.subtle"
+                borderRadius="lg"
+                p={{ base: 5, md: 7 }}
+                h="full"
+                transition="transform 0.2s ease"
+                _hover={{ transform: "translateY(-4px)" }}
+              >
+                <Heading as="h3" fontSize={{ base: "lg", md: "xl" }}>
+                  {slug.replace(/-/g, " ")}
+                </Heading>
+              </Box>
+            </Link>
+          );
+        })}
       </SimpleGrid>
     </Container>
   );

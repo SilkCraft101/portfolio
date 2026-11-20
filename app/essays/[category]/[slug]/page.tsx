@@ -6,6 +6,7 @@ import { Container } from "@chakra-ui/react";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+import { get } from "@vercel/blob";
 
 export default async function EssayPage({
   params,
@@ -33,13 +34,27 @@ export default async function EssayPage({
   let content: string;
 
   try {
+    // Διαβάζω πρώτα το υπάρχον τοπικό Markdown αρχείο.
     content = await readFile(essayFilePath, "utf8");
   } catch (error) {
-    if (error instanceof Error && "code" in error && error.code === "ENOENT") {
+    if (!(
+      error instanceof Error &&
+      "code" in error &&
+      error.code === "ENOENT"
+    )) {
+      throw error;
+    }
+
+    // Αν δεν υπάρχει τοπικό αρχείο, αναζητάω το δοκίμιο στο Vercel BLob.
+    const blob = await get(`essays/${category}/${slug}.md`, {
+      access: "public",
+    });
+
+    if (!blob) {
       notFound();
     }
 
-    throw error;
+    content = await new Response(blob.stream).text();
   }
 
   return (

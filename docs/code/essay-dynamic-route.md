@@ -74,6 +74,46 @@
 - Διαγραφή των δύο προσωρινών Markdown δοκιμίων.
 - Αφαίρεση της δοκιμαστικής καρτέλας από τη σελίδα Philosophy.
 
+## Ανάγνωση δοκιμίων από Vercel Blob - 20/11/2026
+
+Η δυναμική διαδρομή υποστηρίζει πλέον δύο πηγές Markdown περιεχομένου:
+
+1. Τοπικά αρχεία στον φάκελο `content/essays/`.
+2. Αρχεία αποθηκευμένα στο Vercel Blob.
+
+### Διαδικασία ανάγνωσης
+
+Η `EssayPage()` επιχειρεί αρχικά να διαβάσει το τοπικό Markdown αρχείο μέσω `readFile()`. Εάν το αρχείο δεν υπάρχει και προκύψει σφάλμα `ENOENT`, χρησιμοποιείται η συνάρτηση `get()` του `@/vercel/blob`.
+
+Το αρχείο αναζητείται στη διαδρομή:
+
+`essays/${category}/${slug}.md`
+
+Εάν το Blob δεν βρεθεί, καλείται η `notFound()`.
+
+Εάν βρεθεί, το περιεχόμενο μετατρέπεται σε κείμενο μέσω:
+
+`new Response(blob.stream).text()`
+
+Το Markdown αποδίδεται από το υπάρχον `react-markdown`, με υποστήριξη μαθηματικών τύπων μέσω `remark-math` και `rehype-katex`.
+
+### Δυναμική απόδοση
+
+Η ρύθμιση `export const dynamic = "force-dynamic"` επιτρέπει την ανάκτηση περιεχομένου κατά το request, χωρίς να απαιτείται νέο build για κάθε αλλαγή στο Blob.
+
+### Έλεγχοι
+
+- `npx tsc --noEmit`: Επιτυχής.
+- `npm run build`: Επιτυχές.
+- Production build: Η διαδρομή `/essays/[category]/[slug]` εμφανίζεται ως δυναμική (`ƒ`).
+
+Η ανάγνωση πραγματικού Markdown αρχείου από το Blob παραμένει προς δοκιμή.
+
+### Τεχνικές πηγές
+
+- [Vercel Blob — SDK](https://vercel.com/docs/vercel-blob/using-blob-sdk)
+- [Next.js — Route Segment Config](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config)
+
 ## Τεχνικές πηγές
 
 ### Next.js — Dynamic Route Segments
