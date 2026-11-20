@@ -20,7 +20,9 @@ const geistMono = Geist_Mono({
 
 // Το Next.js διαβάζει το metadata export για τον τίτλο και την περιγραφή του εγγράφου.
 // Ο τύπος Metadata ελέγχει τη δομή του αντικειμένου κατά την ανάπτυξη.
+// Το metadataBase ορίζει τη βασική διεύθυνση για σχετικά URLs στα metadata.
 export const metadata: Metadata = {
+  metadataBase: new URL("https://silkcraft101.is-a.dev"),
   title: "Alex Kotsolakis | Portfolio",
   description: "Personal portfolio of Alex Kotsolakis",
 };
