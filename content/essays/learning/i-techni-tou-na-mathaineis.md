@@ -308,6 +308,9 @@ function add(a, b) {
 3. Baldwin, M. (2017). _A Look Inside Feynman's Calculus Notebook._ Physics Today. Παρουσίαση του αυθεντικού σημειωματαρίου που χρησιμοποιούσε ο Feynman για τη μελέτη του _Calculus for the Practical Man_.
    [https://physicstoday.aip.org/news/a-look-inside-feynmans-calculus-notebook](https://physicstoday.aip.org/news/a-look-inside-feynmans-calculus-notebook)
 
-**Επιστημονική έρευνα για τη μάθηση** 4. Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T. (2013). _Improving Students' Learning With Effective Learning Techniques: Promising Directions From Cognitive and Educational Psychology._ Psychological Science in the Public Interest, 14(1), 4–58.
-[https://doi.org/10.1177/1529100612453266](https://doi.org/10.1177/1529100612453266) 5. Karpicke, J. D., & Blunt, J. R. (2011). _Retrieval Practice Produces More Learning Than Elaborative Studying With Concept Mapping._ Science, 331(6018), 772–775.
-[https://doi.org/10.1126/science.1199327](https://doi.org/10.1126/science.1199327)
+**Επιστημονική έρευνα για τη μάθηση**
+
+- Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T. (2013). _Improving Students' Learning With Effective Learning Techniques: Promising Directions From Cognitive and Educational Psychology._ Psychological Science in the Public Interest, 14(1), 4–58.
+  [https://doi.org/10.1177/1529100612453266](https://doi.org/10.1177/1529100612453266)
+- Karpicke, J. D., & Blunt, J. R. (2011). _Retrieval Practice Produces More Learning Than Elaborative Studying With Concept Mapping._ Science, 331(6018), 772–775.
+  [https://doi.org/10.1126/science.1199327](https://doi.org/10.1126/science.1199327)

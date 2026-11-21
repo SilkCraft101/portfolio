@@ -64,6 +64,13 @@ a {
   margin-bottom: 1.5rem;
 }
 
+.essay-markdown ul {
+  list-style-type: disc;
+}
+.essay-markdown ol {
+  list-style-type: decimal;
+}
+
 .essay-markdown li {
   margin-bottom: 0.5rem;
 }
