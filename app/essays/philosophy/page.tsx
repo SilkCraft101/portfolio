@@ -6,8 +6,13 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
+import { getPublishedEssays } from "@/lib/essays";
 
-export default function PhilosophyPage() {
+export const dynamic = "force-dynamic";
+
+export default async function PhilosophyPage() {
+  const essays = await getPublishedEssays("philosophy");
   return (
     <Container maxW="6xl">
       <Box maxW="3xl">
@@ -39,7 +44,7 @@ export default function PhilosophyPage() {
           fontFamily="Georgia, serif"
           fontSize={{ base: "md", md: "lg" }}
         >
-          Σε αυτή την ενότητα καταγράφω προσωπικούς στοχασμόυς γύρω από την
+          Σε αυτή την ενότητα καταγράφω προσωπικούς στοχασμούς γύρω από την
           ανθρώπινη ύπαρξη, την ελευθερία, την γνώση, την ηθική και το νόημα της
           ζωής. Ιδιαίτερη θέση έχουν οι ιδέες του Friedrich Nietzsche και του
           Arthur Schopenhauer, όχι ως αδιαμφισβήτητες αλήθειες, αλλά ως
@@ -49,11 +54,34 @@ export default function PhilosophyPage() {
 
       <Separator borderColor="border.subtle" my={8} />
 
-      <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 3 }}
-        gap={6}
-        mt={4}
-      ></SimpleGrid>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6} mt={4}>
+        {/* Δηναμικά δοκίμια αποθηκευμένα στο Vercel Blob. */}
+        {essays.map((essay) => {
+          const slug = essay.pathname.split("/").pop()?.replace(/\.md$/, "");
+
+          if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+            return null;
+          }
+
+          return (
+            <Link key={essay.pathname} href={`/essays/philosophy/${slug}`}>
+              <Box
+                borderWidth="1px"
+                borderColor="border.subtle"
+                borderRadius="lg"
+                p={{ base: 5, md: 7 }}
+                h="full"
+                transition="transform 0.2s ease"
+                _hover={{ transform: "translateY(-4px)" }}
+              >
+                <Heading as="h3" fontSize={{ base: "lg", md: "xl" }}>
+                  {slug.replace(/-/g, " ")}
+                </Heading>
+              </Box>
+            </Link>
+          );
+        })}
+      </SimpleGrid>
     </Container>
   );
 }
