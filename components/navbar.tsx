@@ -41,10 +41,12 @@ export function Navbar() {
       backdropFilter="blur(10px)"
       borderBottomWidth="1px"
       borderColor="border.subtle"
+      lang="en"
+      aria-label="Main navigation"
     >
       <Container maxW="3xl">
         {/* Το Flex χωρίζει όνομα και επιλογές στα δύο άκρα. Το align τα κεντράρει κατακόρυφα. */}
-        <Flex align="center" justify="space-between" py={3}>
+        <Flex align="center" justify="space-between" gap={3} py={3} flexWrap="wrap">
           {/* Με το asChild περνάω τα styles στο ίδιο το Link, χωρίς επιπλέον στοιχείο. */}
           <Text
             asChild
@@ -60,7 +62,7 @@ export function Navbar() {
           </Text>
 
           {/* Το HStack βάζει τα links και το κουμπί σε σειρά. Το Works οδηγεί στο /work και το About στο /about. */}
-          <HStack gap={5}>
+          <HStack gap={{ base: 3, md: 5 }} flexWrap="wrap">
             <Text asChild fontWeight="medium" fontSize="sm" {...navLinkStyles}>
               <Link href="/works">Works</Link>
             </Text>

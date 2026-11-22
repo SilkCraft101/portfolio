@@ -1,3 +1,7 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Τρέχουσα διαφορά: το hook επιστρέφει `ColorMode | undefined` και κάνει runtime narrowing για τιμές από next-themes. Αφαιρέθηκαν μη χρησιμοποιούμενα `useColorModeValue`, `LightMode`, `DarkMode`. Τα παρακάτω sections αυτών των exports είναι ιστορικά και τα exports δεν υπάρχουν πλέον.
+
 # `components/ui/color-mode.tsx`
 
 ## Ρόλος του αρχείου

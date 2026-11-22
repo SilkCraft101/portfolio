@@ -1,3 +1,7 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Το ενεργό `lib/essays.ts` έχει ανασχεδιαστεί: `getEssayCatalog()` επιστρέφει catalog με flags αποτυχίας; `getEssay()` είναι κοινός loader για detail page και metadata. Χρησιμοποιεί `parseEssay`, pagination, pathname/slug validation, local Learning precedence και έως τέσσερις παράλληλες metadata reads. Το παλιό API/παράδειγμα παρακάτω είναι ιστορικό και δεν περιγράφει την τρέχουσα υλοποίηση.
+
 # `lib/essays.ts`
 
 ## Σκοπός

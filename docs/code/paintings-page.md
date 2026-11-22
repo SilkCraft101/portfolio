@@ -1,4 +1,8 @@
-# `app/paintings/pages.tsx`
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Τρέχουσα υλοποίηση: Cloudinary response επικυρώνεται ως runtime input (asset id, account URL prefix, θετικές και οριοθετημένες διαστάσεις, cursor). Missing configuration εμφανίζει κατάσταση μη διαθεσιμότητας· αποτυχία query περνά στο `app/paintings/error.tsx`, ενώ ISR έχει 60s revalidation. Το προηγούμενο test `billie`/σταθερές διαστάσεις είναι ιστορικό, όχι τρέχουσα επιβεβαίωση. Δεν εκτελέστηκε live Cloudinary ή browser test.
+
+# `app/paintings/page.tsx`
 
 ## Ρόλος και δομή
 

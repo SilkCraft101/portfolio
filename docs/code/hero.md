@@ -34,7 +34,7 @@
 
 ## Σύνδεσμος ζωγραφικής
 
-To `Hero` εισάγει το `Hobbies` από το `components/Hobbies.tsx` μέσω named import.
+Το `Hero` εισάγει το `Hobbies` από το `components/hobbies.tsx` μέσω named import.
 
 Το `<Hobbies />` εμφανίζεται μέσα στο εξωτερικό `Stack`, αμέσως μετά την τελευταία παράγραφο της προσωπικής παρουσίασης.
 

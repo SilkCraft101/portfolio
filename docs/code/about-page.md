@@ -1,3 +1,7 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Η About route τώρα παρέχει δικό της metadata title/description και `main#main-content` για landmark/skip link.
+
 # `app/about/page.tsx`
 
 ## Ρόλος του αρχείου

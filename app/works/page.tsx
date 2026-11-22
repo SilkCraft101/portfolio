@@ -15,9 +15,14 @@ const imageStyle = {
   height: "auto",
 };
 
+export const metadata = {
+  title: "Works",
+  description: "Τα τεχνικά projects του Αλέξανδρου Κοτσολάκη.",
+};
+
 export default function WorksPage() {
   return (
-    <Box lang="el" as="main" py={{ base: 12, md: 16 }}>
+    <Box id="main-content" lang="el" as="main" py={{ base: 12, md: 16 }}>
       <Container maxW="3xl">
         <Stack gap={5} align="flex-start">
           {/* Κύριος τίτλος της σελίδας */}

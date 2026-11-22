@@ -1,3 +1,7 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Το ενεργό detail route χρησιμοποιεί `getEssay(category, slug)` και `generateMetadata()` από τον ίδιο loader. `category`/`slug` επικυρώνονται, metadata και body μοιράζονται το ίδιο parsing, και το τοπικό Learning δοκίμιο υπερισχύει Blob object με ίδιο slug. Το παλιό παράδειγμα `getPublishedEssay()` και η περιγραφή `force-dynamic` είναι ιστορικά.
+
 # `app/essays/[category]/[slug]/page.tsx`
 
 ## Σκοπός

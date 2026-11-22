@@ -1,3 +1,7 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Προστέθηκαν style rules για ορατό skip link σε keyboard focus και για route error/retry UI.
+
 # `app/globals.css`
 
 ## Ρόλος του αρχείου

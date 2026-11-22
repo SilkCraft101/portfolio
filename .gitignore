@@ -42,3 +42,9 @@ next-env.d.ts
 
 # Τοπικές εικόνες προφίλ — δεν ανεβαίνουν στο repository
 /local-assets/avatars/
+
+# Τοπικές οδηγίες Agent.
+/AGENTS.md
+
+# Εσωτερικός τεχνικός έλεγχος
+/docs/technical-audit-remediation.md

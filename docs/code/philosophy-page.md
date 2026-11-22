@@ -1,3 +1,7 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Τρέχουσα υλοποίηση: η σελίδα καλεί `getEssayCatalog("philosophy")`, αποδίδει `h2` headings και εμφανίζει μη παρεμβατικό status όταν αποτυγχάνει μεμονωμένο Blob ή η λίστα. Η κοινή λογική parsing, validation, pagination και bounded concurrency βρίσκεται στα `lib/essays.ts`/`lib/essay-utils.ts`. Τα παλαιότερα παραδείγματα `Promise.all()` και slug parsing είναι ιστορικά.
+
 # `app/essays/philosophy/page.tsx`
 
 ## Σκοπός
@@ -160,7 +164,7 @@ const publishedEssays = await Promise.all(
 
 Οι κατηγορίες Learning και Philosophy χρησιμοποιούν κοινό μηχανισμό ανάκτησης δημοσιευμένων δοκιμίων και μεταδεδομένων μέσω του `lib/essays.ts`.
 
-Η υποστήριξη YAML Frontmatter επιβεβαιώθηκε τόσο στο local όσο και στο production περιβάλλον στις 22/11/2026.
+Ιστορικός έλεγχος της αρχικής λειτουργίας. Στο remediation εκτελέστηκαν unit tests και production build· live Blob/OIDC integration δεν επανεκτελέστηκε.
 
 ## Integration Test
 

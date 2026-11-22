@@ -9,10 +9,15 @@ import {
 
 // Ο φάκελος app/about και το page.tsx δημιουργούν τη διαδρομή /about.
 // Το default export είναι η σελίδα· το συνοπτικό About της αρχικής παραμένει ξεχωριστό component.
+export const metadata = {
+  title: "About",
+  description: "Η προσωπική και εκπαιδευτική πορεία του Αλέξανδρου Κοτσολάκη.",
+};
+
 export default function AboutPage() {
   return (
     // Το as="main" ορίζει το κύριο περιεχόμενο. Το lang="el" κληρονομείται από τα στοιχεία της σελίδας.
-    <Box lang="el" as="main" py={{ base: 12, md: 16 }}>
+    <Box id="main-content" lang="el" as="main" py={{ base: 12, md: 16 }}>
       <Container maxW="3xl">
         {/* Το Container περιορίζει το πλάτος και το Stack κρατά κάθετα τίτλους, παραγράφους και περιεχόμενα. */}
         <Stack gap={5} align="flex-start">

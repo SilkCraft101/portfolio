@@ -1,3 +1,7 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Τρέχον clean-checkout flow: `npm run typecheck` εκτελεί `next typegen` και μετά `tsc --noEmit --incremental false`. Έτσι παράγονται Next route types χωρίς JavaScript ή `.tsbuildinfo` output.
+
 # `tsconfig.json`
 
 ## Ρόλος του αρχείου

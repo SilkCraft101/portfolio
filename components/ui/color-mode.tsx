@@ -1,8 +1,8 @@
 // Τα hooks του θέματος και το onClick χρειάζονται λειτουργία στον browser, μέσα σε client boundary.
 "use client"
 
-import type { IconButtonProps, SpanProps } from "@chakra-ui/react"
-import { ClientOnly, IconButton, Skeleton, Span } from "@chakra-ui/react"
+import type { IconButtonProps } from "@chakra-ui/react"
+import { ClientOnly, IconButton, Skeleton } from "@chakra-ui/react"
 import { ThemeProvider, useTheme } from "next-themes"
 import type { ThemeProviderProps } from "next-themes"
 import * as React from "react"
@@ -18,42 +18,35 @@ export function ColorModeProvider(props: ColorModeProviderProps) {
     <ThemeProvider attribute="class" disableTransitionOnChange {...props} />
   )
 }
-
 // Το union επιτρέπει στον έλεγχο τύπων μόνο τις δύο συγκεκριμένες τιμές.
-export type ColorMode = "light" | "dark"
+type ColorMode = "light" | "dark"
 
 // Η interface περιγράφει τι επιστρέφει το hook: τρέχον θέμα και δύο συναρτήσεις χειρισμού του.
 export interface UseColorModeReturn {
-  colorMode: ColorMode
+  colorMode: ColorMode | undefined
   setColorMode: (colorMode: ColorMode) => void
   toggleColorMode: () => void
 }
 
 // Το useTheme διαβάζει το context του next-themes. Το resolvedTheme είναι το εφαρμοζόμενο light ή dark.
 // Αν υπάρχει forcedTheme, αυτό προηγείται στην τιμή που επιστρέφω ως colorMode.
-export function useColorMode(): UseColorModeReturn {
+function useColorMode(): UseColorModeReturn {
   const { resolvedTheme, setTheme, forcedTheme } = useTheme()
-  const colorMode = forcedTheme || resolvedTheme
+  const activeTheme = forcedTheme || resolvedTheme
+  const colorMode =
+    activeTheme === "light" || activeTheme === "dark" ? activeTheme : undefined
   // Το ternary επιλέγει το αντίθετο θέμα και το setTheme ζητά την αλλαγή του.
   const toggleColorMode = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }
   return {
-    // Το assertion αφορά τον τύπο, δεν ελέγχει αν το θέμα είναι ήδη διαθέσιμο στο runtime.
-    colorMode: colorMode as ColorMode,
+    colorMode,
     setColorMode: setTheme,
     toggleColorMode,
   }
 }
 
-// Το generic T συνδέει τους τύπους των δύο τιμών. Το hook επιλέγει μία ανάλογα με το θέμα.
-export function useColorModeValue<T>(light: T, dark: T) {
-  const { colorMode } = useColorMode()
-  return colorMode === "dark" ? dark : light
-}
-
-// Η συνθήκη επιλέγει ποιο από τα δύο SVG icons θα αποδοθεί.
-export function ColorModeIcon() {
+function ColorModeIcon() {
   const { colorMode } = useColorMode()
   return colorMode === "dark" ? <LuMoon /> : <LuSun />
 }
@@ -77,6 +70,7 @@ export const ColorModeButton = React.forwardRef<
         onClick={toggleColorMode}
         variant="ghost"
         aria-label="Toggle color mode"
+        lang="en"
         size="sm"
         ref={ref}
         {...props}
@@ -92,38 +86,3 @@ export const ColorModeButton = React.forwardRef<
     </ClientOnly>
   )
 })
-
-// Τα LightMode και DarkMode επιβάλλουν την τοπική εμφάνιση του Chakra μέσω κλάσεων.
-// Το display="contents" κρατά το στοιχείο στο DOM χωρίς δικό του κουτί διάταξης· δεν αλλάζει το global θέμα.
-export const LightMode = React.forwardRef<HTMLSpanElement, SpanProps>(
-  function LightMode(props, ref) {
-    return (
-      <Span
-        color="fg"
-        display="contents"
-        className="chakra-theme light"
-        colorPalette="gray"
-        colorScheme="light"
-        ref={ref}
-        {...props}
-      />
-    )
-  },
-)
-
-// Ίδια δομή με το LightMode, με την κλάση dark για το περιεχόμενο που περιβάλλει.
-export const DarkMode = React.forwardRef<HTMLSpanElement, SpanProps>(
-  function DarkMode(props, ref) {
-    return (
-      <Span
-        color="fg"
-        display="contents"
-        className="chakra-theme dark"
-        colorPalette="gray"
-        colorScheme="dark"
-        ref={ref}
-        {...props}
-      />
-    )
-  },
-)

@@ -1,3 +1,7 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Η Works route τώρα παρέχει metadata title/description και `main#main-content`. Δεν άλλαξε το περιεχόμενο της σελίδας.
+
 # `app/works/page.tsx`
 
 ## Ρόλος του αρχείου

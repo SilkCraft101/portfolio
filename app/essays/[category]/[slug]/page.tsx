@@ -1,81 +1,66 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
+import type { Metadata } from "next";
 import Markdown from "react-markdown";
 import { notFound } from "next/navigation";
 import { Container } from "@chakra-ui/react";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
-import { get } from "@vercel/blob";
-import matter from "gray-matter";
+import { getEssay, type EssayCategory } from "@/lib/essays";
+import { isValidEssaySlug } from "@/lib/essay-utils";
 
-export default async function EssayPage({
+type EssayPageProps = PageProps<"/essays/[category]/[slug]">;
+
+function isEssayCategory(category: string): category is EssayCategory {
+  return category === "learning" || category === "philosophy";
+}
+
+export async function generateMetadata({
   params,
-}: PageProps<"/essays/[category]/[slug]">) {
+}: EssayPageProps): Promise<Metadata> {
   const { category, slug } = await params;
-
-  // Επιτρέπω μόνο τις δύο κατηγορίες του Portfolio.
-  if (category !== "learning" && category !== "philosophy") {
+  if (!isEssayCategory(category) || !isValidEssaySlug(slug)) {
     notFound();
   }
 
-  // Περιορίζω τα ονόματα αρχείων σε ασφαλή slugs.
-  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+  const essay = await getEssay(category, slug);
+  if (!essay) {
     notFound();
   }
 
-  const essayFilePath = path.join(
-    process.cwd(),
-    "content",
-    "essays",
-    category,
-    `${slug}.md`,
-  );
+  return {
+    title: essay.title,
+    description:
+      essay.subtitle ||
+      "Δοκίμιο στην κατηγορία " +
+        (category === "learning" ? "Learning" : "Philosophy") +
+        ".",
+  };
+}
 
-  let content: string;
-
-  try {
-    // Διαβάζω πρώτα το υπάρχον τοπικό Markdown αρχείο.
-    content = await readFile(essayFilePath, "utf8");
-  } catch (error) {
-    if (!(
-      error instanceof Error &&
-      "code" in error &&
-      error.code === "ENOENT"
-    )) {
-      throw error;
-    }
-
-    // Αν δεν υπάρχει τοπικό αρχείο, αναζητάω το δοκίμιο στο Vercel BLob.
-    const blob = await get(`essays/${category}/${slug}.md`, {
-      access: "public",
-    });
-
-    if (!blob) {
-      notFound();
-    }
-
-    content = await new Response(blob.stream).text();
+export default async function EssayPage({ params }: EssayPageProps) {
+  const { category, slug } = await params;
+  if (!isEssayCategory(category) || !isValidEssaySlug(slug)) {
+    notFound();
   }
 
-  // Διαχωρίζω τα μεταδεδομένα από το κυρίως περιεχόμενο Markdown.
-  const { data, content: markdownContent } = matter(content);
+  const essay = await getEssay(category, slug);
+  if (!essay) {
+    notFound();
+  }
 
-  const title =
-    typeof data.title === "string" && data.title.trim() ? data.title : slug;
-
-  const subtitle = typeof data.subtitle === "string" ? data.subtitle : "";
   return (
-    <Container maxW="3xl" py={8} className="essay-markdown">
-      <h1>{title}</h1>
-      {subtitle && (
-        <p>
-          <em>{subtitle}</em>
-        </p>
-      )}
-      <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-        {markdownContent}
-      </Markdown>
-    </Container>
+    <main id="main-content" lang="el">
+      <Container maxW="3xl" py={8} className="essay-markdown">
+        <h1>{essay.title}</h1>
+        {essay.subtitle && (
+          <p>
+            <em>{essay.subtitle}</em>
+          </p>
+        )}
+        <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+          {essay.content}
+        </Markdown>
+      </Container>
+    </main>
   );
 }

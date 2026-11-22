@@ -1,3 +1,7 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Η τρέχουσα σελίδα έχει metadata, `main#main-content` και ελληνική γλώσσα. Οι dynamic category pages και το detail loader περιγράφονται από τις αναθεωρήσεις των `learning-page.md`, `philosophy-page.md` και `essay-dynamic-route.md`
+
 # `app/essays/page.tsx`
 
 ## Σκοπός

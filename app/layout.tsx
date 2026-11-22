@@ -1,50 +1,36 @@
-// Το import type χρησιμοποιείται μόνο από το TypeScript. Τα υπόλοιπα imports χρησιμοποιούνται και στην υλοποίηση.
+// Ο τύπος Metadata ελέγχει τη δομή των μεταδεδομένων κατά την ανάπτυξη.
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Provider } from "@/components/ui/provider";
-import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import "./globals.css";
 
-// Το next/font προετοιμάζει τη γραμματοσειρά και η variable δηλώνει το όνομα της CSS μεταβλητής της.
-// Η μεταβλητή γίνεται διαθέσιμη όταν προσθέσω την παραγόμενη κλάση στο body· δεν αλλάζει από μόνη της κάθε component.
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-// Η monospace είναι διαθέσιμη, αλλά δεν τη χρησιμοποιώ ακόμη στη σελίδα.
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-// Το Next.js διαβάζει το metadata export για τον τίτλο και την περιγραφή του εγγράφου.
-// Ο τύπος Metadata ελέγχει τη δομή του αντικειμένου κατά την ανάπτυξη.
-// Το metadataBase ορίζει τη βασική διεύθυνση για σχετικά URLs στα metadata.
 export const metadata: Metadata = {
   metadataBase: new URL("https://silkcraft101.is-a.dev"),
-  title: "Alex Kotsolakis | Portfolio",
+  title: {
+    default: "Alex Kotsolakis | Portfolio",
+    template: "%s | Alex Kotsolakis",
+  },
   description: "Personal portfolio of Alex Kotsolakis",
 };
 
-// Το root layout περιβάλλει τις σελίδες και παρέχει τα υποχρεωτικά html και body.
-// Το children είναι η σελίδα ή το nested layout που το Next.js αποδίδει για την τρέχουσα διαδρομή.
-// Το Readonly κάνει τις ιδιότητες των props μόνο για ανάγνωση στον έλεγχο τύπων· δεν παγώνει το αντικείμενο στο runtime.
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    // Το next-themes αλλάζει την κλάση του html στον browser.
-    // Το suppressHydrationWarning αποσιωπά τη σχετική διαφορά στο html κατά το hydration, όχι όλα τα σφάλματα της σελίδας.
-
-    <html lang="en" suppressHydrationWarning>
-      {/* Οι μεταβλητές των fonts είναι διαθέσιμες στο body και στα στοιχεία μέσα του. */}
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/* Ο Provider διαθέτει Chakra και θέμα στο Navbar και στις σελίδες που περνάω ως children. */}
-        {/* Το Navbar εμφανίζεται εδώ μία φορά, πριν από το περιεχόμενο κάθε σελίδας. */}
+    <html lang="el" suppressHydrationWarning>
+      <body className={geistSans.variable}>
         <Provider>
+          <a className="skip-link" href="#main-content">
+            Μετάβαση στο κύριο περιεχόμενο
+          </a>
           <Navbar />
           {children}
         </Provider>

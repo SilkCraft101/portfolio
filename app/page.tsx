@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export default function Home() {
   return (
     // Το main περιέχει το κύριο περιεχόμενο της αρχικής. Δεν προσθέτω εδώ ξανά html, body ή Provider.
-    <main>
+    <main id="main-content" lang="el">
       <Hero />
 
       <Container maxW="3xl">

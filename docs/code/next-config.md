@@ -1,3 +1,9 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Το `allowedDevOrigins` αφαιρέθηκε από το tracked `next.config.ts`, επειδή η τιμή του εξαρτάται από την τοπική συσκευή και το δίκτυο. Αν χρειαστεί ξανά δοκιμή από κινητό, πρόσθεσε την τρέχουσα origin μόνο στην τοπική ρύθμιση και μην την καταχωρίσεις στο repository.
+
+Ο τρέχων Cloudinary `remotePatterns` περιορίζει hostname και account path prefix. Η runtime επικύρωση της απάντησης γίνεται επιπλέον στη route.
+
 # `next.config.ts`
 
 ## Ρόλος του αρχείου
@@ -18,7 +24,7 @@
 
 ```ts
 experimental: {
-    optimizePackageImports: [@"chakra-ui/react"],
+    optimizePackageImports: ["@chakra-ui/react"],
 },
 ```
 
@@ -36,11 +42,11 @@ experimental: {
 
 ## Τρέχον checkpoint
 
-Στο `images.remotePatterns` επέτρεψα δύο συγκεκριμένες διευθύνσεις Cloudinary: και τη δοκιμαστική ζωγραφιά `billie`. Κάθε διεύθυνση είναι ξεχωριστή εγγραφή `new URL(...)` στον πίνακα.
+Ιστορική καταχώριση: σήμερα το `images.remotePatterns` επιτρέπει το Cloudinary account path prefix, όχι δύο συγκεκριμένα asset URLs. Η τρέχουσα allowlist περιορίζεται στο hostname και στον φάκελο upload του account.
 
 Το `allowedDevOrigins` επιτρέπει τη δοκιμή του development server από συσκευές του τοπικού δικτύου. Η ρύθμιση βρίσκεται στο ίδιο επίπεδο με το `images` και αφορά μόνο το development.
 
-Στις 13 Νοεμβρίου 2026 ενημέρωσα την επιτρεπόμενη IP σε `local-development-origin`, επειδή είχε αλλάξει η τοπική διεύθυνση του MacBook.
+Στις 13 Νοεμβρίου 2026 ενημέρωσα την επιτρεπόμενη IP σε `<τοπική IP>`, επειδή είχε αλλάξει η τοπική διεύθυνση του MacBook.
 
 Κατά τη δοκιμή, το κουμπί θέματος παρέμενε στο προσωρινό Skeleton. Στα logs εντόπισα μπλοκαρισμένο αίτημα development από την τοπική IP. Μετά την προσθήκη της ρύθμισης, την επανεκκίνηση του server και την επαναφόρτωση στο κινητό, το κουμπί εμφανίστηκε και λειτούργησε.
 

@@ -1,3 +1,7 @@
+## Τρέχουσα αναθεώρηση — 22/11/2026
+
+Τρέχουσα υλοποίηση: η σελίδα καλεί `getEssayCatalog("learning")`, αποδίδει ένα `h2` ανά μοναδικό slug, διατηρεί τοπική καρτέλα όταν Blob list αποτυγχάνει και εμφανίζει status για partial failures. Βλέπε `lib/essay-utils.ts` και `docs/code/essay-utils.md`. Οι παρακάτω ιστορικές ενότητες που περιγράφουν `Promise.all()` ή slug parsing μέσα στη σελίδα δεν ισχύουν πλέον.
+
 # `app/essays/learning/page.tsx`
 
 ## Σκοπός

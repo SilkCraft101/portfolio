@@ -74,7 +74,6 @@
 Αποφάσισα να αφαιρέσω τα:
 
 - `app/page.module.css`
-- `docs/code/page-module-css.md`
 
 Η μορφοποίηση της αρχικής σελίδας πραγματοποιείται μέσω Chakra UI και των ενεργών CSS κανόνων του Portfolio.
 
