@@ -7,12 +7,21 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { getPublishedEssays } from "@/lib/essays";
+import { getPublishedEssays, getEssayMetadata } from "@/lib/essays";
 
 export const dynamic = "force-dynamic";
 
 export default async function PhilosophyPage() {
   const essays = await getPublishedEssays("philosophy");
+
+  // Ανακτώ τα μεταδεδομένα όλων των δημοσιευμένων δοκιμιών.
+  const publishedEssays = await Promise.all(
+    essays.map(async (essay) => ({
+      ...essay,
+      metadata: await getEssayMetadata(essay.pathname),
+    })),
+  );
+
   return (
     <Container maxW="6xl">
       <Box maxW="3xl">
@@ -55,8 +64,8 @@ export default async function PhilosophyPage() {
       <Separator borderColor="border.subtle" my={8} />
 
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6} mt={4}>
-        {/* Δηναμικά δοκίμια αποθηκευμένα στο Vercel Blob. */}
-        {essays.map((essay) => {
+        {/* Δυναμικά δοκίμια αποθηκευμένα στο Vercel Blob. */}
+        {publishedEssays.map((essay) => {
           const slug = essay.pathname.split("/").pop()?.replace(/\.md$/, "");
 
           if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
@@ -75,8 +84,19 @@ export default async function PhilosophyPage() {
                 _hover={{ transform: "translateY(-4px)" }}
               >
                 <Heading as="h3" fontSize={{ base: "lg", md: "xl" }}>
-                  {slug.replace(/-/g, " ")}
+                  {essay.metadata?.title ?? slug}
                 </Heading>
+                {essay.metadata?.subtitle && (
+                  <Text
+                    color="fg.muted"
+                    fontFamily="Georgia, serif"
+                    fontStyle="italic"
+                    lineHeight="tall"
+                    mt={4}
+                  >
+                    {essay.metadata.subtitle}
+                  </Text>
+                )}
               </Box>
             </Link>
           );
