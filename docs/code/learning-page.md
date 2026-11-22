@@ -52,11 +52,6 @@
 - `npx tsc --noEmit`: Χωρίς σφάλματα.
 - `npm run build`: Επιτυχές production build.
 
-## Επόμενα βήματα
-
-- Αυτόματη δημιουργία καρτελών από τα διαθέσιμα Markdown δοκίμια.
-- Υλοποίηση μηχανισμού δημοσίευσης νέων δοκιμίων χωρίς Git push.
-
 ## Δυναμική εμφάνιση δοκιμίων - 20/11/2026
 
 Η σελίδα υποστηρίζει πλέον την αυτόματη εμφάνιση δοκιμίων που είναι αποθηκευμένα στο Vercel Blob.
@@ -84,4 +79,69 @@
 - Browser: Η υπάρχουσα σελίδα ανοίγει κανονικά.
 - Production build: Η διαδρομή `/essays/learning` εμφανίζεται ως δυναμική (`ƒ`).
 
-Η εμφάνιση πραγματικού δοκιμίου από το Blob δεν έχει δοκιμαστεί ακόμη.
+## Υποστήριξη YAML Frontmatter - 21/11/2026
+
+Η σελίδα Learning εμφανίζει πλέον τους πραγματικούς τίτλους και υποτίτλους των δοκιμίων, χρησιμοποιώντας τα metadata των Markdown αρχείων.
+
+### Τοπικό δοκίμιο
+
+Η καρτέλα «Η Τέχνη του να Μαθαίνεις» διατηρείται, αλλά ο τίτλος και ο υπότιτλος δεν είναι πλέον hardcoded στον κώδικα.
+
+- `path.join()`: Κατασκευάζει τη διαδρομή του τοπικού Markdown αρχείου.
+- `readFile()`: Διαβάζει το περιεχόμενο του αρχείου.
+- `matter()`: Διαχωρίζει τα YAML metadata από το Markdown περιεχόμενο.
+- `typeof`: Ελέγχει ότι οι τιμές των metadata είναι τύπου string.
+
+### Δοκίμια από Vercel Blob
+
+- `getPublishedEssays("learning")`: Ανακτά τη λίστα των δημοσιευμένων δοκιμίων.
+- `getEssayMetadata()`: Ανακτά τον τίτλο και τον υπότιτλο κάθε δοκιμίου.
+- `Promise.all()`: Επιτρέπει την ταυτόχρονη ανάκτηση των metadata των δοκιμίων.
+- `async` και `await`: Χειρίζονται τις asynchronous λειτουργίες ανάκτησης.
+- Spread operator (`...essay`): Διατηρεί τις υπάρχουσες ιδιότητες κάθε Blob.
+- `publishedEssays`: Περιέχει τα δοκίμια μαζί με τα αντίστοιχα metadata.
+- `publishedEssays.map()`: Δημιουργεί δυναμικά τις καρτέλες.
+- Optional chaining (`?.`): Επιτρέπει την ασφαλή πρόσβαση στα metadata όταν αυτά ενδέχεται να απουσιάζουν.
+- Nullish coalescing (`??`): Χρησιμοποιεί το slug ως fallback όταν δεν υπάρχει διαθέσιμος τίτλος.
+- Conditional rendering (`&&`): Εμφανίζει τον υπότιτλο μόνο όταν υπάρχει μη κενή τιμή.
+
+### Εμφάνιση
+
+Ο τίτλος εμφανίζεται μέσω του `Heading` και ο υπότιτλος μέσω του `Text`, με τις ακόλουθες ιδιότητες:
+
+- `color="fg.muted"`
+- `fontFamily="Georgia, serif"`
+- `fontStyle="italic"`
+- `lineHeight="tall"`
+- `mt={4}`
+
+Διατηρούνται το υπάρχον responsive design, το hover effect και η πλοήγηση μέσω `Link`.
+
+### Αποτέλεσμα
+
+- Αυτόματη εμφάνιση νέων δοκιμίων από το Vercel Blob.
+- Ανάγνωση τίτλων και υποτίτλων από YAML Frontmatter.
+- Υποστήριξη ελληνικών τίτλων ανεξάρτητα από το slug.
+- Δημοσίευση νέων δοκιμίων χωρίς τροποποίηση του κώδικα ή νέο deployment για κάθε δοκίμιο.
+- Διατήρηση του πρώτου τοπικού δοκιμίου στο repository.
+
+### Έλεγχοι — 21/11/2026
+
+- TypeScript (`npx tsc --noEmit`): Επιτυχής.
+- Εμφάνιση metadata τοπικού δοκιμίου: Επιτυχής.
+- Εμφάνιση metadata δοκιμίου από Vercel Blob: Επιτυχής.
+- Αυτόματη δημιουργία καρτέλας: Επιτυχής.
+- Πλοήγηση προς τη δυναμική διαδρομή: Επιτυχής.
+
+Οι λειτουργικοί έλεγχοι πραγματοποιήθηκαν στο localhost. Ο τελικός έλεγχος στο production εκκρεμεί.
+
+### Τεχνικές πηγές
+
+- [gray-matter — Documentation](https://github.com/jonschlinkert/gray-matter#readme)
+- [Obsidian — Properties](https://help.obsidian.md/properties)
+- [MDN — Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+- [MDN — Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+- [MDN — Optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+- [MDN — Nullish coalescing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
+- [React — Conditional Rendering](https://react.dev/learn/conditional-rendering)
+- [Vercel Blob — SDK](https://vercel.com/docs/vercel-blob/using-blob-sdk)

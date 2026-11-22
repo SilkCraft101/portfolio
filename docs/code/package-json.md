@@ -126,7 +126,7 @@
 
 Δεν εγκρίθηκε η εκτέλεση του συγκεκριμένου script.
 
-## Security Audit - 18/12/2026
+## Security Audit - 18/11/2026
 
 Μετά την εγκατάσταση των `remark-math`, `rehype-katex` και `katex`, έκανα νέο έλεγχο ασφαλείας.
 
@@ -165,7 +165,7 @@
 
 Ο έλεγχος με τη μέθοδο `list()` του `@vercel/blob` ολοκληρώθηκε επιτυχώς και επέστρεψε 0 αποθηκευμένα αντικείμενα.
 
-Η λειτουργία δημοσίευσης δοκιμίων δεν έχει υλοποιηθεί ακόμη.
+Η λειτουργία δημοσίευσης δοκιμίων μέσω Vercel Blob έχει πλέον υλοποιηθεί και ελεγχθεί.
 
 ### Επίλυση dependency vulnerabilities
 
@@ -194,6 +194,49 @@
 - Έλεγχος TypeScript κατά το build: Επιτυχής.
 
 Δεν χρησιμοποιήθηκε `npm audit fix --force`.
+
+## Υποστήριξη YAML Frontmatter — 21/11/2026
+
+### Εγκατάσταση gray-matter
+
+Εγκατέστησα τη βιβλιοθήκη `gray-matter` για την ανάγνωση μεταδεδομένων (metadata) από το YAML Frontmatter των Markdown δοκιμίων.
+
+Η εγκατάσταση πραγματοποιήθηκε με:
+
+`npm install gray-matter`
+
+Επιβεβαιώθηκε η εγκατάσταση της έκδοσης `gray-matter@4.0.3`.
+
+Η βιβλιοθήκη αποτελεί runtime dependency και χρησιμοποιείται στα ακόλουθα αρχεία:
+
+- `app/essays/[category]/[slug]/page.tsx`
+- `app/essays/learning/page.tsx`
+- `lib/essays.ts`
+
+### Σκοπός
+
+- Ανάλυση του YAML Frontmatter των Markdown αρχείων.
+- Διαχωρισμός των metadata από το κυρίως περιεχόμενο.
+- Ανάκτηση του τίτλου (`title`) και του υποτίτλου (`subtitle`).
+- Υποστήριξη Markdown αρχείων που δημιουργούνται μέσω των Properties του Obsidian.
+
+Η `gray-matter` δεν αντικαθιστά το `react-markdown`. Η πρώτη αναλύει το Frontmatter, ενώ η δεύτερη αποδίδει το Markdown περιεχόμενο ως React elements.
+
+### Έλεγχοι — 21/11/2026
+
+- Εγκατάσταση dependency: Επιτυχής.
+- `npm audit`: 0 vulnerabilities κατά την εγκατάσταση.
+- `npx tsc --noEmit`: Επιτυχής.
+- Λειτουργικός έλεγχος στο localhost: Επιτυχής.
+
+Οι τελικοί έλεγχοι ESLint, production build και deployment εκκρεμούν.
+
+### Τεχνικές πηγές
+
+- [gray-matter — Official Documentation](https://github.com/jonschlinkert/gray-matter#readme)
+- [npm — gray-matter](https://www.npmjs.com/package/gray-matter)
+- [Obsidian — Properties](https://help.obsidian.md/properties)
+- [npm — npm install](https://docs.npmjs.com/cli/v11/commands/npm-install)
 
 ### Πηγές
 

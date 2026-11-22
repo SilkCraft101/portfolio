@@ -71,7 +71,7 @@
 - `npm audit`: 14 high vulnerabilities παραμένουν στον συνολικό έλεγχο.
 - `npm run build`: Επιτυχές production build μετά την ενημέρωση.
 
-Δεν χρησιμοποίησα `npm audit fox --force`.
+Δεν χρησιμοποίησα `npm audit fix --force`.
 
 ### Git
 
@@ -112,6 +112,46 @@ npm install
 Δεν τροποποίησα χειροκίνητα το `package-lock.json`.
 
 Οι αλλαγές του θα συμπεριληφθούν στο ίδιο Git commit με το `package.json`.
+
+## Ενημέρωση dependencies — 21/11/2026
+
+### Εγκατάσταση gray-matter
+
+Το `package-lock.json` ενημερώθηκε αυτόματα κατά την εγκατάσταση της βιβλιοθήκης `gray-matter@4.0.3`.
+
+Η εγκατάσταση πραγματοποιήθηκε με:
+
+```bash
+npm install gray-matter
+```
+
+### Αλλαγές
+
+- Καταγραφή της νέας άμεσης dependency `gray-matter`.
+- Καταγραφή των απαραίτητων transitive dependencies.
+- Αυτόματη ενημέρωση του dependency tree από το npm.
+
+Η βιβλιοθήκη χρησιμοποιείται για την ανάλυση του YAML Frontmatter και τον διαχωρισμό των metadata από το Markdown περιεχόμενο των δοκιμίων.
+
+### Έλεγχοι
+
+- Εγκατάσταση dependency: Επιτυχής.
+- `npm audit`: 0 vulnerabilities κατά την εγκατάσταση.
+- `npx tsc --noEmit`: Επιτυχής.
+
+Ο τελικός έλεγχος του production build εκκρεμεί.
+
+### Git
+
+Δεν τροποποίησα χειροκίνητα το `package-lock.json`.
+
+Οι αλλαγές του θα συμπεριληφθούν στο ίδιο Git commit με το ενημερωμένο `package.json`.
+
+### Τεχνικές πηγές
+
+- [gray-matter — Documentation](https://github.com/jonschlinkert/gray-matter#readme)
+- [npm — npm install](https://docs.npmjs.com/cli/v11/commands/npm-install)
+- [npm — package-lock.json](https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json)
 
 ## Πηγές
 

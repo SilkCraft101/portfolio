@@ -83,7 +83,7 @@
 
 ### Διαδικασία ανάγνωσης
 
-Η `EssayPage()` επιχειρεί αρχικά να διαβάσει το τοπικό Markdown αρχείο μέσω `readFile()`. Εάν το αρχείο δεν υπάρχει και προκύψει σφάλμα `ENOENT`, χρησιμοποιείται η συνάρτηση `get()` του `@/vercel/blob`.
+Η `EssayPage()` επιχειρεί αρχικά να διαβάσει το τοπικό Markdown αρχείο μέσω `readFile()`. Εάν το αρχείο δεν υπάρχει και προκύψει σφάλμα `ENOENT`, χρησιμοποιείται η συνάρτηση `get()` του `@vercel/blob`.
 
 Το αρχείο αναζητείται στη διαδρομή:
 
@@ -107,12 +107,75 @@
 - `npm run build`: Επιτυχές.
 - Production build: Η διαδρομή `/essays/[category]/[slug]` εμφανίζεται ως δυναμική (`ƒ`).
 
-Η ανάγνωση πραγματικού Markdown αρχείου από το Blob παραμένει προς δοκιμή.
+Η ανάγνωση πραγματικού Markdown αρχείου από το Vercel Blob επιβεβαιώθηκε στις 21/11/2026.
+
+## Υποστήριξη YAML Frontmatter - 21/11/2026
+
+Η δυναμική διαδρομή υποστηρίζει πλέον μεταδεδομένα μέσω YAML Frontmatter, τόσο για τα τοπικά markdown αρχεία όσο και για τα αρχεία που αποθηκεύονται στο Vercel Blob.
+
+### Υλοποίηση
+
+Εγκατέστησα τη βιβλιοθήκη `gray-matter` για τον διαχωρισμό των μεταδεδομένων από το κυρίως περιεχόμενο του Markdown.
+
+```tsx
+cost { data, content: markdownContent = matter(content);
+```
+
+- `matter()`: Αναλύει το Markdown αρχείο.
+- `data`: Περιέχει τα metadata του YAML Frontmatter.
+- `markdownContent`: Περιέχει το Markdown χωρίς το Frontmatter.
+- `title`: Χρησιμοποιείται ως κύριος τίτλος του δοκιμίου.
+- `subtitle`: Χρησιμοποιείται ως προαιρετικός υπότιτλος.
+
+### Έλεγχος μεταδεδομένων
+
+Ο τίτλος ελέγχεται ώστε να είναι μη κενό string. Εάν δεν υπάρχει έγκυρος τίτλος, χρησιμοποιείται το `slug` ως fallback.
+
+Ο υπότιτλος εμφανίζεται μόνο εφόσον υπάρχει μη κενή τιμή τύπου string.
+
+Ο τίτλος αποδίδεται μέσω του στοιχείου `<h1>` και ο υπότιτλος μέσω των στοιχείων `<p>` και `<em>`.
+
+Το `react-markdown` λαμβάνει πλέον αποκλειστικά το `markdownContent`, χωρίς τα YAML metadata.
+
+### Δομή Markdown αρχείου
+
+```yaml
+---
+title: "Τίτλος δοκιμίου"
+subtitle: "Υπότιτλος δοκιμίου"
+---
+```
+
+Τα metadata μπορούν να δημιουργούνται και να τροποποιούνται μέσω των Properties του Obsidian.
+
+Δεν απαιτείται επανάληψη του τίτλου και του υποτίτλου στο σώμα του Markdown.
+
+### Αποτέλεσμα
+
+- Διαχωρισμός μεταδεδομένων και περιεχομένου.
+- Ανεξαρτησία του εμφανιζόμενου τίτλου από το filename και το slug.
+- Υποστήριξη ελληνικών τίτλων και υποτίτλων.
+- Διατήρηση της υπάρχουσας μορφοποίησης Markdown.
+- Συμβατότητα με τοπικά αρχεία και Vercel Blob.
+- Δημοσίευση νέων δοκιμίων μέσω του Vercel Blob χωρίς αλλαγές στον κώδικα ή νέο deployment για κάθε δοκίμιο.
+
+### Έλεγχοι — 21/11/2026
+
+- Ανάγνωση YAML Frontmatter από τοπικό αρχείο: Επιτυχής.
+- Ανάγνωση YAML Frontmatter από Vercel Blob: Επιτυχής.
+- Εμφάνιση τίτλου και υποτίτλου στο localhost: Επιτυχής.
+- Εμφάνιση Markdown χωρίς τα YAML metadata: Επιτυχής.
+
+Ο τελικός έλεγχος στο production εκκρεμεί μέχρι το επόμενο deployment.
 
 ### Τεχνικές πηγές
 
 - [Vercel Blob — SDK](https://vercel.com/docs/vercel-blob/using-blob-sdk)
 - [Next.js — Route Segment Config](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config)
+- [gray-matter — Official Documentation](https://github.com/jonschlinkert/gray-matter#readme)
+  - Ενότητες: Usage, Returned object, API.
+- [Obsidian — Properties](https://help.obsidian.md/properties)
+  - Ενότητες: Add a property, Property types, Text.
 
 ## Τεχνικές πηγές
 
