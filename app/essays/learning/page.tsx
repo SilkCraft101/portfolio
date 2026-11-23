@@ -63,6 +63,10 @@ export default async function LearningPage() {
           </Text>
         </Box>
 
+        <Text mt={5}>
+          <Link href="/essays">← Πίσω στα δοκίμια</Link>
+        </Text>
+
         {hasIssues && (
           <Text role="status" color="fg.muted" mt={4}>
             Ορισμένα δοκίμια δεν ήταν διαθέσιμα. Μπορείς να δοκιμάσεις ξανά

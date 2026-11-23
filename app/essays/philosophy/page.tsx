@@ -60,6 +60,10 @@ export default async function PhilosophyPage() {
           </Text>
         </Box>
 
+        <Text mt={5}>
+          <Link href="/essays">← Πίσω στα δοκίμια</Link>
+        </Text>
+
         {(catalog.blobUnavailable || catalog.failedEntries > 0) && (
           <Text role="status" color="fg.muted" mt={4}>
             Ορισμένα δοκίμια δεν ήταν διαθέσιμα. Μπορείς να δοκιμάσεις ξανά

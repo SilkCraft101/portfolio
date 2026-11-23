@@ -149,3 +149,7 @@
 - [MDN — Nullish coalescing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
 - [React — Conditional Rendering](https://react.dev/learn/conditional-rendering)
 - [Vercel Blob — SDK](https://vercel.com/docs/vercel-blob/using-blob-sdk)
+
+## Πλοήγηση επιστροφής
+
+Η σελίδα `/essays/learning` περιλαμβάνει σύνδεσμο Next.js `Link` προς `/essays` με ετικέτα «← Πίσω στα δοκίμια», ώστε να επιστρέφει στο γονικό index των κατηγοριών.

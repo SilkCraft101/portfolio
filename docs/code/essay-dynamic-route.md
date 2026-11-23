@@ -234,3 +234,7 @@ https://docs.npmjs.com/cli/commands/npm-audit/
 https://nodejs.org/api/process.html#processcwd
 
 **Ενότητα:** process.cwd().
+
+## Πλοήγηση επιστροφής
+
+Η δυναμική σελίδα δοκιμίου εισάγει το `Link` του Next.js και συνδέεται με την κατηγορία που προκύπτει από το επικυρωμένο route parameter: `/essays/learning` ή `/essays/philosophy`. Η ετικέτα προσαρμόζεται στην κατηγορία για να περιγράφει με σαφήνεια τον προορισμό.

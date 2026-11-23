@@ -280,3 +280,7 @@ npx vercel env pull .env.local
 - [MDN — Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 - [React — Conditional Rendering](https://react.dev/learn/conditional-rendering)
 - [Chakra UI — SimpleGrid](https://chakra-ui.com/docs/components/simple-grid)
+
+## Πλοήγηση επιστροφής
+
+Η σελίδα `/essays/philosophy` περιλαμβάνει σύνδεσμο Next.js `Link` προς `/essays` με ετικέτα «← Πίσω στα δοκίμια», ώστε να επιστρέφει στο γονικό index των κατηγοριών.
