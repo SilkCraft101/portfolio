@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Container, Heading, Text } from "@chakra-ui/react";
+import { Container, Heading, Separator, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -33,10 +33,17 @@ export default function OldMusicPage() {
           μου ιστορίας και μου θυμίζουν πώς εξελίχθηκε η σχέση μου με τη μουσική
           μέσα στα χρόνια.
         </Text>
-
         <Text mt={6}>
           <Link href="/music">← Πίσω στη μουσική</Link>
         </Text>
+        <Separator borderColor="border.subtle" my={6} w="full" />
+
+        <iframe
+          title="BandLab player - Old Drill Beats"
+          width="100%"
+          height="500"
+          src="https://www.bandlab.com/embed/collection/?id=3ff72f11-15e7-f111-91f2-70a8a56ceb96"
+        ></iframe>
       </Container>
     </main>
   );

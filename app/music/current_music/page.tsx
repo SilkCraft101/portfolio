@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Container, Heading, Text } from "@chakra-ui/react";
+import { Container, Heading, Separator, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -38,6 +38,13 @@ export default function CurrentMusicPage() {
         <Text mt={6}>
           <Link href="/music">← Πίσω στη μουσική</Link>
         </Text>
+        <Separator borderColor="border.subtle" my={6} w="full" />
+        <iframe
+          title="BandLab player - Lo-Fi & Liminal Music"
+          width="100%"
+          height="500"
+          src="https://www.bandlab.com/embed/collection/?id=dcaf95cf-16e7-f111-91f2-70a8a56ceb96"
+        ></iframe>
       </Container>
     </main>
   );
