@@ -28,6 +28,15 @@ export function Hobbies() {
         >
           <Link href="/essays">Δοκίμια</Link>
         </Text>
+
+        <Text
+          asChild
+          color="accent"
+          fontWeight="medium"
+          textDecoration="underline"
+        >
+          <Link href="/music">Μουσική</Link>
+        </Text>
       </HStack>
     </Stack>
   );

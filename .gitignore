@@ -48,3 +48,6 @@ next-env.d.ts
 
 # Εσωτερικός τεχνικός έλεγχος
 /docs/technical-audit-remediation.md
+
+# Τοπικά μουσικά αρχεία - Φιλοξενούνται στο BandLabs
+/beats/
