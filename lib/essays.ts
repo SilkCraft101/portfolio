@@ -37,13 +37,7 @@ export type EssayDocument = EssaySummary & {
 };
 
 function getLocalPath(category: EssayCategory, slug: string): string {
-  return path.join(
-    process.cwd(),
-    "content",
-    "essays",
-    category,
-    slug + ".md",
-  );
+  return path.join(process.cwd(), "content", "essays", category, slug + ".md");
 }
 
 function getErrorCode(error: unknown): string | undefined {
@@ -52,6 +46,27 @@ function getErrorCode(error: unknown): string | undefined {
   }
 
   return typeof error.code === "string" ? error.code : undefined;
+}
+
+function getSafeErrorMessage(error: unknown): string {
+  if (!(error instanceof Error)) {
+    return "UnknownError";
+  }
+
+  let message = error.message;
+  for (const [name, value] of Object.entries(process.env)) {
+    if (
+      !/(TOKEN|SECRET|PASSWORD|CREDENTIAL|PRIVATE|KEY|URL)/i.test(name) ||
+      !value ||
+      value.length < 4
+    ) {
+      continue;
+    }
+
+    message = message.replaceAll(value, "[REDACTED]");
+  }
+
+  return `${error.name}: ${message}`;
 }
 
 function toSummary(
@@ -88,7 +103,9 @@ async function readBlobMarkdown(
   }
 
   if (blob.statusCode !== 200 || blob.blob.size > MAX_ESSAY_BYTES) {
-    throw new Error("Το Blob δεν είναι διαθέσιμο ή υπερβαίνει το όριο μεγέθους.");
+    throw new Error(
+      "Το Blob δεν είναι διαθέσιμο ή υπερβαίνει το όριο μεγέθους.",
+    );
   }
 
   const markdown = await new Response(blob.stream).text();
@@ -131,7 +148,9 @@ export async function getEssayCatalog(
       const localPath = getLocalPath(category, localSlug);
       const fileInfo = await stat(localPath);
       if (fileInfo.size > MAX_ESSAY_BYTES) {
-        throw new Error("Το τοπικό δοκίμιο υπερβαίνει το επιτρεπόμενο μέγεθος.");
+        throw new Error(
+          "Το τοπικό δοκίμιο υπερβαίνει το επιτρεπόμενο μέγεθος.",
+        );
       }
 
       const markdown = await readFile(localPath, "utf8");
@@ -161,18 +180,14 @@ export async function getEssayCatalog(
     console.error(
       "[essays] Blob listing failed:",
       category,
-      error instanceof Error ? error.name : "UnknownError",
+      getSafeErrorMessage(error),
     );
   }
 
-  const candidates = selectBlobEssayEntries(
-    blobs,
-    category,
-    [
-      ...catalog.essays.map((essay) => essay.slug),
-      ...(localSlug ? [localSlug] : []),
-    ],
-  );
+  const candidates = selectBlobEssayEntries(blobs, category, [
+    ...catalog.essays.map((essay) => essay.slug),
+    ...(localSlug ? [localSlug] : []),
+  ]);
 
   for (let index = 0; index < candidates.length; index += MAX_METADATA_READS) {
     const batch = candidates.slice(index, index + MAX_METADATA_READS);
@@ -197,7 +212,9 @@ export async function getEssayCatalog(
           console.error(
             "[essays] Blob essay could not be listed:",
             pathname,
-            result.reason instanceof Error ? result.reason.name : "UnknownError",
+            result.reason instanceof Error
+              ? result.reason.name
+              : "UnknownError",
           );
           return [];
         }
@@ -224,7 +241,9 @@ export const getEssay = cache(
       try {
         const fileInfo = await stat(localPath);
         if (fileInfo.size > MAX_ESSAY_BYTES) {
-          throw new Error("Το τοπικό δοκίμιο υπερβαίνει το επιτρεπόμενο μέγεθος.");
+          throw new Error(
+            "Το τοπικό δοκίμιο υπερβαίνει το επιτρεπόμενο μέγεθος.",
+          );
         }
 
         const markdown = await readFile(localPath, "utf8");

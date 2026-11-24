@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Markdown from "react-markdown";
 import { notFound } from "next/navigation";
-import { Container, Text } from "@chakra-ui/react";
+import { Separator, Container, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -54,11 +54,10 @@ export default async function EssayPage({ params }: EssayPageProps) {
       <Container maxW="3xl" py={8} className="essay-markdown">
         <Text mb={6}>
           <Link href={`/essays/${category}`}>
-            ← Πίσω {
-              category === "learning"
-                ? "στα δοκίμια για τη μάθηση"
-                : "στα φιλοσοφικά δοκίμια"
-            }
+            ← Πίσω{" "}
+            {category === "learning"
+              ? "στα δοκίμια για τη μάθηση"
+              : "στα φιλοσοφικά δοκίμια"}
           </Link>
         </Text>
         <h1>{essay.title}</h1>
@@ -67,6 +66,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
             <em>{essay.subtitle}</em>
           </p>
         )}
+        <Separator borderColor="border.subtle" my={6} />
         <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
           {essay.content}
         </Markdown>

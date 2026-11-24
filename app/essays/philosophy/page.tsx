@@ -22,13 +22,12 @@ export default async function PhilosophyPage() {
 
   return (
     <main id="main-content" lang="el">
-      <Container maxW="6xl">
+      <Container maxW="6xl" py={{ base: 12, md: 16 }}>
         <Box maxW="3xl">
           <Heading
             as="h1"
             fontSize={{ base: "2xl", md: "3xl" }}
             letterSpacing="tight"
-            mt={3}
           >
             <span lang="en">Philosophy</span>
           </Heading>

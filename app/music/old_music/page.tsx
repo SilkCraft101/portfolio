@@ -11,12 +11,11 @@ export const metadata: Metadata = {
 export default function OldMusicPage() {
   return (
     <main id="main-content" lang="el">
-      <Container maxW="3xl">
+      <Container maxW="3xl" py={{ base: 12, md: 16 }}>
         <Heading
           as="h1"
           fontSize={{ base: "2xl", md: "3xl" }}
           letterSpacing="tight"
-          mt={3}
         >
           <span lang="en">Drill Beats</span>
         </Heading>

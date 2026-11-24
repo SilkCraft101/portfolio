@@ -26,13 +26,12 @@ export default async function LearningPage() {
 
   return (
     <main id="main-content" lang="el">
-      <Container maxW="6xl">
+      <Container maxW="6xl" py={{ base: 12, md: 16 }}>
         <Box maxW="3xl">
           <Heading
             as="h1"
             fontSize={{ base: "2xl", md: "3xl" }}
             letterSpacing="tight"
-            mt={3}
           >
             <span lang="en">How We Learn</span>
           </Heading>
@@ -44,8 +43,8 @@ export default async function LearningPage() {
             fontSize={{ base: "md", md: "lg" }}
             mt={4}
           >
-            Η μάθηση δεν είναι απλώς η απομνημόνευση πληροφοριών, αλλά μια σύνθετη
-            διαδικασία κατανόησης, σύνδεσης και αναδόμησης της γνώσης.
+            Η μάθηση δεν είναι απλώς η απομνημόνευση πληροφοριών, αλλά μια
+            σύνθετη διαδικασία κατανόησης, σύνδεσης και αναδόμησης της γνώσης.
           </Text>
 
           <Text
@@ -58,8 +57,9 @@ export default async function LearningPage() {
             Σε αυτή την ενότητα εξερευνώ την Επιστήμη της Μάθησης (Science of
             Learning), τη γνωστική ψυχολογία, τη λειτουργία της μνήμης και τις
             στρατηγικές που υποστηρίζουν την αποτελεσματική μάθηση. Παράλληλα,
-            εξετάζω ιδέες και τεχνικές των Tony Buzan, Richard Feynman και Justin
-            Sung, προσεγγίζοντάς τες με προσωπική περιέργεια και κριτική σκέψη.
+            εξετάζω ιδέες και τεχνικές των Tony Buzan, Richard Feynman και
+            Justin Sung, προσεγγίζοντάς τες με προσωπική περιέργεια και κριτική
+            σκέψη.
           </Text>
         </Box>
 
@@ -78,10 +78,7 @@ export default async function LearningPage() {
 
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6} mt={4}>
           {catalog.essays.map((essay) => (
-            <Link
-              key={essay.pathname}
-              href={"/essays/learning/" + essay.slug}
-            >
+            <Link key={essay.pathname} href={"/essays/learning/" + essay.slug}>
               <Box
                 borderWidth="1px"
                 borderColor="border.subtle"
