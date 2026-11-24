@@ -1,7 +1,16 @@
 // Τα Chakra components δίνουν τη δομή και τα style props. Το Image εισάγεται ξεχωριστά από το Next.js.
-import { Box, Container, Heading, Stack, Text, Flex } from "@chakra-ui/react";
+import {
+  Button,
+  Box,
+  Container,
+  Heading,
+  Stack,
+  Text,
+  Flex,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import { Hobbies } from "@/components/hobbies";
+import Link from "next/link";
 
 // Συγκεντρώνω εδώ τα styles της εικόνας και τα περνάω στο Image με style={imageStyle}.
 // Το borderRadius: "50%" κάνει την τετράγωνη εικόνα κυκλική.
@@ -23,7 +32,7 @@ export function Hero() {
       {/* Κρατάω το ίδιο πλάτος με το navbar και τα υπόλοιπα sections. */}
       <Container maxW="3xl">
         {/* Το gap ορίζει αποστάσεις μόνο ανάμεσα στα άμεσα παιδιά αυτού του Stack. */}
-        <Stack gap={5} align="flex-start">
+        <Stack gap={3} align="flex-start">
           {/* Το accent/10 δίνει 10% αδιαφάνεια μόνο στο χρώμα φόντου, όχι στο κείμενο. */}
           {/* Τα pt, pb και px προσθέτουν εσωτερικό χώρο πάνω, κάτω και στα πλάγια. */}
           <Box
@@ -75,6 +84,24 @@ export function Hero() {
               alt="My Profile Picture"
               style={imageStyle}
             />
+          </Flex>
+
+          <Flex w="full" align="center" justify="center" mt={0} mb={4}>
+            <Button
+              asChild
+              borderColor="accent"
+              size="xl"
+              variant="outline"
+              rounded="full"
+              transition="transform 0.4s ease, background-color 0.2s ease, border-color 0.2s ease"
+              _hover={{
+                bg: "accent/15",
+                borderWidth: "2px",
+                transform: "translateY(-2px)",
+              }}
+            >
+              <Link href="/works">My Portfolio</Link>
+            </Button>
           </Flex>
 
           {/* Το h2 ξεκινά την επόμενη ενότητα, με μικρότερο fontSize από το όνομα. */}
