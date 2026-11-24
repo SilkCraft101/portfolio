@@ -11,7 +11,7 @@
 - [ ] Διατήρηση του αρχικού περιεχομένου και των πηγών κάθε σημείωσης, χωρίς περιλήψεις ή αναδιατυπώσεις.
 - [ ] Οργάνωση των σημειώσεων ώστε να συνδέονται με τις αντίστοιχες υλοποιήσεις του Portfolio.
 - [x] Work Button: Προσθήκη κουμπιού στην αρχική σελίδα που οδηγεί στο `/works`.
-- [ ] Animated 3D Jumping Spider: Δημιουργία διαδραστικής τρσιδιάστατης αράχνης, με animations και αλληλεπίδραση με το ποντίκι.
+- [ ] Animated 3D Lantern Moth: Ενσωμάτωση διαδραστικού τρισδιάστατου μοντέλου στην αρχική σελίδα, με idle animation, διακριτική αιώρηση και αλληλεπίδραση με το ποντίκι. Το μοντέλο προέρχεται από το Blockbench Workshop και αποδίδεται μέσω Three.js.
 - [x] Music (`/music`): Ενσωμάτωση των δημοσιευμένων BandLab albums "Old Drill Beats" και "LoFi & Liminal Music" μέσω εξωτερικών music players.
 - [x] Αναδιαμόρφωση της ενότητας χρήσης AI στο `README.md`, με συνοπτική παρουσίαση και σύνδεσμο προς το αναλυτικό δοκίμιο "Ο ρόλος της τεχνητής νοημοσύνης στα projects μου".
 - [x] Προσθήκη context-aware συνδέσμων επιστροφής στις υποσελίδες δοκιμίων: από Learning και Philosophy στα Essays και από κάθε δοκίμιο στην αντίστοιχη κατηγορία.
@@ -52,6 +52,49 @@
 - **server-only:** Μηχανισμός προστασίας των ορίων μεταξύ server-side και client-side κώδικα, ο οποίος αποτρέπει την κατά λάθος εισαγωγή του module ανάκτησης δοκιμίων σε Client Components.
 
 Για την ανάπτυξη και τη διαχείριση του project χρησιμοποιώ επίσης **Git**, **GitHub** και **Neovim**, ενώ το deployment πραγματοποιείται μέσω **Vercel**.
+
+## Τρισδιάστατο μοντέλο - Lantern Moth
+
+### Προέλευση
+
+[yair — Lantern Moth, Blockbench Workshop](https://blockbenchworkshop.com/model/yair/lantern-moth)
+
+Το μοντέλο επιλέχθηκε για τη δημιουργία ενός διαδραστικού τρισδιάστατου στοιχείου στην αρχική σελίδα του Portfolio.
+
+Το αρχικό αρχείο `.bbmodel` ανοίχτηκε στο Blockbench. Επιβεβαιώθηκε η παρουσία του animation `idle` μέσα στον editor.
+
+### Άδεια χρήσης
+
+[Creative Commons — Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/)
+
+Η άδεια CC BY 4.0 επιτρέπει την αντιγραφή, αναδιανομή, προσαρμογή και χρήση του έργου, συμπεριλαμβανομένης της εμπορικής χρήσης.
+
+### Εξαγωγή του μοντέλου
+
+[Blockbench](https://www.blockbench.net/)
+
+Το αρχικό μοντέλο εξήχθη μέσω της επιλογής **File -> Export -> Export glTF Model**.
+
+Οι επιλογές εξαγωγής ήταν:
+
+- **Encoding:** Binary (GLB).
+- **Model Export Scale:** 16.
+- **Embed Textures:** Enabled.
+- **Export Groups as Armature:** Disabled.
+- **Export Animations:** Enabled.
+
+Το εξαγόμενο αρχείο τοποθετήθηκε στη διαδρομή:
+
+`public/models/lantern-moth.glb`
+
+Η επιτυχής διατήρηση των textures και του animation στο τελικό GLB εκκρεμεί να επαληθευτεί.
+
+### Σχετικά αρχεία
+
+- `public/models/lantern-moth.glb`
+- `README.md`
+
+Η τεχνική τεκμηρίωση της ενσωμάτωσης με Three.js θα προστεθεί όταν υλοποιηθεί η αντίστοιχη λειτουργία.
 
 ## Δημοσίευση νέων δοκιμίων
 
