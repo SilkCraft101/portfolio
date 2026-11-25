@@ -214,6 +214,118 @@
 - [MDN — color-mix()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix)
 - [Chakra UI — Semantic Tokens](https://chakra-ui.com/docs/theming/semantic-tokens)
 
+## Markdown Essays — Blockquotes (25/11/2026)
+
+Προστέθηκαν CSS κανόνες για την εμφάνιση των απλών Markdown Blockquotes στα δοκίμια.
+
+### Μορφοποίηση
+
+- `.essay-markdown blockquote`: Εφαρμόζει αριστερό περίγραμμα, εσωτερικά και εξωτερικά περιθώρια, πλάγια γραφή και διακριτικό background.
+- `border-left`: Δημιουργεί την κατακόρυφη γραμμή που διαχωρίζει οπτικά το παράθεμα.
+- `padding: 1rem 1.5rem`: Προσθέτει εσωτερικό χώρο γύρω από το περιεχόμενο.
+- `font-style: italic`: Διαφοροποιεί το παράθεμα από το υπόλοιπο κείμενο.
+- `color-mix()`: Δημιουργεί διακριτικό background με βάση το τρέχον χρώμα κειμένου.
+- `.essay-markdown blockquote > p:last-child`: Αφαιρεί το κάτω περιθώριο της τελευταίας παραγράφου.
+
+### Διόρθωση
+
+Αρχικά χρησιμοποιήθηκε η μη έγκυρη δήλωση:
+
+    padding-left: 1rem 1.5rem;
+
+Η `padding-left` δέχεται μία τιμή, επομένως ο browser αγνοούσε τη δήλωση.
+
+Αντικαταστάθηκε με:
+
+    padding: 1rem 1.5rem;
+
+Έτσι εφαρμόζονται σωστά τα εσωτερικά περιθώρια.
+
+### Επαλήθευση
+
+Επιβεβαιώθηκε ότι τα απλά Markdown Blockquotes διατηρούν τη δική τους μορφοποίηση και δεν μετατρέπονται σε Obsidian Callouts.
+
+Η εμφάνιση των Blockquotes ελέγχθηκε οπτικά στο Dark Mode. Η χρήση των `currentColor` και `color-mix()` επιτρέπει την προσαρμογή των χρωμάτων στο ενεργό θέμα, χωρίς ξεχωριστές δηλώσεις για Light και Dark Mode.
+
+## Markdown Essays — Obsidian Callouts (25/11/2026)
+
+Προστέθηκαν CSS κανόνες για την εμφάνιση των Obsidian Callouts στα Markdown δοκίμια.
+
+Η μετατροπή του Markdown σε HTML πραγματοποιείται από το `rehype-callouts`, ενώ το `app/globals.css` καθορίζει την εμφάνιση.
+
+### Κοινή μορφοποίηση
+
+- `.essay-markdown .callout`: Καθορίζει το εξωτερικό πλαίσιο, το background, τα περιγράμματα και τις αποστάσεις.
+- `.essay-markdown .callout-title`: Χρησιμοποιεί Flexbox για να τοποθετήσει το εικονίδιο και τον τίτλο στην ίδια γραμμή.
+- `border-inline-start`: Δημιουργεί την κατακόρυφη γραμμή στην αρχή του Callout.
+- `border-radius`: Δημιουργεί στρογγυλεμένες γωνίες.
+- `padding`: Προσθέτει εσωτερικό χώρο.
+- `color-mix()`: Δημιουργεί διακριτικό background.
+
+### Χρώματα και Semantic Tokens
+
+Τα Callouts χρησιμοποιούν την υπάρχουσα παλέτα του Portfolio από το `components/ui/provider.tsx`.
+
+Η CSS Custom Property `--callout-accent` καθορίζει το χρώμα της κατακόρυφης γραμμής και του τίτλου.
+
+Χρησιμοποιούνται τα εξής Chakra UI Semantic Tokens:
+
+- `accent`: Προειδοποιήσεις, συμβουλές και υποδείξεις.
+- `linkHover`: Σημαντικές πληροφορίες, κίνδυνοι και σφάλματα.
+- `fg.muted`: Σημειώσεις, πληροφορίες, ερωτήσεις και παραθέματα.
+- `border.subtle`: Περιλήψεις και επιτυχείς καταστάσεις.
+
+Οι CSS Attribute Selectors με `data-callout` επιτρέπουν τη διαφοροποίηση ανά τύπο.
+
+Η ομαδοποίηση πραγματοποιείται μέσω της ψευδοκλάσης `:is()`.
+
+Τα χρώματα προσαρμόζονται στο Light και Dark Mode μέσω των Semantic Tokens.
+
+### Αναδιπλούμενα Callouts
+
+Το `rehype-callouts` δημιουργεί τα HTML στοιχεία `<details>` και `<summary>` για τα αναδιπλούμενα Callouts.
+
+Η σύνταξη `[!note]-` δημιουργεί αρχικά κλειστό Callout.
+
+Η σύνταξη `[!note]+` δημιουργεί αρχικά ανοιχτό Callout.
+
+Η βασική συμπεριφορά αναδίπλωσης παρέχεται από την HTML, χωρίς πρόσθετη JavaScript.
+
+### Εμφωλευμένα Callouts
+
+Τα Callouts μπορούν να περιέχουν άλλα Callouts.
+
+Η μορφοποίηση εφαρμόζεται σε κάθε Callout ανεξάρτητα, ενώ οι εμφωλευμένοι τύποι μπορούν να χρησιμοποιούν διαφορετικά χρώματα.
+
+### Επαλήθευση
+
+Πραγματοποιήθηκαν δοκιμές μετατροπής Markdown σε HTML για 17 τύπους Callouts.
+
+Επιβεβαιώθηκαν:
+
+- Η αναγνώριση των τύπων και των προσαρμοσμένων τίτλων.
+- Η παραγωγή HTML για αρχικά ανοιχτά και κλειστά Callouts.
+- Η σωστή δομή των εμφωλευμένων Callouts.
+- Η διατήρηση των απλών Blockquotes.
+- Η συνεργασία με Markdown πίνακες και μαθηματικές εκφράσεις KaTeX.
+- Η εμφάνιση των βασικών Callouts στο Light και Dark Mode.
+
+Οι έλεγχοι ESLint, TypeScript και production build ολοκληρώθηκαν επιτυχώς.
+
+Εκτελέστηκαν επίσης 18 αυτοματοποιημένα tests, χωρίς αποτυχίες.
+
+Τα υπάρχοντα tests δεν καλύπτουν ειδικά τη συμπεριφορά των Callouts.
+
+### Πηγές
+
+- [Obsidian Help — Callouts](https://help.obsidian.md/callouts)
+- [rehype-callouts — GitHub](https://github.com/lin-stephanie/rehype-callouts)
+- [MDN — details](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details)
+- [MDN — summary](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/summary)
+- [MDN — color-mix()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/color-mix)
+- [MDN — CSS Attribute Selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Attribute_selectors)
+- [Chakra UI — Semantic Tokens](https://chakra-ui.com/docs/theming/semantic-tokens)
+
 ## Πηγές
 
 Οι σχετικές πηγές βρίσκονται στο [sources.md](../sources.md), στις καταχωρίσεις για Global CSS και γραμματοσειρές. Ο καθολικός selector καλύπτεται από την πηγή W3C Selectors στην καταχώριση του αρχικού CSS module.

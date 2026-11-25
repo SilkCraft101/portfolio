@@ -5,6 +5,7 @@ import { Separator, Container, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import rehypeCallouts from "rehype-callouts";
 import "katex/dist/katex.min.css";
 import { getEssay, type EssayCategory } from "@/lib/essays";
 import { isValidEssaySlug } from "@/lib/essay-utils";
@@ -70,7 +71,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
         <Separator borderColor="border.subtle" my={6} />
         <Markdown
           remarkPlugins={[remarkMath, remarkGfm]}
-          rehypePlugins={[rehypeKatex]}
+          rehypePlugins={[rehypeKatex, rehypeCallouts]}
           components={{
             table: ({ children }) => (
               <div className="essay-table-scroll">

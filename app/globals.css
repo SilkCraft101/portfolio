@@ -86,6 +86,104 @@ a {
   margin: 2.5rem 0;
 }
 
+.essay-markdown blockquote {
+  border-left: 4px solid currentColor;
+  padding: 1rem 1.5rem;
+  margin: 1.75rem 0;
+  font-style: italic;
+  font-size: 1.2rem;
+  background-color: color-mix(in srgb, currentColor 5%, transparent);
+}
+
+.essay-markdown blockquote > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Markdown Essays - Obsidian Callouts */
+
+.essay-markdown .callout {
+  border-inline-start: 4px solid currentColor;
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  margin: 1.75rem 0;
+  background-color: color-mix(in srgb, currentColor 5%, transparent);
+}
+
+.essay-markdown .callout-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+/* Markdown Essays — Obsidian Callout Colors */
+
+/* Κοινό χρώμα για την κάθετη γραμμή και τον τίτλο. */
+.essay-markdown .callout {
+  --callout-accent: var(--chakra-colors-fg-muted);
+
+  border-inline-start-color: var(--callout-accent);
+}
+
+.essay-markdown .callout > .callout-title {
+  color: var(--callout-accent);
+}
+
+/* Amber — Προειδοποιήσεις, συμβουλές και υποδείξεις. */
+.essay-markdown
+  .callout:is(
+    [data-callout="warning"],
+    [data-callout="caution"],
+    [data-callout="attention"],
+    [data-callout="tip"],
+    [data-callout="hint"]
+  ) {
+  --callout-accent: var(--chakra-colors-accent);
+}
+
+/* Rose — Σημαντικές πληροφορίες, κίνδυνοι και σφάλματα. */
+.essay-markdown
+  .callout:is(
+    [data-callout="important"],
+    [data-callout="danger"],
+    [data-callout="error"],
+    [data-callout="failure"],
+    [data-callout="fail"],
+    [data-callout="missing"],
+    [data-callout="bug"]
+  ) {
+  --callout-accent: var(--chakra-colors-link-hover);
+}
+
+/* Muted — Σημειώσεις, πληροφορίες, ερωτήσεις και παραθέματα. */
+.essay-markdown
+  .callout:is(
+    [data-callout="note"],
+    [data-callout="info"],
+    [data-callout="todo"],
+    [data-callout="question"],
+    [data-callout="help"],
+    [data-callout="faq"],
+    [data-callout="example"],
+    [data-callout="quote"],
+    [data-callout="cite"]
+  ) {
+  --callout-accent: var(--chakra-colors-fg-muted);
+}
+
+/* Subtle — Περιλήψεις και επιτυχείς καταστάσεις. */
+.essay-markdown
+  .callout:is(
+    [data-callout="abstract"],
+    [data-callout="summary"],
+    [data-callout="tldr"],
+    [data-callout="success"],
+    [data-callout="check"],
+    [data-callout="done"]
+  ) {
+  --callout-accent: var(--chakra-colors-border-subtle);
+}
+
 /* Markdown Essays — macOS Code Blocks */
 
 .essay-markdown pre {

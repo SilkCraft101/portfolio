@@ -273,3 +273,102 @@ https://nodejs.org/api/process.html#processcwd
 
 - [react-markdown — Components](https://github.com/remarkjs/react-markdown#components)
 - [remark-gfm — Official Documentation](https://github.com/remarkjs/remark-gfm)
+
+## Υποστήριξη Markdown Blockquotes και Obsidian Callouts — 25/11/2026
+
+Η δυναμική διαδρομή `/essays/[category]/[slug]` υποστηρίζει απλά Markdown Blockquotes και Obsidian Callouts.
+
+### Blockquotes
+
+Τα απλά Markdown Blockquotes χρησιμοποιούν τη σύνταξη `>`.
+
+Το `react-markdown` τα μετατρέπει σε HTML στοιχεία `<blockquote>` χωρίς να απαιτείται πρόσθετο plugin.
+
+Παράδειγμα:
+
+> Αυτό είναι ένα απλό Markdown παράθεμα.
+
+Η μορφοποίησή τους πραγματοποιείται στο `app/globals.css`.
+
+### Obsidian Callouts
+
+Εγκαταστάθηκε το plugin `rehype-callouts`, το οποίο επιτρέπει την απόδοση Obsidian-style Callouts στα Markdown δοκίμια.
+
+Παράδειγμα σύνταξης:
+
+    > [!note] Σημείωση
+    > Αυτό είναι το περιεχόμενο του Callout.
+
+### Ενσωμάτωση στο Markdown Rendering Pipeline
+
+Στο `app/essays/[category]/[slug]/page.tsx`:
+
+- `rehype-callouts`: Μετατρέπει τα Obsidian Callouts σε κατάλληλη HTML δομή.
+- `rehypePlugins`: Περιλαμβάνει τα `rehypeKatex` και `rehypeCallouts`.
+- `remarkPlugins`: Διατηρεί τα `remarkMath` και `remarkGfm`.
+- `data-callout`: Προσδιορίζει τον τύπο κάθε Callout και επιτρέπει τη διαφοροποίησή του μέσω CSS.
+
+Η τελική διαμόρφωση είναι:
+
+    <Markdown
+      remarkPlugins={[remarkMath, remarkGfm]}
+      rehypePlugins={[rehypeKatex, rehypeCallouts]}
+    >
+
+Το υπάρχον custom renderer για τους GFM πίνακες διατηρείται στο `components` prop.
+
+### Αναδιπλούμενα Callouts
+
+Υποστηρίζονται οι συντάξεις:
+
+- `[!note]-`: Αρχικά κλειστό Callout.
+- `[!note]+`: Αρχικά ανοιχτό Callout.
+
+Το plugin δημιουργεί HTML στοιχεία `<details>` και `<summary>`, επιτρέποντας την αναδίπλωση χωρίς πρόσθετη JavaScript.
+
+### Εμφωλευμένα Callouts
+
+Υποστηρίζονται Callouts μέσα σε άλλα Callouts, με διατήρηση της αντίστοιχης HTML ιεραρχίας.
+
+Η εμφάνιση κάθε τύπου καθορίζεται από τους CSS κανόνες του `app/globals.css`.
+
+### Συμβατότητα
+
+Η προσθήκη του `rehype-callouts` δεν αντικαθιστά τα υπάρχοντα Markdown plugins.
+
+Διατηρούνται:
+
+- Τα απλά Blockquotes.
+- Οι GFM πίνακες μέσω `remark-gfm`.
+- Οι μαθηματικές εκφράσεις μέσω `remark-math` και `rehype-katex`.
+- Η υπάρχουσα μορφοποίηση των Markdown δοκιμίων.
+
+### Επαλήθευση
+
+Πραγματοποιήθηκαν δοκιμές μετατροπής Markdown σε HTML για 17 τύπους Callouts.
+
+Επιβεβαιώθηκαν:
+
+- Η αναγνώριση των δοκιμασμένων τύπων Callouts.
+- Η δημιουργία αρχικά ανοιχτών και κλειστών Callouts.
+- Η σωστή εμφώλευση.
+- Η διατήρηση των απλών Blockquotes.
+- Η συνεργασία με GFM πίνακες και KaTeX.
+- Η εμφάνιση των βασικών Callouts σε Light και Dark Mode.
+
+Οι τεχνικοί έλεγχοι ολοκληρώθηκαν επιτυχώς:
+
+- `npm run lint`: Επιτυχής.
+- `npx tsc --noEmit`: Επιτυχής.
+- `npm run build`: Επιτυχές production build.
+- `npm run test`: 18 επιτυχημένα tests, 0 αποτυχίες.
+
+Τα υπάρχοντα automated tests δεν περιλαμβάνουν ειδικά regression tests για τα Callouts.
+
+### Πηγές
+
+- [react-markdown — Official Documentation](https://github.com/remarkjs/react-markdown)
+- [rehype-callouts — GitHub](https://github.com/lin-stephanie/rehype-callouts)
+- [Obsidian Help — Callouts](https://help.obsidian.md/callouts)
+- [MDN — Blockquote](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/blockquote)
+- [MDN — Details](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details)

@@ -279,6 +279,62 @@ npm install remark-gfm
 - [remark-gfm — API](https://github.com/remarkjs/remark-gfm#api)
 - [npm — npm install](https://docs.npmjs.com/cli/v11/commands/npm-install)
 
+## Υποστήριξη Obsidian Callouts — 25/11/2026
+
+Εγκατέστησα το `rehype-callouts` ως runtime dependency:
+
+```bash
+npm install rehype-callouts
+```
+
+Η εγκατεστημένη έκδοση είναι `rehype-callouts@2.1.2`.
+
+Το package προστέθηκε στο `package.json` και ενημερώθηκε το `package-lock.json`.
+
+### Σκοπός
+
+Το `rehype-callouts` επεκτείνει την απόδοση Markdown με υποστήριξη Obsidian-style Callouts.
+
+Υποστηρίζει:
+
+- Διαφορετικούς τύπους Callouts, όπως `note`, `warning`, `important` και `tip`.
+- Προσαρμοσμένους τίτλους.
+- Αναδιπλούμενα Callouts.
+- Εμφωλευμένα Callouts.
+
+### Ενσωμάτωση
+
+Στο `app/essays/[category]/[slug]/page.tsx`, το `rehype-callouts` χρησιμοποιείται μέσω του `rehypePlugins`, μαζί με το `rehype-katex`.
+
+Η εγκατάσταση δεν αντικαθιστά τις υπάρχουσες dependencies:
+
+- `react-markdown`: Αποδίδει το Markdown ως React elements.
+- `remark-math`: Αναγνωρίζει μαθηματικές εκφράσεις.
+- `remark-gfm`: Υποστηρίζει GitHub Flavored Markdown.
+- `rehype-katex`: Αποδίδει μαθηματικές εκφράσεις μέσω KaTeX.
+- `rehype-callouts`: Μετατρέπει τα Obsidian Callouts σε HTML δομή.
+
+Η εμφάνιση των Callouts υλοποιείται στο `app/globals.css`.
+
+### Επαλήθευση
+
+- Αναγνώριση 17 δοκιμασμένων τύπων Callouts: Επιτυχής.
+- Αναδιπλούμενα και εμφωλευμένα Callouts: Επιτυχής.
+- Συμβατότητα με Blockquotes, GFM Tables και KaTeX: Επιτυχής.
+- Οπτικός έλεγχος σε Light και Dark Mode: Επιτυχής.
+- `npm run lint`: Επιτυχής.
+- `npx tsc --noEmit`: Επιτυχής.
+- `npm run test`: 18/18 επιτυχημένα.
+- `npm run build`: Επιτυχές production build.
+
+Τα 18 υπάρχοντα automated tests δεν περιλαμβάνουν ειδικά regression tests για τα Callouts.
+
+### Πηγές
+
+- [rehype-callouts — GitHub](https://github.com/lin-stephanie/rehype-callouts)
+- [Obsidian Help — Callouts](https://help.obsidian.md/callouts)
+- [npm — npm install](https://docs.npmjs.com/cli/v11/commands/npm-install)
+
 ## Πηγές
 
 ### npm — package.json
