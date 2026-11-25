@@ -175,6 +175,45 @@
 
 Στο commit [603b82e — Καθαρισμός και οργάνωση σχολίων](https://github.com/SilkCraft101/portfolio/commit/603b82e) ενημερώθηκαν μόνο τα σχόλια, χωρίς αλλαγή στους κανόνες CSS.
 
+## Markdown Essays — Tables (25/11/2026)
+
+Στο `app/globals.css` προστέθηκαν CSS κανόνες για την εμφάνιση Markdown πινάκων, με αισθητική εμπνευσμένη από το Obsidian.
+
+### Μορφοποίηση
+
+- `.essay-markdown table`: Ορίζει πλήρες πλάτος, κοινά περιγράμματα μέσω `border-collapse: collapse` και εξωτερικά περιθώρια.
+- `.essay-markdown th, .essay-markdown td`: Προσθέτει padding και περιγράμματα `1px solid`.
+- `var(--chakra-colors-border-subtle)`: Χρησιμοποιεί το semantic token του Chakra UI για διακριτικά περιγράμματα σε Light και Dark Mode.
+- `.essay-markdown th`: Ξεχωρίζει τις επικεφαλίδες με `font-weight: 700` και διακριτικό background μέσω `color-mix()`.
+
+### Responsive scrolling
+
+Κάθε πίνακας περιβάλλεται από ένα `div` με την κλάση `essay-table-scroll`.
+
+```css
+.essay-markdown .essay-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+```
+
+Το `max-width: 100%` περιορίζει το πλάτος του container, ενώ το `overflow-x: auto` επιτρέπει οριζόντια κύλιση όταν ο πίνακας υπερβαίνει τον διαθέσιμο χώρο.
+
+Έτσι, σε μικρές οθόνες ο πίνακας μπορεί να μετακινείται οριζόντια χωρίς να προκαλεί κύλιση ολόκληρης της σελίδας.
+
+### Επαλήθευση
+
+Η εμφάνιση ελέγχθηκε σε Light και Dark Mode, καθώς και σε πλάτη 375px και 320px.
+
+Στα 320px επιβεβαιώθηκε ότι η οριζόντια κύλιση περιορίζεται στον πίνακα.
+
+### Πηγές
+
+- [MDN — border-collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse)
+- [MDN — overflow-x](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x)
+- [MDN — color-mix()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix)
+- [Chakra UI — Semantic Tokens](https://chakra-ui.com/docs/theming/semantic-tokens)
+
 ## Πηγές
 
 Οι σχετικές πηγές βρίσκονται στο [sources.md](../sources.md), στις καταχωρίσεις για Global CSS και γραμματοσειρές. Ο καθολικός selector καλύπτεται από την πηγή W3C Selectors στην καταχώριση του αρχικού CSS module.

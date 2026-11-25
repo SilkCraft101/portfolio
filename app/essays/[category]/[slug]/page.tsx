@@ -8,6 +8,7 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import { getEssay, type EssayCategory } from "@/lib/essays";
 import { isValidEssaySlug } from "@/lib/essay-utils";
+import remarkGfm from "remark-gfm";
 
 type EssayPageProps = PageProps<"/essays/[category]/[slug]">;
 
@@ -67,7 +68,17 @@ export default async function EssayPage({ params }: EssayPageProps) {
           </p>
         )}
         <Separator borderColor="border.subtle" my={6} />
-        <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+        <Markdown
+          remarkPlugins={[remarkMath, remarkGfm]}
+          rehypePlugins={[rehypeKatex]}
+          components={{
+            table: ({ children }) => (
+              <div className="essay-table-scroll">
+                <table>{children}</table>
+              </div>
+            ),
+          }}
+        >
           {essay.content}
         </Markdown>
       </Container>

@@ -38,44 +38,6 @@
 
 Το `react-markdown` χρησιμοποιείται στη δυναμική διαδρομή `app/essays/[category]/[slug]/page.tsx` για την εμφάνιση των πραγματικών δοκιμίων.
 
-### Υποστήριξη μαθηματικών τύπων — 18/11/2026
-
-Προστέθηκαν τρεις νέες dependencies:
-
-- `remark-math`: Αναγνωρίζει μαθηματικές εκφράσεις μέσα στο Markdown.
-- `rehype-katex`: Μετατρέπει τις μαθηματικές εκφράσεις σε μορφοποιημένο περιεχόμενο μέσω KaTeX.
-- `katex`: Παρέχει τη μηχανή απόδοσης μαθηματικών τύπων και το απαραίτητο CSS.
-
-Οι βιβλιοθήκες χρησιμοποιούνται στη δυναμική διαδρομή `app/essays/[category]/[slug]/page.tsx`.
-
-Η εγκατάσταση πραγματοποιήθηκε με:
-
-`npm install remark-math rehype-katex katex`
-
-## npm Override - KaTeX (18/11/2026)
-
-Κατά την εγκατάσταση των μαθηματικών βιβλιοθηκών εντόπισα παλαιότερες, ευάλωτες εκδο΄σεις του KaTeX στις έμμεσες εξαρτήσεις.
-
-Για την αντιμετώπιση του προβλήματος πρόσθεσα στο `package.json`:
-
-```json
-"overrides": {
-  "katex": "$katex"
-}
-```
-
-Το `$katex` αναφέρεται στο version specification της άμεσης dependency `katex` του project.
-
-Πρόσθεσα τη ρύθμιση με την εντολή:
-
-`npm pkg set 'overrides.katex=$katex'`
-
-Εν συνεχεία εκτέλεσα `npm install` για την εφαρμογή της αλλαγής.
-
-Ο έλεγχος `npm ls katex` επιβεβαίωσε ότι οι σχετικές εξαρτήσεις χρησιμοποιούν πλέον `katex@0.19.1`.
-
-Το override εφαρμόστηκε χωρίς χρήση της επιλογής `npm audit fix --force`.
-
 ## Dev dependencies και εκδόσεις
 
 Στα `devDependencies` βρίσκονται το TypeScript, το ESLint, το configuration του Next.js για ESLint και τα πακέτα `@types` με δηλώσεις τύπων. Τα `@types` δεν αποτελούν runtime υλοποιήσεις των αντίστοιχων βιβλιοθηκών.
@@ -129,6 +91,44 @@
 Κατά την εγκατάσταση εμφανίστηκε προειδοποίηση για μη εγκεκριμένο install script του `unrs-resolver`.
 
 Δεν εγκρίθηκε η εκτέλεση του συγκεκριμένου script.
+
+## Υποστήριξη μαθηματικών τύπων — 18/11/2026
+
+Προστέθηκαν τρεις νέες dependencies:
+
+- `remark-math`: Αναγνωρίζει μαθηματικές εκφράσεις μέσα στο Markdown.
+- `rehype-katex`: Μετατρέπει τις μαθηματικές εκφράσεις σε μορφοποιημένο περιεχόμενο μέσω KaTeX.
+- `katex`: Παρέχει τη μηχανή απόδοσης μαθηματικών τύπων και το απαραίτητο CSS.
+
+Οι βιβλιοθήκες χρησιμοποιούνται στη δυναμική διαδρομή `app/essays/[category]/[slug]/page.tsx`.
+
+Η εγκατάσταση πραγματοποιήθηκε με:
+
+`npm install remark-math rehype-katex katex`
+
+## npm Override - KaTeX (18/11/2026)
+
+Κατά την εγκατάσταση των μαθηματικών βιβλιοθηκών εντόπισα παλαιότερες, ευάλωτες εκδο΄σεις του KaTeX στις έμμεσες εξαρτήσεις.
+
+Για την αντιμετώπιση του προβλήματος πρόσθεσα στο `package.json`:
+
+```json
+"overrides": {
+  "katex": "$katex"
+}
+```
+
+Το `$katex` αναφέρεται στο version specification της άμεσης dependency `katex` του project.
+
+Πρόσθεσα τη ρύθμιση με την εντολή:
+
+`npm pkg set 'overrides.katex=$katex'`
+
+Εν συνεχεία εκτέλεσα `npm install` για την εφαρμογή της αλλαγής.
+
+Ο έλεγχος `npm ls katex` επιβεβαίωσε ότι οι σχετικές εξαρτήσεις χρησιμοποιούν πλέον `katex@0.19.1`.
+
+Το override εφαρμόστηκε χωρίς χρήση της επιλογής `npm audit fix --force`.
 
 ## Security Audit - 18/11/2026
 
@@ -248,6 +248,36 @@
 - Vercel OIDC: https://vercel.com/docs/oidc
 - npm Overrides: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides
 - npm Audit: https://docs.npmjs.com/cli/v11/commands/npm-audit
+
+## Υποστήριξη GitHub Flavored Markdown — 25/11/2026
+
+Εγκατέστησα το `remark-gfm` ως runtime dependency:
+
+```bash
+npm install remark-gfm
+```
+
+Το package προστέθηκε στο `package.json` και ενημερώθηκε το `package-lock.json`.
+
+Το `remark-gfm` επεκτείνει την υποστήριξη Markdown με στοιχεία του GitHub Flavored Markdown (GFM), όπως πίνακες, task lists, strikethrough και footnotes.
+
+Στο `app/essays/[category]/[slug]/page.tsx` χρησιμοποιείται μαζί με το `remark-math` μέσω του `remarkPlugins`.
+
+Η προσθήκη επιτρέπει την αναγνώριση GFM πινάκων στα δοκίμια, διατηρώντας την υπάρχουσα υποστήριξη μαθηματικών εκφράσεων.
+
+### Επαλήθευση
+
+- `npm install`: Επιτυχής, 0 vulnerabilities.
+- `npm run lint`: Επιτυχής.
+- `npm run typecheck`: Επιτυχής.
+- `npm run test`: 18/18 επιτυχημένα.
+- `npm run build`: Επιτυχές production build.
+
+### Πηγές
+
+- [remark-gfm — Installation](https://github.com/remarkjs/remark-gfm#install)
+- [remark-gfm — API](https://github.com/remarkjs/remark-gfm#api)
+- [npm — npm install](https://docs.npmjs.com/cli/v11/commands/npm-install)
 
 ## Πηγές
 

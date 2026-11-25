@@ -120,6 +120,30 @@ a {
   white-space: pre;
 }
 
+/* Markdown Essays - Tables */
+
+.essay-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+.essay-markdown th,
+.essay-markdown td {
+  padding: 0.5rem 1rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--chakra-colors-border-subtle);
+}
+
+.essay-markdown th {
+  font-weight: 700;
+  background-color: color-mix(in srgb, currentColor 5%, transparent);
+}
+
+.essay-markdown .essay-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
 
 .skip-link {
   position: absolute;

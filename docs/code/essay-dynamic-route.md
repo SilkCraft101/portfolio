@@ -238,3 +238,38 @@ https://nodejs.org/api/process.html#processcwd
 ## Πλοήγηση επιστροφής
 
 Η δυναμική σελίδα δοκιμίου εισάγει το `Link` του Next.js και συνδέεται με την κατηγορία που προκύπτει από το επικυρωμένο route parameter: `/essays/learning` ή `/essays/philosophy`. Η ετικέτα προσαρμόζεται στην κατηγορία για να περιγράφει με σαφήνεια τον προορισμό.
+
+## Υποστήριξη Markdown Tables - 25/11/2026
+
+Η δυναμική διαδρομή `/essays/[category]/[slug]` υποστηρίζει πλέον πίνακες GFM.
+
+### Υλοποίηση
+
+Στο `app/essays/[category]/[slug]/page.tsx`:
+
+- `remark-gfm`: Επεκτείνει την αναγνώριση Markdown ώστε να υποστηρίζονται GFM πίνακες.
+- `remarkPlugins`: Περιλαμβάνει τα `remarkMath` και `remarkGfm`, διατηρώντας την υποστήριξη μαθηματικών εκφράσεων.
+- `components`: Προσαρμόζει την απόδοση του HTML στοιχείου `table`.
+- `children`: Διατηρεί το περιεχόμενο του πίνακα.
+- `essay-table-scroll`: CSS class του container που περιβάλλει κάθε πίνακα.
+
+Ο custom renderer τοποθετεί κάθε `table` μέσα σε ένα `div`, επιτρέποντας ανεξάρτητη οριζόντια κύλιση σε μικρές οθόνες.
+
+Η μορφοποίηση υλοποιείται στο `app/globals.css` και περιγράφεται στο `docs/code/globals-css.md`.
+
+### Επαλήθευση
+
+- Αναγνώριση GFM πίνακα: Επιτυχής.
+- Light και Dark Mode: Επιτυχής οπτικός έλεγχος.
+- Responsive scrolling στα 320px: Επιτυχής πρακτική δοκιμή.
+- `npm run lint`: Επιτυχής.
+- `npm run typecheck`: Επιτυχής.
+- `npm run test`: 18 επιτυχημένα tests.
+- `npm run build`: Επιτυχές production build.
+
+Τα automated tests δεν περιλαμβάνουν ακόμη ειδικό regression test για την απόδοση των Markdown tables.
+
+### Πηγές
+
+- [react-markdown — Components](https://github.com/remarkjs/react-markdown#components)
+- [remark-gfm — Official Documentation](https://github.com/remarkjs/remark-gfm)
