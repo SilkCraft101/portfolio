@@ -2,20 +2,16 @@ import {
   Separator,
   Box,
   Container,
-  Flex,
   Heading,
   Stack,
   Text,
-  Link as ChakraLink,
+  SimpleGrid,
 } from "@chakra-ui/react";
-import Image from "next/image";
+import { WorkGridItem } from "@/components/work-grid-item";
+import type { Metadata } from "next";
+import portfolioPreview from "@/public/images/portfolio-preview.png";
 
-const imageStyle = {
-  width: "300px",
-  height: "auto",
-};
-
-export const metadata = {
+export const metadata: Metadata = {
   title: "Works",
   description: "Τα τεχνικά projects του Αλέξανδρου Κοτσολάκη.",
 };
@@ -52,72 +48,19 @@ export default function WorksPage() {
 
           <Separator borderColor="border.subtle" my={6} w="full" />
 
-          {/* Πρώτο project: Προσωπικό Portfolio */}
-          <Flex
-            w="full"
-            align="flex-start"
-            gap={5}
-            direction={{ base: "column", md: "row" }}
-          >
-            {/* Εικόνα προεπισκόπησης */}
-            <Image
-              src="/images/portfolio-preview.png"
-              alt="Προεπισκόπιση της αρχικής σελίδας του προσωπικού μου Portfolio"
-              width={911}
-              height={1207}
-              style={imageStyle}
-            />
+          <SimpleGrid columns={{ base: 1, md: 2 }} gap={6} w="full">
+            <WorkGridItem
+              id="portfolio"
+              title="Προσωπικό Portfolio"
+              thumbnail={portfolioPreview.src}
+            >
+              Το προσωπικό μου Portfolio, κατασκευασμένο με Next.js, TypeScript
+              και Chakra UI, παρουσιάζει τα τεχνικά μου projects, τις δεξιότητες
+              μου και τη μαθησιακή μου πορεία.
+            </WorkGridItem>
+          </SimpleGrid>
 
-            {/* Πληροφορίες του project */}
-            <Stack gap={5} align="flex-start">
-              {/* Τίτλος */}
-              <Heading
-                as="h2"
-                fontSize={{ base: "2xl", md: "3xl" }}
-                letterSpacing="tight"
-              >
-                Προσωπικό Portfolio
-              </Heading>
-
-              {/* Κατάσταση ανάπτυξης */}
-              <Text color="accent" fontSize="medium">
-                Δημοσιευμένο / συνεχίζεται η ανάπτυξη
-              </Text>
-
-              {/* Σύνδεσμος προς το GitHub Repo του project. */}
-              <ChakraLink
-                href="https://github.com/SilkCraft101/portfolio"
-                target="_blank"
-                rel="noopener noreferrer"
-                color="accent"
-                fontWeight="medium"
-                textDecoration="underline"
-              >
-                GitHub Repository
-              </ChakraLink>
-
-              {/* Περιγραφή */}
-              <Box bg="accent/10" p={4} borderRadius="md">
-                <Text color="fg.muted">
-                  Η προσωπική μου σελίδα λειτουργεί ως ψηφιακό βιογραφικό και
-                  τεχνικό Portfolio. Συγκεντρώνει την προσωπική μου ιστορία, τα
-                  projects μου στο GitHub και τα δημιουργικά μου ενδιαφέροντα.
-                </Text>
-
-                <Text color="fg.muted">
-                  Αναπτύσσεται με Next.js, TypeScript και Chakra UI και
-                  περιλαμβάνει λειτουργίες όπως αυτόματο υπολογισμό ηλικίας και
-                  γκαλερί ζωγραφικής με δυναμική ανάκτηση εικόνων από το
-                  Cloudinary.
-                </Text>
-              </Box>
-
-              {/* Τεχνολογίες */}
-              <Text fontSize="sm" color="fg.muted">
-                Next.js / React / TypeScript / Chakra UI
-              </Text>
-            </Stack>
-          </Flex>
+          {/* Η αναλυτική παρουσίαση του Portfolio μετφέρθηκε στο app/works/portfolio/page.tsx. */}
         </Stack>
       </Container>
     </Box>
