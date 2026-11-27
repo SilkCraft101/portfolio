@@ -3,8 +3,35 @@ import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
 // Το About είναι η συνοπτική παρουσίαση της αρχικής. Η πλήρης ιστορία βρίσκεται στο /about.
 // Το named export εισάγεται με { About } στο app/page.tsx.
 export function About() {
-  // Το εύρος ηλικίας δεν αποκαλύπτει ακριβή ημερομηνία γέννησης.
-  const ageRange = "στα τέλη των είκοσί μου";
+  // Επαναφορά αυτόματου υπολογισμού ηλικίας.
+  const birthYear = 1997;
+  const birthMonth = 12;
+  const birthDay = 18;
+
+  // Τρέχουσα ημερομηνία σύμφωνα με την ώρα Ελλάδας.
+  const today = new Date();
+  const timeZone = "Europe/Athens";
+
+  const year = Number(
+    new Intl.DateTimeFormat("en", { timeZone, year: "numeric" }).format(today),
+  );
+
+  const month = Number(
+    new Intl.DateTimeFormat("en", { timeZone, month: "numeric" }).format(today),
+  );
+
+  const day = Number(
+    new Intl.DateTimeFormat("en", { timeZone, day: "numeric" }).format(today),
+  );
+
+  // Υπολογισμός ηλικίας.
+  let age = year - birthYear;
+
+  if (month < birthMonth) {
+    age--;
+  } else if (month === birthMonth && day < birthDay) {
+    age--;
+  }
 
   return (
     // Το section δηλώνει θεματική ενότητα. Το lang="el" ορίζει τη γλώσσα του περιεχομένου της.
@@ -25,7 +52,7 @@ export function About() {
           {/* Κάθε Text δημιουργεί ξεχωριστή παράγραφο. Το fg.muted αλλάζει με το θέμα. */}
           {/* Το lineHeight και το maxW βοηθούν να διαβάζονται άνετα οι γραμμές. */}
           <Text color="fg.muted" lineHeight="tall" maxW="2xl">
-            Είμαι ο Αλέξανδρος, {ageRange}, με αυτισμό και ΔΕΠΥ. Η εκπαιδευτική
+            Είμαι ο Αλέξανδρος, {age} ετών, με αυτισμό και ΔΕΠΥ. Η εκπαιδευτική
             μου πορεία δεν ήταν γραμμική και για αρκετά χρόνια η εμπειρία μου
             μέσα στην εκπαίδευση με έκανε να αμφιβάλλω για την ικανότητα μου να
             μαθαίνω.
