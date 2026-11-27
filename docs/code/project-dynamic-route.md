@@ -1,4 +1,4 @@
-# `app/works/[sulg]/page.tsx`
+# `app/works/[slug]/page.tsx`
 
 ## Ρόλος του αρχείου
 
@@ -24,10 +24,13 @@
 ## Δομή και εμφάνιση
 
 Η σελίδα χρησιμοποιεί τα Chakra UI components
-`Box`, `Container`, `Stack`, `Heading` και `Text`.
+`Box`, `Container` και `Stack.`
 
-Προς το παρόν εμφανίζονται δυναμικά ο τίτλος
-και η περιγραφή του αντίστοιχου project.
+Το `Container` χρησιμοποιεί `maxW="5xl"`, ώστε να παρέχει περισσότερο χώρο για την παρουσίαση.
+
+Η εισαγωγική ενότητα αποδίδεται μέσω του επαναχρησιμοποιήσιμου component `ProjectHero`, στο οποίο μεταβιβάζεται το αντικείμενο `project`.
+
+Η λειτουργία του component τεκμηριώνεται στο [project-hero.md](project-hero.md).
 
 ## Τεχνική απόφαση
 
