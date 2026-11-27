@@ -1,39 +1,37 @@
-# `eslint.config.mjs`
+# eslint.config.mjs
 
-## Ρόλος του αρχείου
+## Σκοπός
 
-Το αρχείο ορίζει το flat configuration του ESLint. Το ESLint ελέγχει τον κώδικα σύμφωνα με κανόνες· δεν αντικαθιστά το build ή τον έλεγχο τύπων του TypeScript.
+Καθορίζει τους κανόνες του ESLint για τον εντοπισμό προβλημάτων και μη ενδεδειγμένων πρακτικών στον κώδικα.
 
-Η κατάληξη `.mjs` δηλώνει JavaScript module, στο οποίο χρησιμοποιούνται imports και exports.
+## Ρυθμίσεις
 
-## Εισαγωγές
+Χρησιμοποιείται το Flat Configuration του ESLint
+με δύο σύνολα κανόνων:
 
-Οι `defineConfig` και `globalIgnores` εισάγονται από το `eslint/config`.
+- `core-web-vitals`: Κανόνες του Next.js σχετικοί με την ποιότητα και την απόδοση του κώδικα.
+- `typescript`: Κανόνες για κώδικα TypeScript.
 
-Το `nextVitals` είναι το έτοιμο configuration του Next.js για Core Web Vitals και σχετικούς κανόνες. Το `nextTs` προσθέτει το configuration TypeScript του Next.js. Τα ονόματα αυτά είναι τοπικά ονόματα των imports.
+## Εξαιρέσεις
 
-Οι κανόνες Core Web Vitals δεν μετρούν εδώ την πραγματική απόδοση της ιστοσελίδας στον browser. Ελέγχουν σχετικά μοτίβα κώδικα.
+Μέσω του `globalIgnores` εξαιρούνται από τον έλεγχο τα αυτόματα παραγόμενα αρχεία και οι φάκελοι:
 
-## Σύνθεση configuration
+- `.next/`
+- `out/`
+- `build/`
+- `next-env.d.ts`
 
-Η `defineConfig` δέχεται τον πίνακα ρυθμίσεων. Τα `...nextVitals` και `...nextTs` είναι array spreads: προσθέτουν τα στοιχεία των αντίστοιχων configuration arrays στον κοινό πίνακα.
+## Εκτέλεση
 
-Το αποτέλεσμα αποθηκεύεται στο `eslintConfig` και εξάγεται με `export default`.
+Ο έλεγχος πραγματοποιείται μέσω του `npm run lint`.
 
-## Αγνοούμενα αρχεία
+Το ESLint λειτουργεί συμπληρωματικά προς τον έλεγχο τύπων του TypeScript και το production build.
 
-Η `globalIgnores` προσθέτει patterns για τα `.next/**`, `out/**`, `build/**` και `next-env.d.ts`.
+## Σχετικό αρχείο
 
-Έτσι παραλείπονται από το lint παραγόμενα αρχεία και φάκελοι εξόδου. Οι εξαιρέσεις αυτές δεν διαγράφουν αρχεία και δεν αλλάζουν την παρακολούθησή τους από το Git· το `.gitignore` εξυπηρετεί διαφορετικό σκοπό.
-
-## Εκτέλεση και τρέχον checkpoint
-
-Το script `lint` του package.json εκτελεί το ESLint με αυτό το configuration.
-
-Ο κανόνας `no-empty-object-type`, που προκάλεσε τα δύο αρχικά σφάλματα στο color-mode snippet, προέρχεται από το ενεργό σύνολο κανόνων TypeScript. Δεν χρειάστηκε να απενεργοποιηθεί για τη διόρθωση.
-
-Στο commit [603b82e — Καθαρισμός και οργάνωση σχολίων](https://github.com/SilkCraft101/portfolio/commit/603b82e) άλλαξαν μόνο σχόλια, χωρίς αλλαγή κανόνων ή patterns.
+- [`eslint.config.mjs`](../../eslint.config.mjs)
 
 ## Πηγές
 
-Οι πηγές βρίσκονται στο [sources.md](../sources.md), στις καταχωρίσεις «ESLint configuration», «Διόρθωση κενών interfaces» και «Dependencies και scripts»: Next.js ESLint, ESLint Configuration Files, Ignore Files και npm run.
+- [ESLint — Configuration Files](https://eslint.org/docs/latest/use/configure/configuration-files)
+- [Next.js — ESLint](https://nextjs.org/docs/app/api-reference/config/eslint)

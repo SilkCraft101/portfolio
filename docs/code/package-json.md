@@ -1,396 +1,57 @@
-## Τρέχουσα αναθεώρηση — 22/11/2026
+# package.json
 
-Τρέχουσα κατάσταση: αφαιρέθηκαν οι άμεσα αχρησιμοποίητες `framer-motion`, `three`, `@types/three`. Υπάρχουν `test` και `typecheck` scripts· `typecheck` τρέχει `next typegen` πριν από `tsc --noEmit --incremental false`. Engines: Node `>=20.9.0`, npm `>=10`; clean install: `npm ci`. Οι ιστορικές ενότητες παρακάτω περιγράφουν προηγούμενα installs/audits, όχι το αποτέλεσμα της παρούσας συνεδρίας.
+## Σκοπός
 
-# `package.json`
+Κεντρικό αρχείο διαμόρφωσης του project, το οποίο ορίζει τις εξαρτήσεις, τις εντολές ανάπτυξης και τις απαιτήσεις του περιβάλλοντος εκτέλεσης.
 
-## Ρόλος του αρχείου
+## Βασικές ρυθμίσεις
 
-Το αρχείο περιγράφει το project, τις dependencies και τα scripts που εκτελώ με npm. Δεν περιέχει τον κώδικα της σελίδας.
-
-## Όνομα, έκδοση και private
-
-Το `name` είναι `portfolio` και το `version` είναι `0.1.0`. Η έκδοση αυτή αφορά το project, όχι την έκδοση του Next.js.
-
-Το `private: true` εμποδίζει τη δημοσίευση ως npm package. Δεν καθορίζει αν το GitHub repository είναι private· εκείνη είναι ξεχωριστή ρύθμιση στο GitHub.
+- Όνομα: `portfolio`
+- Έκδοση: `0.1.0`
+- Node.js: `>=20.9.0`
+- npm: `>=10`
+- `private: true`: Αποτροπή δημοσίευσης ως npm package.
 
 ## Scripts
 
-Το `dev` εκτελεί το `next dev --webpack` για τοπική ανάπτυξη. Το `build` εκτελεί το `next build --webpack` και δημιουργεί production build. Και τα δύο επιλέγουν Webpack μέσω του `--webpack`.
+| Εντολή              | Λειτουργία                                   |
+| ------------------- | -------------------------------------------- |
+| `npm run dev`       | Εκκίνηση development server.                 |
+| `npm run build`     | Δημιουργία production build.                 |
+| `npm start`         | Εκκίνηση production server.                  |
+| `npm run lint`      | Έλεγχος κώδικα μέσω ESLint.                  |
+| `npm run typecheck` | Παραγωγή route types και έλεγχος TypeScript. |
+| `npm test`          | Εκτέλεση αυτοματοποιημένων tests.            |
 
-Το `start` εκτελεί το `next start`, για την εκκίνηση του production server μετά από επιτυχημένο build. Το `lint` εκτελεί το `eslint` για έλεγχο του κώδικα σύμφωνα με το configuration του project.
+Τα scripts ανάπτυξης και παραγωγής build χρησιμοποιούν Webpack.
 
-Με το `npm run` και το όνομα ενός script ζητώ από το npm να εκτελέσει την αντίστοιχη εντολή. Στο Next.js 16 το production build δεν εκτελεί αυτόματα το lint, οπότε τα ελέγχω χωριστά.
+## Εξαρτήσεις
 
-## Dependencies
+- **Next.js, React, React DOM:** Βασική υποδομή εφαρμογής.
+- **Chakra UI, Emotion:** Σχεδιασμός και μορφοποίηση του UI.
+- **next-themes, React Icons:** Χρωματικά θέματα και εικονίδια.
+- **Cloudinary, Vercel Blob:** Αποθήκευση και ανάκτηση περιεχομένου.
+- **gray-matter:** Ανάγνωση μεταδεδομένων YAML.
+- **react-markdown, remark-gfm:** Απόδοση Markdown.
+- **remark-math, rehype-katex, KaTeX:** Απόδοση μαθηματικών τύπων.
+- **rehype-callouts:** Υποστήριξη Obsidian Callouts.
+- **server-only:** Προστασία των ορίων server και client.
 
-Το Next.js παρέχει το framework και το routing. Τα React και React DOM υποστηρίζουν τα components και την απόδοσή τους στον ιστό.
+Οι εξαρτήσεις ανάπτυξης περιλαμβάνουν TypeScript, ESLint και δηλώσεις τύπων.
 
-Το Chakra UI χρησιμοποιείται για τα components και το styling, μαζί με το Emotion. Το next-themes διαχειρίζεται το χρωματικό θέμα και το React Icons παρέχει τα εικονίδια.
+## Ασφάλεια εξαρτήσεων
 
-Στο αρχικό snapshot τα `framer-motion` και `three` ήταν δηλωμένα χωρίς άμεσους callers. Αφαιρέθηκαν στο remediation· η εγκατάσταση βιβλιοθήκης δεν αποδεικνύει από μόνη της χρήση από την εφαρμογή.
+Χρησιμοποιούνται npm overrides για τον έλεγχο των εκδόσεων συγκεκριμένων έμμεσων εξαρτήσεων:
 
-Το `react-markdown` προστέθηκε στις dependencies στις 17 Νοεμβρίου 2026.
+- `katex`: Χρήση του version specification της άμεσης εξάρτησης.
+- `zod`: Έκδοση `4.6.7` κάτω από το `@vercel/cli-config`.
 
-Η βιβλιοθήκη χρησιμοποιείται για την απόδοση Markdown περιεχομένου ως React elements.
+## Σχετικά αρχεία
 
-Η αρχική δοκιμαστική υλοποίηση πραγματοποιήθηκε στο `app/essays/test/page.tsx`, το οποίο έχει πλέον διαγραφεί.
-
-Το `react-markdown` χρησιμοποιείται στη δυναμική διαδρομή `app/essays/[category]/[slug]/page.tsx` για την εμφάνιση των πραγματικών δοκιμίων.
-
-## Dev dependencies και εκδόσεις
-
-Στα `devDependencies` βρίσκονται το TypeScript, το ESLint, το configuration του Next.js για ESLint και τα πακέτα `@types` με δηλώσεις τύπων. Τα `@types` δεν αποτελούν runtime υλοποιήσεις των αντίστοιχων βιβλιοθηκών.
-
-Οι εκδόσεις των dependencies ορίζονται στο `package.json`.
-
-Μια συγκεκριμένη έκδοση, όπως `16.4.6`, προσδιορίζει ένα συγκεκριμένο release. Το σύμβολο `^` επιτρέπει ένα συμβατό εύρος εκδόσεων σύμφωνα με τους κανόνες του npm.
-
-Το `package-lock.json` καταγράφει τις συγκεκριμένες εκδόσεις των dependencies και των transitive dependencies που επιλύθηκαν κατά την εγκατάσταση.
-
-## Τρέχον checkpoint — 17/11/2026
-
-### Αναβάθμιση Next.js
-
-Αναβάθμισα το Next.js από την έκδοση `16.4.3` στην `16.4.6`, έπειτα από προειδοποίηση ασφαλείας στο development environment.
-
-Η εγκατάσταση πραγματοποιήθηκε μέσω του npm.
-
-Η εγκατεστημένη έκδοση επιβεβαιώθηκε με `npm ls next`.
-
-### Εγκατάσταση react-markdown
-
-Εγκατέστησα τη βιβλιοθήκη `react-markdown` για την υποστήριξη Markdown rendering.
-
-Η βιβλιοθήκη χρησιμοποιήθηκε επιτυχώς στη δοκιμαστική σελίδα `/essays/test`.
-
-### Έλεγχος ευπαθειών
-
-Το αρχικό `npm audit` ανέφερε 7 moderate vulnerabilities, οι οποίες σχετίζονταν με το `minimatch` και εξαρτήσεις του `typescript-eslint`.
-
-Πριν από την εφαρμογή διορθώσεων χρησιμοποίησα το `npm audit fix --dry-run`, ώστε να εξετάσω τις προτεινόμενες αλλαγές.
-
-Στη συνέχεια εκτέλεσα `npm audit fix`.
-
-Το npm ενημέρωσε 15 packages και πρόσθεσε 1 package.
-
-Ο τελικός έλεγχος `npm audit` ανέφερε:
-
-**0 vulnerabilities.**
-
-### Έλεγχοι συμβατότητας
-
-Μετά τις ενημερώσεις ολοκληρώθηκαν επιτυχώς:
-
-- `npm run lint`
-- `npx tsc --noEmit`
-- `npm run build`
-
-Το production build ολοκληρώθηκε με Next.js `16.4.6`.
-
-Κατά την εγκατάσταση εμφανίστηκε προειδοποίηση για μη εγκεκριμένο install script του `unrs-resolver`.
-
-Δεν εγκρίθηκε η εκτέλεση του συγκεκριμένου script.
-
-## Υποστήριξη μαθηματικών τύπων — 18/11/2026
-
-Προστέθηκαν τρεις νέες dependencies:
-
-- `remark-math`: Αναγνωρίζει μαθηματικές εκφράσεις μέσα στο Markdown.
-- `rehype-katex`: Μετατρέπει τις μαθηματικές εκφράσεις σε μορφοποιημένο περιεχόμενο μέσω KaTeX.
-- `katex`: Παρέχει τη μηχανή απόδοσης μαθηματικών τύπων και το απαραίτητο CSS.
-
-Οι βιβλιοθήκες χρησιμοποιούνται στη δυναμική διαδρομή `app/essays/[category]/[slug]/page.tsx`.
-
-Η εγκατάσταση πραγματοποιήθηκε με:
-
-`npm install remark-math rehype-katex katex`
-
-## npm Override - KaTeX (18/11/2026)
-
-Κατά την εγκατάσταση των μαθηματικών βιβλιοθηκών εντόπισα παλαιότερες, ευάλωτες εκδο΄σεις του KaTeX στις έμμεσες εξαρτήσεις.
-
-Για την αντιμετώπιση του προβλήματος πρόσθεσα στο `package.json`:
-
-```json
-"overrides": {
-  "katex": "$katex"
-}
-```
-
-Το `$katex` αναφέρεται στο version specification της άμεσης dependency `katex` του project.
-
-Πρόσθεσα τη ρύθμιση με την εντολή:
-
-`npm pkg set 'overrides.katex=$katex'`
-
-Εν συνεχεία εκτέλεσα `npm install` για την εφαρμογή της αλλαγής.
-
-Ο έλεγχος `npm ls katex` επιβεβαίωσε ότι οι σχετικές εξαρτήσεις χρησιμοποιούν πλέον `katex@0.19.1`.
-
-Το override εφαρμόστηκε χωρίς χρήση της επιλογής `npm audit fix --force`.
-
-## Security Audit - 18/11/2026
-
-Μετά την εγκατάσταση των `remark-math`, `rehype-katex` και `katex`, έκανα νέο έλεγχο ασφαλείας.
-
-### Αρχικά αποτελέσματα
-
-- `npm audit`: 18 vulnerabilities (4 low, 14 high).
-- `npm audit --omit=dev`: 4 low vulnerabilities σχετικές με το KaTeX.
-
-### Μετά την εφαρμογή του npm override
-
-- `npm ls katex`: Όλες οι σχετικές dependencies χρησιμοποιούν `katex@0.19.1`.
-- `npm audit --omit=dev`: 0 vulnerabilities.
-- `npm audit`: 14 high vulnerabilities παραμένουν στον συνολικό έλεγχο.
-- `npm run build`: Επιτυχές production build.
-- Οπτικός έλεγχος μαθηματικών τύπων: Επιτυχής.
-
-Οι 14 high vulnerabilities παραμένουν προς αξιολόγηση.
-
-Δεν χρησιμοποίησα `npm audit fix --force`.
-
-## Vercel Blob και Security Audit - 20/11/2026
-
-### Εγκατάσταση Vercel Blob
-
-Εγκατέστησα τη βιβλιοθήκη `@vercel/blob` για τη μελλοντική αποθήκευση Markdown δοκιμίων στο cloud.
-
-Η εγκατάσταση πραγματοποιήθηκε με:
-
-`npm install @vercel/blob`
-
-Επιβεβαιώθηκε η εγκατάσταση της έκδοσης `@vercel/blob@2.9.0`.
-
-Δημιούργησα ένα Public Blob Store στο Vercel, στην περιοχή Frankfurt (FRA1), και το συνέδεσα με το Portfolio.
-
-Η σύνδεση χρησιμοποιεί Vercel OIDC authentication.
-
-Ο έλεγχος με τη μέθοδο `list()` του `@vercel/blob` ολοκληρώθηκε επιτυχώς και επέστρεψε 0 αποθηκευμένα αντικείμενα.
-
-Η λειτουργία δημοσίευσης δοκιμίων μέσω Vercel Blob έχει πλέον υλοποιηθεί και ελεγχθεί.
-
-### Επίλυση dependency vulnerabilities
-
-Μετά την εγκατάσταση του `@vercel/blob`, το `npm audit` ανέφερε 4 high vulnerabilities.
-
-Το πρόβλημα σχετιζόταν με την έμμεση dependency `zod@4.1.11`, μέσω του `@vercel/cli-config@0.3.1`.
-
-Πρόσθεσα στο υπάρχον `overrides` του `package.json`:
-
-```json
-"@vercel/cli-config": {
-  "zod": "4.6.7"
-}
-```
-
-Διατήρησα το προηγούμενο override του KaTeX.
-
-Στη συνέχεια εκτέλεσα `npm install`.
-
-Ο έλεγχος `npm ls` επιβεβαίωσε τη χρήση της έκδοσης `zod@4.6.7`.
-
-### Αποτελέσματα
-
-- `npm audit`: 0 vulnerabilities.
-- `npm run build`: Επιτυχές production build.
-- Έλεγχος TypeScript κατά το build: Επιτυχής.
-
-Δεν χρησιμοποιήθηκε `npm audit fix --force`.
-
-## Υποστήριξη YAML Frontmatter — 21/11/2026
-
-### Εγκατάσταση gray-matter
-
-Εγκατέστησα τη βιβλιοθήκη `gray-matter` για την ανάγνωση μεταδεδομένων (metadata) από το YAML Frontmatter των Markdown δοκιμίων.
-
-Η εγκατάσταση πραγματοποιήθηκε με:
-
-`npm install gray-matter`
-
-Επιβεβαιώθηκε η εγκατάσταση της έκδοσης `gray-matter@4.0.3`.
-
-Η βιβλιοθήκη αποτελεί runtime dependency και χρησιμοποιείται στα ακόλουθα αρχεία:
-
-- `app/essays/[category]/[slug]/page.tsx`
-- `app/essays/learning/page.tsx`
-- `lib/essays.ts`
-
-### Σκοπός
-
-- Ανάλυση του YAML Frontmatter των Markdown αρχείων.
-- Διαχωρισμός των metadata από το κυρίως περιεχόμενο.
-- Ανάκτηση του τίτλου (`title`) και του υποτίτλου (`subtitle`).
-- Υποστήριξη Markdown αρχείων που δημιουργούνται μέσω των Properties του Obsidian.
-
-Η `gray-matter` δεν αντικαθιστά το `react-markdown`. Η πρώτη αναλύει το Frontmatter, ενώ η δεύτερη αποδίδει το Markdown περιεχόμενο ως React elements.
-
-### Έλεγχοι — 21/11/2026
-
-- Εγκατάσταση dependency: Επιτυχής.
-- `npm audit`: 0 vulnerabilities κατά την εγκατάσταση.
-- `npx tsc --noEmit`: Επιτυχής.
-- Λειτουργικός έλεγχος στο localhost: Επιτυχής.
-
-Οι τελικοί έλεγχοι ESLint, production build και deployment εκκρεμούν.
-
-### Τεχνικές πηγές
-
-- [gray-matter — Official Documentation](https://github.com/jonschlinkert/gray-matter#readme)
-- [npm — gray-matter](https://www.npmjs.com/package/gray-matter)
-- [Obsidian — Properties](https://help.obsidian.md/properties)
-- [npm — npm install](https://docs.npmjs.com/cli/v11/commands/npm-install)
-
-### Πηγές
-
-- Vercel Blob: https://vercel.com/docs/vercel-blob
-- Vercel OIDC: https://vercel.com/docs/oidc
-- npm Overrides: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides
-- npm Audit: https://docs.npmjs.com/cli/v11/commands/npm-audit
-
-## Υποστήριξη GitHub Flavored Markdown — 25/11/2026
-
-Εγκατέστησα το `remark-gfm` ως runtime dependency:
-
-```bash
-npm install remark-gfm
-```
-
-Το package προστέθηκε στο `package.json` και ενημερώθηκε το `package-lock.json`.
-
-Το `remark-gfm` επεκτείνει την υποστήριξη Markdown με στοιχεία του GitHub Flavored Markdown (GFM), όπως πίνακες, task lists, strikethrough και footnotes.
-
-Στο `app/essays/[category]/[slug]/page.tsx` χρησιμοποιείται μαζί με το `remark-math` μέσω του `remarkPlugins`.
-
-Η προσθήκη επιτρέπει την αναγνώριση GFM πινάκων στα δοκίμια, διατηρώντας την υπάρχουσα υποστήριξη μαθηματικών εκφράσεων.
-
-### Επαλήθευση
-
-- `npm install`: Επιτυχής, 0 vulnerabilities.
-- `npm run lint`: Επιτυχής.
-- `npm run typecheck`: Επιτυχής.
-- `npm run test`: 18/18 επιτυχημένα.
-- `npm run build`: Επιτυχές production build.
-
-### Πηγές
-
-- [remark-gfm — Installation](https://github.com/remarkjs/remark-gfm#install)
-- [remark-gfm — API](https://github.com/remarkjs/remark-gfm#api)
-- [npm — npm install](https://docs.npmjs.com/cli/v11/commands/npm-install)
-
-## Υποστήριξη Obsidian Callouts — 25/11/2026
-
-Εγκατέστησα το `rehype-callouts` ως runtime dependency:
-
-```bash
-npm install rehype-callouts
-```
-
-Η εγκατεστημένη έκδοση είναι `rehype-callouts@2.1.2`.
-
-Το package προστέθηκε στο `package.json` και ενημερώθηκε το `package-lock.json`.
-
-### Σκοπός
-
-Το `rehype-callouts` επεκτείνει την απόδοση Markdown με υποστήριξη Obsidian-style Callouts.
-
-Υποστηρίζει:
-
-- Διαφορετικούς τύπους Callouts, όπως `note`, `warning`, `important` και `tip`.
-- Προσαρμοσμένους τίτλους.
-- Αναδιπλούμενα Callouts.
-- Εμφωλευμένα Callouts.
-
-### Ενσωμάτωση
-
-Στο `app/essays/[category]/[slug]/page.tsx`, το `rehype-callouts` χρησιμοποιείται μέσω του `rehypePlugins`, μαζί με το `rehype-katex`.
-
-Η εγκατάσταση δεν αντικαθιστά τις υπάρχουσες dependencies:
-
-- `react-markdown`: Αποδίδει το Markdown ως React elements.
-- `remark-math`: Αναγνωρίζει μαθηματικές εκφράσεις.
-- `remark-gfm`: Υποστηρίζει GitHub Flavored Markdown.
-- `rehype-katex`: Αποδίδει μαθηματικές εκφράσεις μέσω KaTeX.
-- `rehype-callouts`: Μετατρέπει τα Obsidian Callouts σε HTML δομή.
-
-Η εμφάνιση των Callouts υλοποιείται στο `app/globals.css`.
-
-### Επαλήθευση
-
-- Αναγνώριση 17 δοκιμασμένων τύπων Callouts: Επιτυχής.
-- Αναδιπλούμενα και εμφωλευμένα Callouts: Επιτυχής.
-- Συμβατότητα με Blockquotes, GFM Tables και KaTeX: Επιτυχής.
-- Οπτικός έλεγχος σε Light και Dark Mode: Επιτυχής.
-- `npm run lint`: Επιτυχής.
-- `npx tsc --noEmit`: Επιτυχής.
-- `npm run test`: 18/18 επιτυχημένα.
-- `npm run build`: Επιτυχές production build.
-
-Τα 18 υπάρχοντα automated tests δεν περιλαμβάνουν ειδικά regression tests για τα Callouts.
-
-### Πηγές
-
-- [rehype-callouts — GitHub](https://github.com/lin-stephanie/rehype-callouts)
-- [Obsidian Help — Callouts](https://help.obsidian.md/callouts)
-- [npm — npm install](https://docs.npmjs.com/cli/v11/commands/npm-install)
+- [`package.json`](../../package.json)
+- [`package-lock.json`](../../package-lock.json)
 
 ## Πηγές
 
-### npm — package.json
-
-https://docs.npmjs.com/cli/v11/configuring-npm/package-json
-
-Σχετικές ενότητες:
-
-- dependencies
-- devDependencies
-
-### npm — package-lock.json
-
-https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json
-
-### npm — npm audit
-
-https://docs.npmjs.com/cli/v11/commands/npm-audit
-
-Σχετικά:
-
-- Έλεγχος ευπαθειών
-- `npm audit fix`
-
-### npm — npm install
-
-https://docs.npmjs.com/cli/v11/commands/npm-install
-
-Σχετικά:
-
-- Εγκατάσταση και ενημέρωση dependencies
-
-### react-markdown
-
-https://github.com/remarkjs/react-markdown#readme
-
-Σχετικές ενότητες:
-
-- What is this?
-- When should I use this?
-- Use
-
-### npm — Overrides
-
-https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides
-
-**Ενότητα:** Overrides — Χρήση του `$` για αναφορά σε direct dependency.
-
-### npm — npm ls
-
-https://docs.npmjs.com/cli/v11/commands/npm-ls
-
-**Ενότητα:** Description — Έλεγχος του dependency tree.
-
-### GitHub Security Advisory — KaTeX
-
-https://github.com/advisories/GHSA-238p-pmpm-9mq7
-
-**Ενότητες:** Description, Affected versions, Patched versions.
+- [npm — package.json](https://docs.npmjs.com/cli/v11/configuring-npm/package-json)
+- [npm — Overrides](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides)

@@ -1,85 +1,35 @@
-## Τρέχουσα αναθεώρηση — 22/11/2026
+# next.config.ts
 
-Το `allowedDevOrigins` αφαιρέθηκε από το tracked `next.config.ts`, επειδή η τιμή του εξαρτάται από την τοπική συσκευή και το δίκτυο. Αν χρειαστεί ξανά δοκιμή από κινητό, πρόσθεσε την τρέχουσα origin μόνο στην τοπική ρύθμιση και μην την καταχωρίσεις στο repository.
+## Σκοπός
 
-Ο τρέχων Cloudinary `remotePatterns` περιορίζει hostname και account path prefix. Η runtime επικύρωση της απάντησης γίνεται επιπλέον στη route.
+Κεντρικό αρχείο ρυθμίσεων του Next.js για τη διαμόρφωση και τη βελτιστοποίηση της εφαρμογής.
 
-# `next.config.ts`
+## Ρυθμίσεις
 
-## Ρόλος του αρχείου
+### Βελτιστοποίηση imports
 
-Το αρχείο περιέχει τις ρυθμίσεις του Next.js και βρίσκεται στη ρίζα του project. Δεν είναι React component και δεν ορίζει περιεχόμενο σελίδας.
+Η πειραματική επιλογή `optimizePackageImports` χρησιμοποιείται για τη βελτιστοποίηση των imports του `@chakra-ui/react`.
 
-## Τύπος και αντικείμενο
+Προστέθηκε για την αντιμετώπιση προειδοποιήσεων απόδοσης του Webpack.
 
-Το `NextConfig` εισάγεται με `import type`, επειδή χρησιμοποιείται για τον έλεγχο τύπων.
+### Απομακρυσμένες εικόνες
 
-Το `const nextConfig: NextConfig` δημιουργεί το αντικείμενο ρυθμίσεων. Ο τύπος βοηθά στον εντοπισμό μη έγκυρων επιλογών και στην υποστήριξη του editor, χωρίς να αποτελεί runtime έλεγχο.
+Η επιλογή `images.remotePatterns` επιτρέπει τη φόρτωση εικόνων από τον συγκεκριμένο λογαριασμό Cloudinary.
 
-Το `export default nextConfig` κάνει το αντικείμενο διαθέσιμο στο Next.js ως configuration του project.
+Έτσι, μπορούν να δημοσιεύονται νέες ζωγραφιές χωρίς να απαιτείται τροποποίηση των ρυθμίσεων του Next.js.
 
-Στις 17 Νοεμβρίου 2026 πρόσθεσα τη ρύθμιση `experimental.optimizePackageImports` στο `next.config.ts`.
+## Τεχνικές αποφάσεις
 
-Η ρύθμιση αυτή χρησιμοποιείται για τη βελτίωση των imports του πακέτου `@chakra-ui/react`.
+- Χρήση του τύπου `NextConfig` για τον έλεγχο των ρυθμίσεων.
+- Περιορισμός των επιτρεπόμενων απομακρυσμένων εικόνων.
+- Αποφυγή αποθήκευσης τοπικών διευθύνσεων δικτύου στο repository.
 
-```ts
-experimental: {
-    optimizePackageImports: ["@chakra-ui/react"],
-},
-```
+## Σχετικό αρχείο
 
-Η αλλαγή έγινε επειδή ο Webpack εμφάνιζε επαναλαμβανόμενα performance warnings σχετικά με το serialization μεγάλων strings κατά το development και το production build.
-
-Μετά την προσθήκη της ρύθμισης, εκτέλεσα `npm run build`.
-
-**Αποτέλεσμα:**
-
-- Το production build ολοκληρώθηκε επιτυχώς.
-- Τα επαναλαμβανόμενα Webpack serialization warnings δεν εμφανίστηκαν.
-- Οι υπάρχουσες ρυθμίσεις `allowedDevOrigins` και `images.remotePatterns` διατηρήθηκαν.
-
-Η επιλογή `optimizePackageImports` χαρακτηρίζεται experimental από το Next.js.
-
-## Τρέχον checkpoint
-
-Ιστορική καταχώριση: σήμερα το `images.remotePatterns` επιτρέπει το Cloudinary account path prefix, όχι δύο συγκεκριμένα asset URLs. Η τρέχουσα allowlist περιορίζεται στο hostname και στον φάκελο upload του account.
-
-Το `allowedDevOrigins` επιτρέπει τη δοκιμή του development server από συσκευές του τοπικού δικτύου. Η ρύθμιση βρίσκεται στο ίδιο επίπεδο με το `images` και αφορά μόνο το development.
-
-Στις 13 Νοεμβρίου 2026 ενημέρωσα την επιτρεπόμενη IP σε `<τοπική IP>`, επειδή είχε αλλάξει η τοπική διεύθυνση του MacBook.
-
-Κατά τη δοκιμή, το κουμπί θέματος παρέμενε στο προσωρινό Skeleton. Στα logs εντόπισα μπλοκαρισμένο αίτημα development από την τοπική IP. Μετά την προσθήκη της ρύθμισης, την επανεκκίνηση του server και την επαναφόρτωση στο κινητό, το κουμπί εμφανίστηκε και λειτούργησε.
-
-Η τοπική IP μπορεί να αλλάξει, οπότε η ρύθμιση ενδέχεται να χρειαστεί ενημέρωση.
-
-Η επιλογή Webpack παραμένει στα scripts του `package.json`, μέσω του `--webpack`.
-
-### Έλεγχος σε iPhone - 13/11/2026
-
-Κατά τον έλεγχο της νέας σελίδας `/works` σε πραγματικό iPhone, το κουμπί αλλαγής θέματος εμφάνιζε συνεχώς το προσωρινό `Skeleton` και δεν ανταποκρινόταν.
-
-Το πρόβλημα επανεμφανίστηκε επειδή η καταχωρισμένη IP στο `allowedDevOrigins` δεν αντιστοιχούσε πλέον στην τρέχουσα διεύθυνση του development server.
-
-Μετά την ενημέρωση της IP και την επανεκκίνηση του development server, επιβεβαίωσα ότι το Color Mode λειτουργεί κανονικά στο κινητό.
-
-Δεν χρειάστηκε τροποποίηση του `components/ui/color-mode.tsx`.
-
-Ως μελλοντική βελτίωση μπορεί να χρησιμοποιηθεί DHCP Reservation, ώστε το MacBook να διατηρεί σταθερή τοπική IP.
+- [`next.config.ts`](../../next.config.ts)
 
 ## Πηγές
 
-Η πηγή βρίσκεται στο [sources.md](../sources.md), στην καταχώριση «Next.js configuration»: Next.js next.config.js, υποστήριξη TypeScript και NextConfig. Η επιλογή Webpack καλύπτεται στην καταχώριση «Dependencies και scripts».
-
-### Chakra UI - Next.js Integration
-
-https://chakra-ui.com/docs/get-started/frameworks/next-app
-
-Ενότητα: Optimize Bundle.
-
-Χρησιμοποιήθηκε για τη διερεύνηση των Webpack warnings και τη ρύθμιση `optimizePackageImports`.
-
-### Next.js — optimizePackageImports
-
-https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports
-
-Χρησιμοποιήθηκε για την κατανόηση της σύνταξης και της λειτουργίας του `experimental.optimizePackageImports`.
+- [Next.js — Configuration](https://nextjs.org/docs/app/api-reference/config/next-config-js)
+- [Next.js — optimizePackageImports](https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports)
+- [Chakra UI — Next.js Integration](https://chakra-ui.com/docs/get-started/frameworks/next-app)
