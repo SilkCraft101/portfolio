@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { WorkGridItem } from "@/components/work-grid-item";
 import type { Metadata } from "next";
-import portfolioPreview from "@/public/images/portfolio-preview.png";
+import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Works",
@@ -49,18 +49,18 @@ export default function WorksPage() {
           <Separator borderColor="border.subtle" my={6} w="full" />
 
           <SimpleGrid columns={{ base: 1, md: 2 }} gap={6} w="full">
-            <WorkGridItem
-              id="portfolio"
-              title="Προσωπικό Portfolio"
-              thumbnail={portfolioPreview.src}
-            >
-              Το προσωπικό μου Portfolio, κατασκευασμένο με Next.js, TypeScript
-              και Chakra UI, παρουσιάζει τα τεχνικά μου projects, τις δεξιότητες
-              μου και τη μαθησιακή μου πορεία.
-            </WorkGridItem>
+            {/* Δημιουργία κάρτας για κάθε καταχωρημένο έργο. */}
+            {projects.map((project) => (
+              <WorkGridItem
+                key={project.slug}
+                id={project.slug}
+                title={project.title}
+                thumbnail={project.thumbnail}
+              >
+                {project.description}
+              </WorkGridItem>
+            ))}
           </SimpleGrid>
-
-          {/* Η αναλυτική παρουσίαση του Portfolio μετφέρθηκε στο app/works/portfolio/page.tsx. */}
         </Stack>
       </Container>
     </Box>
