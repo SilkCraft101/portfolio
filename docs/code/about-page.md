@@ -38,4 +38,4 @@
 
 ## Πηγές
 
-Οι σχετικές παραπομπές βρίσκονται στο [sources.md](../sources.md), στις ενότητες για Next.js pages και layouts, React και JSX, Chakra layout components, κείμενα και τίτλους.
+Οι σχετικές παραπομπές βρίσκονται στη [μαθησιακή τεκμηρίωση](../learning/README.md), στις ενότητες για Next.js pages και layouts, React και JSX, Chakra layout components, κείμενα και τίτλους.

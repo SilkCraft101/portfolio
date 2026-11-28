@@ -45,4 +45,4 @@
 
 ## Πηγές
 
-Οι σχετικές πηγές βρίσκονται στο [sources.md](../sources.md), στις καταχωρίσεις για Chakra UI Stack/HStack, Heading, Text, Composition και Next.js Link.
+Οι σχετικές πηγές βρίσκονται στη [μαθησιακή τεκμηρίωση](../learning/README.md), στις καταχωρίσεις για Chakra UI Stack/HStack, Heading, Text, Composition και Next.js Link.

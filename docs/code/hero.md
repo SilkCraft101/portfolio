@@ -92,4 +92,4 @@
 
 ## Πηγές
 
-Οι σχετικές παραπομπές βρίσκονται στο [sources.md](../sources.md), για το Next.js Image, τα Chakra layout components, το styling και τα semantic tokens.
+Οι σχετικές παραπομπές βρίσκονται στη [μαθησιακή τεκμηρίωση](../learning/README.md), για το Next.js Image, τα Chakra layout components, το styling και τα semantic tokens.

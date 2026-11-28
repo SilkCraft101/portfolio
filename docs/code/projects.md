@@ -66,4 +66,4 @@
 
 ## Πηγές
 
-Οι σχετικές πηγές βρίσκονται στο [sources.md](../sources.md), στις καταχωρίσεις για React components και JSX, layout components, κείμενα και τίτλους, σύνθεση, responsive styling, spacing και διαστάσεις.
+Οι σχετικές πηγές βρίσκονται στη [μαθησιακή τεκμηρίωση](../learning/README.md), στις καταχωρίσεις για React components και JSX, layout components, κείμενα και τίτλους, σύνθεση, responsive styling, spacing και διαστάσεις.

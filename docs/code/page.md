@@ -79,4 +79,4 @@
 
 ## Πηγές
 
-Οι σχετικές παραπομπές βρίσκονται στο [sources.md](../sources.md), στις ενότητες για Next.js pages και layouts, React components και JSX.
+Οι σχετικές παραπομπές βρίσκονται στη [μαθησιακή τεκμηρίωση](../learning/README.md), στις ενότητες για Next.js pages και layouts, React components και JSX.

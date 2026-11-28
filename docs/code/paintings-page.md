@@ -63,4 +63,4 @@ _Προσωπικό σχόλιο: Το Dialog σε αυτό το κομμάτι 
 ## Πηγές
 
 Επαναχρησιμοποίησα τις καταγεγραμμένες πηγές στο
-[sources.md](../sources.md) για pages, Chakra layout και Next.js Image.
+[μαθησιακή τεκμηρίωση](../learning/README.md) για pages, Chakra layout και Next.js Image.
