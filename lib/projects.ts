@@ -8,6 +8,8 @@ export type Project = {
   thumbnail: string;
   technologies: string[];
   status: string;
+  period: string;
+  role: string;
   links: {
     github?: string;
     demo?: string;
@@ -24,6 +26,8 @@ export const projects: Project[] = [
     thumbnail: portfolioPreview.src,
     technologies: ["Next.js", "React", "TypeScript", "Chakra UI"],
     status: "Υπό ανάπτυξη",
+    period: "30/10/2026 - Σήμερα",
+    role: "Σχεδιασμός και ανάπτυξη",
     links: {
       github: "https://github.com/SilkCraft101/portfolio",
       demo: "https://silkcraft101.is-a.dev/",

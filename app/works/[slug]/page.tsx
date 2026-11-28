@@ -2,6 +2,7 @@ import { Box, Container, Stack } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/projects";
 import { ProjectHero } from "@/components/project-hero";
+import { ProjectMetadata } from "@/components/project-metadata";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -22,6 +23,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <Container maxW="5xl">
         <Stack gap={5} align="flex-start">
           <ProjectHero project={project} />
+          <ProjectMetadata project={project} />
         </Stack>
       </Container>
     </Box>
