@@ -12,6 +12,20 @@ export type Project = {
     title: string;
     description: string;
   }[];
+  architecture: {
+    layer: string;
+    technologies: string[];
+    description: string;
+  }[];
+  challenges: {
+    title: string;
+    problem: string;
+    solution: string;
+  }[];
+  results: {
+    title: string;
+    description: string;
+  }[];
   thumbnail: string;
   technologies: string[];
   status: string;
@@ -68,6 +82,82 @@ export const projects: Project[] = [
         title: "Responsive Design & Color Mode",
         description:
           "Προσαρμοζόμενη διάταξη με υποστήριξη Light και Dark Mode.",
+      },
+    ],
+    architecture: [
+      {
+        layer: "Frontend",
+        technologies: ["React", "Chakra UI"],
+        description:
+          "Επαναχρησιμοποιήσιμα components και responsive περιβάλλον χρήστη.",
+      },
+      {
+        layer: "Application",
+        technologies: ["Next.js", "TypeScript"],
+        description: "Διαχείριση διαδρομών, rendering και έλεγχος τύπων.",
+      },
+      {
+        layer: "Content & Storage",
+        technologies: ["Markdown", "Vercel Blob", "Cloudinary"],
+        description: "Αποθήκευση, ανάκτηση και παρουσίαση περιεχομένου.",
+      },
+      {
+        layer: "Deployment",
+        technologies: ["GitHub", "Vercel"],
+        description:
+          "Διαχείριση εκδόσεων και αυτματοποιημένη δημοσίευση της εφαρμογής.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Dynamic Content Management",
+        problem:
+          "Η δημοσίευση νέων δοκιμίων χωρίς τροποποίηση του πηγαίου κώδικα και νέο deployment.",
+        solution:
+          "Αποθήκευση των Markdown αρχείων στο Vercel Blob και δυναμική ανάκτηση του περιεχομένου.",
+      },
+      {
+        title: "Secure Markdown Parsing",
+        problem:
+          "Η ασφαλής επεξεργασία των μεταδεδομένων των Markdown αρχείων.",
+        solution:
+          "Περιορισμός του frontmatter σε YAML και δημιουργία αυτοματοποιημένων ελέγχων για την απόρριψη μη υποστηριζόμενων δηλώσεων.",
+      },
+      {
+        title: "Scalable Project Presentation",
+        problem:
+          "Η ανάγκη παρουσίασης νέων τεχνικών έργων χωρίς επανάληψη του κώδικα.",
+        solution:
+          "Δημιουργία κοινού μοντέλου δεδομέων, δυναμικής διαδρομής και επαναχρησιμοποιήσιμων components.",
+      },
+      {
+        title: "Documentation Maintainability",
+        problem:
+          "Η διαχείριση και επικαιροποίηση ενός υπερβολικά μεγάλου όγκου τεχνικής τεκμηρίωσης.",
+        solution:
+          "Σταδιακή αναδιοργάνωση της τεκμηρίωσης με έμφαση στην απλότητα, την ακρίβεια και τη συντηρησιμότητα.",
+      },
+    ],
+    results: [
+      {
+        title: "Reusable Architecture",
+        description:
+          "Κοινή υποδομή παρουσίασης τεχνικών έργων μέσω δυναμικών διαδρομών και επαναχρησιμοποιήσιμων components.",
+      },
+      {
+        title: "Independent Content Publishing",
+        description:
+          "Δημοσίευση νέων δοκιμίων χωρίς αλλαγές στον πηγαίο κώδικα και νέο deployment.",
+      },
+      {
+        title: "Automated Testing",
+        description:
+          "18 αυτοματοποιημένα tests για την επεξεργασία και ανάκτηση των δοκιμίων.",
+      },
+      {
+        title: "Continuous Deployment",
+        description:
+          "αυτματοποιημένη δημοσίευση της εφαρμογής μέσω GitHub και Vercel.",
       },
     ],
     thumbnail: portfolioPreview.src,

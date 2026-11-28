@@ -85,6 +85,86 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               ))}
             </SimpleGrid>
           </ProjectSection>
+          <ProjectSection number="04" title="Architecture & Tech Stack">
+            <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
+              {project.architecture.map((item) => (
+                <Stack
+                  key={item.layer}
+                  gap={3}
+                  p={5}
+                  borderWidth="1px"
+                  borderColor="border.subtle"
+                  borderRadius="lg"
+                >
+                  <Heading as="h3" fontSize="lg">
+                    {item.layer}
+                  </Heading>
+
+                  <Text color="accent" fontWeight="medium">
+                    {item.technologies.join(", ")}
+                  </Text>
+
+                  <Text color="fg.muted" lineHeight="tall">
+                    {item.description}
+                  </Text>
+                </Stack>
+              ))}
+            </SimpleGrid>
+          </ProjectSection>
+          <ProjectSection number="05" title="Engineering Challenges">
+            <Stack gap={4}>
+              {project.challenges.map((challenge) => (
+                <Stack
+                  key={challenge.title}
+                  gap={3}
+                  p={5}
+                  borderWidth="1px"
+                  borderColor="border.subtle"
+                  borderRadius="lg"
+                >
+                  <Heading as="h3" fontSize="lg">
+                    {challenge.title}
+                  </Heading>
+
+                  <Text color="fg.muted" lineHeight="tall">
+                    <Text as="span" fontWeight="semibold" color="fg">
+                      Problem:{" "}
+                    </Text>
+                    {challenge.problem}
+                  </Text>
+
+                  <Text color="fg.muted" lineHeight="tall">
+                    <Text as="span" fontWeight="semibold" color="accent">
+                      Solution:{" "}
+                    </Text>
+                    {challenge.solution}
+                  </Text>
+                </Stack>
+              ))}
+            </Stack>
+          </ProjectSection>
+          <ProjectSection number="06" title="Results">
+            <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
+              {project.results.map((result) => (
+                <Stack
+                  key={result.title}
+                  gap={3}
+                  p={5}
+                  borderWidth="1px"
+                  borderColor="border.subtle"
+                  borderRadius="lg"
+                >
+                  <Heading as="h3" fontSize="lg" color="accent">
+                    {result.title}
+                  </Heading>
+
+                  <Text color="fg.muted" lineHeight="tall">
+                    {result.description}
+                  </Text>
+                </Stack>
+              ))}
+            </SimpleGrid>
+          </ProjectSection>
         </Stack>
       </Container>
     </Box>
